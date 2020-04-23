@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Download;
+using GX.Download;
 using System;
 using System.IO;
 
-namespace GameFramework.Resource
+namespace GX.Resource
 {
     internal sealed partial class ResourceManager : GameFrameworkModule, IResourceManager
     {

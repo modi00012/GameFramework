@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Config
+namespace GX.Config
 {
     /// <summary>
     /// 加载全局配置更新事件。

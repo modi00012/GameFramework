@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework.Setting
+namespace GX.Setting
 {
     /// <summary>
     /// 游戏配置管理器接口。

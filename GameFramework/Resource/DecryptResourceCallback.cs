@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Resource
+namespace GX.Resource
 {
     /// <summary>
     /// 解密资源回调函数。

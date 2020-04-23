@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework
+namespace GX
 {
     /// <summary>
     /// 版本号类。

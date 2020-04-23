@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework.Event
+namespace GX.Event
 {
     /// <summary>
     /// 事件管理器接口。

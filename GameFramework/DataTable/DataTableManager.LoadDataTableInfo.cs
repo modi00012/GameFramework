@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.DataTable
+namespace GX.DataTable
 {
     internal sealed partial class DataTableManager : GameFrameworkModule, IDataTableManager
     {

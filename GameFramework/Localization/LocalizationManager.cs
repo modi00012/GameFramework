@@ -5,12 +5,12 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Resource;
+using GX.Resource;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace GameFramework.Localization
+namespace GX.Localization
 {
     /// <summary>
     /// 本地化管理器。

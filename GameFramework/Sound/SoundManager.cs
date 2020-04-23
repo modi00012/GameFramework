@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Resource;
+using GX.Resource;
 using System;
 using System.Collections.Generic;
 
-namespace GameFramework.Sound
+namespace GX.Sound
 {
     /// <summary>
     /// 声音管理器。

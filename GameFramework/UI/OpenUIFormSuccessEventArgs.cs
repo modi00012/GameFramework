@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.UI
+namespace GX.UI
 {
     /// <summary>
     /// 打开界面成功事件。

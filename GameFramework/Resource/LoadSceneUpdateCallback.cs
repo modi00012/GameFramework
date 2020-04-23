@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Resource
+namespace GX.Resource
 {
     /// <summary>
     /// 加载场景更新回调函数。

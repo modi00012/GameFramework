@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Config
+namespace GX.Config
 {
     internal sealed partial class ConfigManager : GameFrameworkModule, IConfigManager
     {

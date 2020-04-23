@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Resource
+namespace GX.Resource
 {
     /// <summary>
     /// 加载资源时加载依赖资源回调函数。

@@ -7,7 +7,7 @@
 
 using System.IO;
 
-namespace GameFramework.Localization
+namespace GX.Localization
 {
     /// <summary>
     /// 本地化辅助器接口。

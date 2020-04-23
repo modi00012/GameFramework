@@ -7,7 +7,7 @@
 
 using System.Collections.Generic;
 
-namespace GameFramework.UI
+namespace GX.UI
 {
     internal sealed partial class UIManager : GameFrameworkModule, IUIManager
     {

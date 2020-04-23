@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework.Sound
+namespace GX.Sound
 {
     /// <summary>
     /// 声音代理辅助器接口。

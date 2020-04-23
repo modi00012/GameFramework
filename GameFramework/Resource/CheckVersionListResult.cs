@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Resource
+namespace GX.Resource
 {
     /// <summary>
     /// 检查版本资源列表结果。

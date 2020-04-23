@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework.WebRequest
+namespace GX.WebRequest
 {
     /// <summary>
     /// Web 请求管理器。

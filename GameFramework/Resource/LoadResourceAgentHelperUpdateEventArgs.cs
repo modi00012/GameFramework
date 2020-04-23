@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Resource
+namespace GX.Resource
 {
     /// <summary>
     /// 加载资源代理辅助器更新事件。

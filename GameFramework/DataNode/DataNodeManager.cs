@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework.DataNode
+namespace GX.DataNode
 {
     /// <summary>
     /// 数据结点管理器。

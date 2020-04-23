@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.DataTable
+namespace GX.DataTable
 {
     /// <summary>
     /// 加载数据表时加载依赖资源事件。

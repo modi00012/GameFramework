@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.DataNode
+namespace GX.DataNode
 {
     /// <summary>
     /// 数据结点管理器接口。

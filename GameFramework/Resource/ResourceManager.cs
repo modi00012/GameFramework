@@ -5,13 +5,13 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Download;
-using GameFramework.ObjectPool;
+using GX.Download;
+using GX.ObjectPool;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace GameFramework.Resource
+namespace GX.Resource
 {
     /// <summary>
     /// 资源管理器。

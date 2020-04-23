@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GameFramework.Fsm
+namespace GX.Fsm
 {
     /// <summary>
     /// 有限状态机管理器。

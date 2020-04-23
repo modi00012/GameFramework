@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Event
+namespace GX.Event
 {
     /// <summary>
     /// 游戏逻辑事件基类。

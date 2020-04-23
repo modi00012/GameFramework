@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GameFramework.Network
+namespace GX.Network
 {
     /// <summary>
     /// 网络管理器接口。

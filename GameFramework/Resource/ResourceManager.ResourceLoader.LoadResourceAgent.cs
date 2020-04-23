@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace GameFramework.Resource
+namespace GX.Resource
 {
     internal sealed partial class ResourceManager : GameFrameworkModule, IResourceManager
     {

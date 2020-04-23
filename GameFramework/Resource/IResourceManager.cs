@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Download;
-using GameFramework.ObjectPool;
+using GX.Download;
+using GX.ObjectPool;
 using System;
 
-namespace GameFramework.Resource
+namespace GX.Resource
 {
     /// <summary>
     /// 资源管理器接口。

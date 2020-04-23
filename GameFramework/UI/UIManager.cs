@@ -5,12 +5,12 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.ObjectPool;
-using GameFramework.Resource;
+using GX.ObjectPool;
+using GX.Resource;
 using System;
 using System.Collections.Generic;
 
-namespace GameFramework.UI
+namespace GX.UI
 {
     /// <summary>
     /// 界面管理器。

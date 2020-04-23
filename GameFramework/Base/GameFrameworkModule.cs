@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework
+namespace GX
 {
     /// <summary>
     /// 游戏框架模块抽象类。

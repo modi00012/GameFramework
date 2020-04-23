@@ -7,7 +7,7 @@
 
 using System.Collections.Generic;
 
-namespace GameFramework.DataNode
+namespace GX.DataNode
 {
     /// <summary>
     /// 数据结点接口。

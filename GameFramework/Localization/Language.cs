@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Localization
+namespace GX.Localization
 {
     /// <summary>
     /// 本地化语言。

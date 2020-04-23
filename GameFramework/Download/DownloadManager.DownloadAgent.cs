@@ -8,7 +8,7 @@
 using System;
 using System.IO;
 
-namespace GameFramework.Download
+namespace GX.Download
 {
     internal sealed partial class DownloadManager : GameFrameworkModule, IDownloadManager
     {

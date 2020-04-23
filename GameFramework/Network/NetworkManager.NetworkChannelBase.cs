@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 
-namespace GameFramework.Network
+namespace GX.Network
 {
     internal sealed partial class NetworkManager : GameFrameworkModule, INetworkManager
     {

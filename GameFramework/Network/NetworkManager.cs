@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
 
-namespace GameFramework.Network
+namespace GX.Network
 {
     /// <summary>
     /// 网络管理器。

@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Sound
+namespace GX.Sound
 {
     /// <summary>
     /// 声音代理接口。

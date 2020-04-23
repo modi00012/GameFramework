@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework.Fsm
+namespace GX.Fsm
 {
     /// <summary>
     /// 有限状态机基类。

@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Localization
+namespace GX.Localization
 {
     /// <summary>
     /// 加载字典时加载依赖资源事件。

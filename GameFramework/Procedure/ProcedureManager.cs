@@ -5,10 +5,10 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Fsm;
+using GX.Fsm;
 using System;
 
-namespace GameFramework.Procedure
+namespace GX.Procedure
 {
     /// <summary>
     /// 流程管理器。

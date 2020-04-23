@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Task
+namespace GX.Task
 {
     /// <summary>
     /// 任务管理器。

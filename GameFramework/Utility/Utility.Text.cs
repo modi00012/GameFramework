@@ -8,7 +8,7 @@
 using System;
 using System.Text;
 
-namespace GameFramework
+namespace GX
 {
     public static partial class Utility
     {

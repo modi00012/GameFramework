@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Resource;
+using GX.Resource;
 using System;
 using System.Collections.Generic;
 
-namespace GameFramework.Scene
+namespace GX.Scene
 {
     /// <summary>
     /// 场景管理器接口。

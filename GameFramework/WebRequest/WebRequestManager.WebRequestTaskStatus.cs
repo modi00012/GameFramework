@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.WebRequest
+namespace GX.WebRequest
 {
     internal sealed partial class WebRequestManager : GameFrameworkModule, IWebRequestManager
     {

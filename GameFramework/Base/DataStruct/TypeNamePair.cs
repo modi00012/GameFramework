@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework
+namespace GX
 {
     /// <summary>
     /// 类型和名称的组合值。

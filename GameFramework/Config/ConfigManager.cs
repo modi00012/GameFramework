@@ -5,12 +5,12 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Resource;
+using GX.Resource;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace GameFramework.Config
+namespace GX.Config
 {
     /// <summary>
     /// 全局配置管理器。

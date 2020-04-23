@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Download
+namespace GX.Download
 {
     /// <summary>
     /// 下载代理辅助器更新数据流事件。

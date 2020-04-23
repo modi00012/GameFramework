@@ -7,7 +7,7 @@
 
 using System.Collections.Generic;
 
-namespace GameFramework.DataNode
+namespace GX.DataNode
 {
     internal sealed partial class DataNodeManager : GameFrameworkModule, IDataNodeManager
     {

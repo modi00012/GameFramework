@@ -7,7 +7,7 @@
 
 using System.IO;
 
-namespace GameFramework
+namespace GX
 {
     public static partial class Utility
     {

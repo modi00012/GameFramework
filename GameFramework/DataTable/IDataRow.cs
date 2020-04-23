@@ -7,7 +7,7 @@
 
 using System.IO;
 
-namespace GameFramework.DataTable
+namespace GX.DataTable
 {
     /// <summary>
     /// 数据表行接口。

@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework
+namespace GX
 {
     /// <summary>
     /// 事件池模式。

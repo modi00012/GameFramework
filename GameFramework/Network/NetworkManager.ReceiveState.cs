@@ -8,7 +8,7 @@
 using System;
 using System.IO;
 
-namespace GameFramework.Network
+namespace GX.Network
 {
     internal sealed partial class NetworkManager : GameFrameworkModule, INetworkManager
     {

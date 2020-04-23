@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.WebRequest
+namespace GX.WebRequest
 {
     /// <summary>
     /// Web 请求相关常量。

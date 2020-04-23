@@ -7,7 +7,7 @@
 
 using System.Collections.Generic;
 
-namespace GameFramework.Resource
+namespace GX.Resource
 {
     /// <summary>
     /// 资源组接口。

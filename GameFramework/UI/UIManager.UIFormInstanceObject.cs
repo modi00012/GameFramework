@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.ObjectPool;
+using GX.ObjectPool;
 
-namespace GameFramework.UI
+namespace GX.UI
 {
     internal sealed partial class UIManager : GameFrameworkModule, IUIManager
     {

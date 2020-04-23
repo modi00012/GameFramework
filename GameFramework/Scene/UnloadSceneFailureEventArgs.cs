@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Scene
+namespace GX.Scene
 {
     /// <summary>
     /// 卸载场景失败事件。

@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework.Task
+namespace GX.Task
 {
     /// <summary>
     /// 条件任务。

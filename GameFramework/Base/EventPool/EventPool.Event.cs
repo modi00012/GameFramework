@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework
+namespace GX
 {
     internal sealed partial class EventPool<T> where T : BaseEventArgs
     {

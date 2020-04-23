@@ -7,7 +7,7 @@
 
 using System.Collections.Generic;
 
-namespace GameFramework.UI
+namespace GX.UI
 {
     /// <summary>
     /// 界面组接口。

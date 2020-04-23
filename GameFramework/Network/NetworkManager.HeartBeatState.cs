@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Network
+namespace GX.Network
 {
     internal sealed partial class NetworkManager : GameFrameworkModule, INetworkManager
     {

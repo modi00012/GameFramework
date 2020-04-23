@@ -7,7 +7,7 @@
 
 using System.Diagnostics;
 
-namespace GameFramework
+namespace GX
 {
     /// <summary>
     /// 游戏框架日志类。

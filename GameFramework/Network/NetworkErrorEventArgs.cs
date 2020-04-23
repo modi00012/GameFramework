@@ -7,7 +7,7 @@
 
 using System.Net.Sockets;
 
-namespace GameFramework.Network
+namespace GX.Network
 {
     /// <summary>
     /// 网络错误事件。

@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Network
+namespace GX.Network
 {
     /// <summary>
     /// 用户自定义网络错误事件。

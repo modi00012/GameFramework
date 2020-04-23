@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.ObjectPool;
+using GX.ObjectPool;
 
-namespace GameFramework.Entity
+namespace GX.Entity
 {
     internal sealed partial class EntityManager : GameFrameworkModule, IEntityManager
     {

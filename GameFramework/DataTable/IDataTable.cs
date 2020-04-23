@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GameFramework.DataTable
+namespace GX.DataTable
 {
     /// <summary>
     /// 数据表接口。

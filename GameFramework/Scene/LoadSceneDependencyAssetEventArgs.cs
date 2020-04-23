@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Scene
+namespace GX.Scene
 {
     /// <summary>
     /// 加载场景时加载依赖资源事件。

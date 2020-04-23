@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Entity
+namespace GX.Entity
 {
     /// <summary>
     /// 显示实体成功事件。

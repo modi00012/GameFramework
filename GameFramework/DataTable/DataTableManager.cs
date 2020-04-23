@@ -5,12 +5,12 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Resource;
+using GX.Resource;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace GameFramework.DataTable
+namespace GX.DataTable
 {
     /// <summary>
     /// 数据表管理器。

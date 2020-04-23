@@ -7,7 +7,7 @@
 
 using System.IO;
 
-namespace GameFramework.Config
+namespace GX.Config
 {
     /// <summary>
     /// 全局配置辅助器接口。

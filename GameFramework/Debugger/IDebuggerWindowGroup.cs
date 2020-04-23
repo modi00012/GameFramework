@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Debugger
+namespace GX.Debugger
 {
     /// <summary>
     /// 调试器窗口组接口。

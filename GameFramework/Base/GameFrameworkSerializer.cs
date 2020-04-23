@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace GameFramework
+namespace GX
 {
     /// <summary>
     /// 游戏框架序列化器基类。

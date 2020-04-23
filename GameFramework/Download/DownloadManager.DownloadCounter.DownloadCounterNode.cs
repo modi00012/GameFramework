@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Download
+namespace GX.Download
 {
     internal sealed partial class DownloadManager : GameFrameworkModule, IDownloadManager
     {

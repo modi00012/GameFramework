@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework.WebRequest
+namespace GX.WebRequest
 {
     /// <summary>
     /// Web 请求代理辅助器接口。

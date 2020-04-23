@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework.Resource
+namespace GX.Resource
 {
     internal sealed partial class ResourceManager : GameFrameworkModule, IResourceManager
     {

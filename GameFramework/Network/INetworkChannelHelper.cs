@@ -7,7 +7,7 @@
 
 using System.IO;
 
-namespace GameFramework.Network
+namespace GX.Network
 {
     /// <summary>
     /// 网络频道辅助器接口。

@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Localization
+namespace GX.Localization
 {
     /// <summary>
     /// 加载字典更新事件。

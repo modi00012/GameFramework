@@ -7,7 +7,7 @@
 
 using System.Collections.Generic;
 
-namespace GameFramework.Debugger
+namespace GX.Debugger
 {
     internal sealed partial class DebuggerManager : GameFrameworkModule, IDebuggerManager
     {

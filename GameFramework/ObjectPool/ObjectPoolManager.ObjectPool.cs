@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GameFramework.ObjectPool
+namespace GX.ObjectPool
 {
     internal sealed partial class ObjectPoolManager : GameFrameworkModule, IObjectPoolManager
     {

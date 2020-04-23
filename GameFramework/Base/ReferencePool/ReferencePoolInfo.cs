@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework
+namespace GX
 {
     /// <summary>
     /// 引用池信息。

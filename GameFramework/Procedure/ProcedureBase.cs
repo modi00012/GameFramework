@@ -5,10 +5,10 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Fsm;
-using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
+using GX.Fsm;
+using ProcedureOwner = GX.Fsm.IFsm<GX.Procedure.IProcedureManager>;
 
-namespace GameFramework.Procedure
+namespace GX.Procedure
 {
     /// <summary>
     /// 流程基类。

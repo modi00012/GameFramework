@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Entity
+namespace GX.Entity
 {
     /// <summary>
     /// 隐藏实体完成事件。

@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.WebRequest
+namespace GX.WebRequest
 {
     /// <summary>
     /// Web 请求代理辅助器错误事件。

@@ -7,7 +7,7 @@
 
 using System.Collections.Generic;
 
-namespace GameFramework.Entity
+namespace GX.Entity
 {
     /// <summary>
     /// 实体组接口。

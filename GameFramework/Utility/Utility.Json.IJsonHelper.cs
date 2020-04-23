@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework
+namespace GX
 {
     public static partial class Utility
     {

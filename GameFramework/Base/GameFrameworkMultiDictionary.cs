@@ -8,7 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace GameFramework
+namespace GX
 {
     /// <summary>
     /// 游戏框架多值字典类。

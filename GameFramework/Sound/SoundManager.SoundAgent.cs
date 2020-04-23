@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework.Sound
+namespace GX.Sound
 {
     internal sealed partial class SoundManager : GameFrameworkModule, ISoundManager
     {

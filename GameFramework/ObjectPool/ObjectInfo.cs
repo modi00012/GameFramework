@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework.ObjectPool
+namespace GX.ObjectPool
 {
     /// <summary>
     /// 对象信息。

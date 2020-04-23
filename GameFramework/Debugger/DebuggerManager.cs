@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Debugger
+namespace GX.Debugger
 {
     /// <summary>
     /// 调试器管理器。

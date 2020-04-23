@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GameFramework
+namespace GX
 {
     public static partial class ReferencePool
     {

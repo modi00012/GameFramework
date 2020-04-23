@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFramework.Download
+namespace GX.Download
 {
     /// <summary>
     /// 下载管理器。

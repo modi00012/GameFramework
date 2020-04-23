@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFramework.Network
+namespace GX.Network
 {
     /// <summary>
     /// 网络消息包基类。
