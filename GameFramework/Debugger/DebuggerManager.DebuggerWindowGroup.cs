@@ -1,15 +1,15 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System.Collections.Generic;
 
 namespace GX.Debugger
 {
-    internal sealed partial class DebuggerManager : GameFrameworkModule, IDebuggerManager
+    internal sealed partial class DebuggerManager : GXModule, IDebuggerManager
     {
         /// <summary>
         /// 调试器窗口组。
@@ -208,7 +208,7 @@ namespace GX.Debugger
             {
                 if (string.IsNullOrEmpty(path))
                 {
-                    throw new GameFrameworkException("Path is invalid.");
+                    throw new GXException("Path is invalid.");
                 }
 
                 int pos = path.IndexOf('/');
@@ -216,7 +216,7 @@ namespace GX.Debugger
                 {
                     if (InternalGetDebuggerWindow(path) != null)
                     {
-                        throw new GameFrameworkException("Debugger window has been registered.");
+                        throw new GXException("Debugger window has been registered.");
                     }
 
                     m_DebuggerWindows.Add(new KeyValuePair<string, IDebuggerWindow>(path, debuggerWindow));
@@ -231,7 +231,7 @@ namespace GX.Debugger
                     {
                         if (InternalGetDebuggerWindow(debuggerWindowGroupName) != null)
                         {
-                            throw new GameFrameworkException("Debugger window has been registered, can not create debugger window group.");
+                            throw new GXException("Debugger window has been registered, can not create debugger window group.");
                         }
 
                         debuggerWindowGroup = new DebuggerWindowGroup();

@@ -1,13 +1,13 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Sound
 {
-    internal sealed partial class SoundManager : GameFrameworkModule, ISoundManager
+    internal sealed partial class SoundManager : GXModule, ISoundManager
     {
         private sealed class PlaySoundInfo : IReference
         {

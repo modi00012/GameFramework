@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -13,7 +13,7 @@ namespace GX
     /// 数据片段。
     /// </summary>
     /// <typeparam name="T">数据源类型。</typeparam>
-    public struct GameFrameworkSegment<T> : IEquatable<GameFrameworkSegment<T>> where T : class
+    public struct GXSegment<T> : IEquatable<GXSegment<T>> where T : class
     {
         private readonly T m_Source;
         private readonly int m_Offset;
@@ -25,21 +25,21 @@ namespace GX
         /// <param name="source">数据源。</param>
         /// <param name="offset">偏移。</param>
         /// <param name="length">长度。</param>
-        public GameFrameworkSegment(T source, int offset, int length)
+        public GXSegment(T source, int offset, int length)
         {
             if (source == null)
             {
-                throw new GameFrameworkException("Source is invalid.");
+                throw new GXException("Source is invalid.");
             }
 
             if (offset < 0)
             {
-                throw new GameFrameworkException("Offset is invalid.");
+                throw new GXException("Offset is invalid.");
             }
 
             if (length <= 0)
             {
-                throw new GameFrameworkException("Length is invalid.");
+                throw new GXException("Length is invalid.");
             }
 
             m_Source = source;
@@ -96,7 +96,7 @@ namespace GX
         /// <returns>被比较的对象是否与自身相等。</returns>
         public override bool Equals(object obj)
         {
-            return obj is GameFrameworkSegment<T> && Equals((GameFrameworkSegment<T>)obj);
+            return obj is GXSegment<T> && Equals((GXSegment<T>)obj);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace GX
         /// </summary>
         /// <param name="value">要比较的对象。</param>
         /// <returns>被比较的对象是否与自身相等。</returns>
-        public bool Equals(GameFrameworkSegment<T> value)
+        public bool Equals(GXSegment<T> value)
         {
             return value.m_Source == m_Source && value.m_Offset == m_Offset && value.m_Length == m_Length;
         }
@@ -115,7 +115,7 @@ namespace GX
         /// <param name="a">值 a。</param>
         /// <param name="b">值 b。</param>
         /// <returns>两个对象是否相等。</returns>
-        public static bool operator ==(GameFrameworkSegment<T> a, GameFrameworkSegment<T> b)
+        public static bool operator ==(GXSegment<T> a, GXSegment<T> b)
         {
             return a.Equals(b);
         }
@@ -126,7 +126,7 @@ namespace GX
         /// <param name="a">值 a。</param>
         /// <param name="b">值 b。</param>
         /// <returns>两个对象是否不相等。</returns>
-        public static bool operator !=(GameFrameworkSegment<T> a, GameFrameworkSegment<T> b)
+        public static bool operator !=(GXSegment<T> a, GXSegment<T> b)
         {
             return !(a == b);
         }

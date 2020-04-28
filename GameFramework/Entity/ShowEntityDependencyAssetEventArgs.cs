@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Entity
@@ -10,7 +10,7 @@ namespace GX.Entity
     /// <summary>
     /// 显示实体时加载依赖资源事件。
     /// </summary>
-    public sealed class ShowEntityDependencyAssetEventArgs : GameFrameworkEventArgs
+    public sealed class ShowEntityDependencyAssetEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化显示实体时加载依赖资源事件的新实例。

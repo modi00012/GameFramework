@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using GX.ObjectPool;
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace GX.Resource
 {
-    internal sealed partial class ResourceManager : GameFrameworkModule, IResourceManager
+    internal sealed partial class ResourceManager : GXModule, IResourceManager
     {
         private sealed partial class ResourceLoader
         {
@@ -46,22 +46,22 @@ namespace GX.Resource
                 {
                     if (dependencyAssets == null)
                     {
-                        throw new GameFrameworkException("Dependency assets is invalid.");
+                        throw new GXException("Dependency assets is invalid.");
                     }
 
                     if (resource == null)
                     {
-                        throw new GameFrameworkException("Resource is invalid.");
+                        throw new GXException("Resource is invalid.");
                     }
 
                     if (resourceHelper == null)
                     {
-                        throw new GameFrameworkException("Resource helper is invalid.");
+                        throw new GXException("Resource helper is invalid.");
                     }
 
                     if (resourceLoader == null)
                     {
-                        throw new GameFrameworkException("Resource loader is invalid.");
+                        throw new GXException("Resource loader is invalid.");
                     }
 
                     AssetObject assetObject = ReferencePool.Acquire<AssetObject>();
@@ -112,7 +112,7 @@ namespace GX.Resource
                         int targetReferenceCount = 0;
                         if (m_ResourceLoader.m_AssetDependencyCount.TryGetValue(Target, out targetReferenceCount) && targetReferenceCount > 0)
                         {
-                            throw new GameFrameworkException(Utility.Text.Format("Asset target '{0}' reference count is '{1}' larger than 0.", Name, targetReferenceCount.ToString()));
+                            throw new GXException(Utility.Text.Format("Asset target '{0}' reference count is '{1}' larger than 0.", Name, targetReferenceCount.ToString()));
                         }
 
                         foreach (object dependencyAsset in m_DependencyAssets)
@@ -124,7 +124,7 @@ namespace GX.Resource
                             }
                             else
                             {
-                                throw new GameFrameworkException(Utility.Text.Format("Asset target '{0}' dependency asset reference count is invalid.", Name));
+                                throw new GXException(Utility.Text.Format("Asset target '{0}' dependency asset reference count is invalid.", Name));
                             }
                         }
 

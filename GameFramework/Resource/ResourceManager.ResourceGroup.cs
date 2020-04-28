@@ -1,15 +1,15 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System.Collections.Generic;
 
 namespace GX.Resource
 {
-    internal sealed partial class ResourceManager : GameFrameworkModule, IResourceManager
+    internal sealed partial class ResourceManager : GXModule, IResourceManager
     {
         /// <summary>
         /// 资源组。
@@ -31,12 +31,12 @@ namespace GX.Resource
             {
                 if (name == null)
                 {
-                    throw new GameFrameworkException("Name is invalid.");
+                    throw new GXException("Name is invalid.");
                 }
 
                 if (resourceInfos == null)
                 {
-                    throw new GameFrameworkException("Resource infos is invalid.");
+                    throw new GXException("Resource infos is invalid.");
                 }
 
                 m_Name = name;
@@ -175,7 +175,7 @@ namespace GX.Resource
             {
                 if (results == null)
                 {
-                    throw new GameFrameworkException("Results is invalid.");
+                    throw new GXException("Results is invalid.");
                 }
 
                 results.Clear();

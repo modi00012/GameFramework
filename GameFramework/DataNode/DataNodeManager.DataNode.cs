@@ -1,15 +1,15 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System.Collections.Generic;
 
 namespace GX.DataNode
 {
-    internal sealed partial class DataNodeManager : GameFrameworkModule, IDataNodeManager
+    internal sealed partial class DataNodeManager : GXModule, IDataNodeManager
     {
         /// <summary>
         /// 数据结点。
@@ -41,7 +41,7 @@ namespace GX.DataNode
             {
                 if (!IsValidName(name))
                 {
-                    throw new GameFrameworkException("Name of data node is invalid.");
+                    throw new GXException("Name of data node is invalid.");
                 }
 
                 DataNode node = ReferencePool.Acquire<DataNode>();
@@ -151,7 +151,7 @@ namespace GX.DataNode
             {
                 if (!IsValidName(name))
                 {
-                    throw new GameFrameworkException("Name is invalid.");
+                    throw new GXException("Name is invalid.");
                 }
 
                 if (m_Childs == null)
@@ -189,7 +189,7 @@ namespace GX.DataNode
             {
                 if (!IsValidName(name))
                 {
-                    throw new GameFrameworkException("Name is invalid.");
+                    throw new GXException("Name is invalid.");
                 }
 
                 if (m_Childs == null)
@@ -255,7 +255,7 @@ namespace GX.DataNode
             {
                 if (results == null)
                 {
-                    throw new GameFrameworkException("Results is invalid.");
+                    throw new GXException("Results is invalid.");
                 }
 
                 results.Clear();

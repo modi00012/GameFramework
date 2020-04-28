@@ -1,13 +1,13 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Localization
 {
-    internal sealed partial class LocalizationManager : GameFrameworkModule, ILocalizationManager
+    internal sealed partial class LocalizationManager : GXModule, ILocalizationManager
     {
         private sealed class LoadDictionaryInfo : IReference
         {

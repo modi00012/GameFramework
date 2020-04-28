@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -37,7 +37,7 @@ namespace GX
             {
                 if (bytes == null)
                 {
-                    throw new GameFrameworkException("Bytes is invalid.");
+                    throw new GXException("Bytes is invalid.");
                 }
 
                 return Compress(bytes, 0, bytes.Length);
@@ -53,7 +53,7 @@ namespace GX
             {
                 if (bytes == null)
                 {
-                    throw new GameFrameworkException("Bytes is invalid.");
+                    throw new GXException("Bytes is invalid.");
                 }
 
                 return Compress(bytes, 0, bytes.Length, compressedStream);
@@ -93,22 +93,22 @@ namespace GX
             {
                 if (s_ZipHelper == null)
                 {
-                    throw new GameFrameworkException("Zip helper is invalid.");
+                    throw new GXException("Zip helper is invalid.");
                 }
 
                 if (bytes == null)
                 {
-                    throw new GameFrameworkException("Bytes is invalid.");
+                    throw new GXException("Bytes is invalid.");
                 }
 
                 if (offset < 0 || length <= 0 || offset + length > bytes.Length)
                 {
-                    throw new GameFrameworkException("Offset or length is invalid.");
+                    throw new GXException("Offset or length is invalid.");
                 }
 
                 if (compressedStream == null)
                 {
-                    throw new GameFrameworkException("Compressed stream is invalid.");
+                    throw new GXException("Compressed stream is invalid.");
                 }
 
                 try
@@ -117,12 +117,12 @@ namespace GX
                 }
                 catch (Exception exception)
                 {
-                    if (exception is GameFrameworkException)
+                    if (exception is GXException)
                     {
                         throw;
                     }
 
-                    throw new GameFrameworkException(Text.Format("Can not compress with exception '{0}'.", exception.ToString()), exception);
+                    throw new GXException(Text.Format("Can not compress with exception '{0}'.", exception.ToString()), exception);
                 }
             }
 
@@ -156,17 +156,17 @@ namespace GX
             {
                 if (s_ZipHelper == null)
                 {
-                    throw new GameFrameworkException("Zip helper is invalid.");
+                    throw new GXException("Zip helper is invalid.");
                 }
 
                 if (stream == null)
                 {
-                    throw new GameFrameworkException("Stream is invalid.");
+                    throw new GXException("Stream is invalid.");
                 }
 
                 if (compressedStream == null)
                 {
-                    throw new GameFrameworkException("Compressed stream is invalid.");
+                    throw new GXException("Compressed stream is invalid.");
                 }
 
                 try
@@ -175,12 +175,12 @@ namespace GX
                 }
                 catch (Exception exception)
                 {
-                    if (exception is GameFrameworkException)
+                    if (exception is GXException)
                     {
                         throw;
                     }
 
-                    throw new GameFrameworkException(Text.Format("Can not compress with exception '{0}'.", exception.ToString()), exception);
+                    throw new GXException(Text.Format("Can not compress with exception '{0}'.", exception.ToString()), exception);
                 }
             }
 
@@ -193,7 +193,7 @@ namespace GX
             {
                 if (bytes == null)
                 {
-                    throw new GameFrameworkException("Bytes is invalid.");
+                    throw new GXException("Bytes is invalid.");
                 }
 
                 return Decompress(bytes, 0, bytes.Length);
@@ -209,7 +209,7 @@ namespace GX
             {
                 if (bytes == null)
                 {
-                    throw new GameFrameworkException("Bytes is invalid.");
+                    throw new GXException("Bytes is invalid.");
                 }
 
                 return Decompress(bytes, 0, bytes.Length, decompressedStream);
@@ -249,22 +249,22 @@ namespace GX
             {
                 if (s_ZipHelper == null)
                 {
-                    throw new GameFrameworkException("Zip helper is invalid.");
+                    throw new GXException("Zip helper is invalid.");
                 }
 
                 if (bytes == null)
                 {
-                    throw new GameFrameworkException("Bytes is invalid.");
+                    throw new GXException("Bytes is invalid.");
                 }
 
                 if (offset < 0 || length <= 0 || offset + length > bytes.Length)
                 {
-                    throw new GameFrameworkException("Offset or length is invalid.");
+                    throw new GXException("Offset or length is invalid.");
                 }
 
                 if (decompressedStream == null)
                 {
-                    throw new GameFrameworkException("Decompressed stream is invalid.");
+                    throw new GXException("Decompressed stream is invalid.");
                 }
 
                 try
@@ -273,12 +273,12 @@ namespace GX
                 }
                 catch (Exception exception)
                 {
-                    if (exception is GameFrameworkException)
+                    if (exception is GXException)
                     {
                         throw;
                     }
 
-                    throw new GameFrameworkException(Text.Format("Can not decompress with exception '{0}'.", exception.ToString()), exception);
+                    throw new GXException(Text.Format("Can not decompress with exception '{0}'.", exception.ToString()), exception);
                 }
             }
 
@@ -312,17 +312,17 @@ namespace GX
             {
                 if (s_ZipHelper == null)
                 {
-                    throw new GameFrameworkException("Zip helper is invalid.");
+                    throw new GXException("Zip helper is invalid.");
                 }
 
                 if (stream == null)
                 {
-                    throw new GameFrameworkException("Stream is invalid.");
+                    throw new GXException("Stream is invalid.");
                 }
 
                 if (decompressedStream == null)
                 {
-                    throw new GameFrameworkException("Decompressed stream is invalid.");
+                    throw new GXException("Decompressed stream is invalid.");
                 }
 
                 try
@@ -331,12 +331,12 @@ namespace GX
                 }
                 catch (Exception exception)
                 {
-                    if (exception is GameFrameworkException)
+                    if (exception is GXException)
                     {
                         throw;
                     }
 
-                    throw new GameFrameworkException(Text.Format("Can not decompress with exception '{0}'.", exception.ToString()), exception);
+                    throw new GXException(Text.Format("Can not decompress with exception '{0}'.", exception.ToString()), exception);
                 }
             }
         }

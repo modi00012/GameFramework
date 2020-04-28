@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -13,9 +13,9 @@ namespace GX
     /// <summary>
     /// 游戏框架入口。
     /// </summary>
-    public static class GameFrameworkEntry
+    public static class GXEntry
     {
-        private static readonly GameFrameworkLinkedList<GameFrameworkModule> s_GameFrameworkModules = new GameFrameworkLinkedList<GameFrameworkModule>();
+        private static readonly GXLinkedList<GXModule> s_GXModules = new GXLinkedList<GXModule>();
 
         /// <summary>
         /// 所有游戏框架模块轮询。
@@ -24,7 +24,7 @@ namespace GX
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
         public static void Update(float elapseSeconds, float realElapseSeconds)
         {
-            foreach (GameFrameworkModule module in s_GameFrameworkModules)
+            foreach (GXModule module in s_GXModules)
             {
                 module.Update(elapseSeconds, realElapseSeconds);
             }
@@ -35,14 +35,14 @@ namespace GX
         /// </summary>
         public static void Shutdown()
         {
-            for (LinkedListNode<GameFrameworkModule> current = s_GameFrameworkModules.Last; current != null; current = current.Previous)
+            for (LinkedListNode<GXModule> current = s_GXModules.Last; current != null; current = current.Previous)
             {
                 current.Value.Shutdown();
             }
 
-            s_GameFrameworkModules.Clear();
+            s_GXModules.Clear();
             ReferencePool.ClearAll();
-            GameFrameworkLog.SetLogHelper(null);
+            GXLog.SetLogHelper(null);
         }
 
         /// <summary>
@@ -56,19 +56,19 @@ namespace GX
             Type interfaceType = typeof(T);
             if (!interfaceType.IsInterface)
             {
-                throw new GameFrameworkException(Utility.Text.Format("You must get module by interface, but '{0}' is not.", interfaceType.FullName));
+                throw new GXException(Utility.Text.Format("You must get module by interface, but '{0}' is not.", interfaceType.FullName));
             }
 
-            if (!interfaceType.FullName.StartsWith("GameFramework."))
+            if (!interfaceType.FullName.StartsWith("GX."))
             {
-                throw new GameFrameworkException(Utility.Text.Format("You must get a Game Framework module, but '{0}' is not.", interfaceType.FullName));
+                throw new GXException(Utility.Text.Format("You must get a Game Framework module, but '{0}' is not.", interfaceType.FullName));
             }
 
             string moduleName = Utility.Text.Format("{0}.{1}", interfaceType.Namespace, interfaceType.Name.Substring(1));
             Type moduleType = Type.GetType(moduleName);
             if (moduleType == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find Game Framework module type '{0}'.", moduleName));
+                throw new GXException(Utility.Text.Format("Can not find Game Framework module type '{0}'.", moduleName));
             }
 
             return GetModule(moduleType) as T;
@@ -80,9 +80,9 @@ namespace GX
         /// <param name="moduleType">要获取的游戏框架模块类型。</param>
         /// <returns>要获取的游戏框架模块。</returns>
         /// <remarks>如果要获取的游戏框架模块不存在，则自动创建该游戏框架模块。</remarks>
-        private static GameFrameworkModule GetModule(Type moduleType)
+        private static GXModule GetModule(Type moduleType)
         {
-            foreach (GameFrameworkModule module in s_GameFrameworkModules)
+            foreach (GXModule module in s_GXModules)
             {
                 if (module.GetType() == moduleType)
                 {
@@ -98,15 +98,15 @@ namespace GX
         /// </summary>
         /// <param name="moduleType">要创建的游戏框架模块类型。</param>
         /// <returns>要创建的游戏框架模块。</returns>
-        private static GameFrameworkModule CreateModule(Type moduleType)
+        private static GXModule CreateModule(Type moduleType)
         {
-            GameFrameworkModule module = (GameFrameworkModule)Activator.CreateInstance(moduleType);
+            GXModule module = (GXModule)Activator.CreateInstance(moduleType);
             if (module == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not create module '{0}'.", moduleType.FullName));
+                throw new GXException(Utility.Text.Format("Can not create module '{0}'.", moduleType.FullName));
             }
 
-            LinkedListNode<GameFrameworkModule> current = s_GameFrameworkModules.First;
+            LinkedListNode<GXModule> current = s_GXModules.First;
             while (current != null)
             {
                 if (module.Priority > current.Value.Priority)
@@ -119,11 +119,11 @@ namespace GX
 
             if (current != null)
             {
-                s_GameFrameworkModules.AddBefore(current, module);
+                s_GXModules.AddBefore(current, module);
             }
             else
             {
-                s_GameFrameworkModules.AddLast(module);
+                s_GXModules.AddLast(module);
             }
 
             return module;

@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -49,7 +49,7 @@ namespace GX
             {
                 if (ScreenDpi <= 0)
                 {
-                    throw new GameFrameworkException("You must set screen DPI first.");
+                    throw new GXException("You must set screen DPI first.");
                 }
 
                 return InchesToCentimeters * pixels / ScreenDpi;
@@ -64,7 +64,7 @@ namespace GX
             {
                 if (ScreenDpi <= 0)
                 {
-                    throw new GameFrameworkException("You must set screen DPI first.");
+                    throw new GXException("You must set screen DPI first.");
                 }
 
                 return CentimetersToInches * centimeters * ScreenDpi;
@@ -79,7 +79,7 @@ namespace GX
             {
                 if (ScreenDpi <= 0)
                 {
-                    throw new GameFrameworkException("You must set screen DPI first.");
+                    throw new GXException("You must set screen DPI first.");
                 }
 
                 return pixels / ScreenDpi;
@@ -94,7 +94,7 @@ namespace GX
             {
                 if (ScreenDpi <= 0)
                 {
-                    throw new GameFrameworkException("You must set screen DPI first.");
+                    throw new GXException("You must set screen DPI first.");
                 }
 
                 return inches * ScreenDpi;
@@ -132,12 +132,12 @@ namespace GX
             {
                 if (buffer == null)
                 {
-                    throw new GameFrameworkException("Buffer is invalid.");
+                    throw new GXException("Buffer is invalid.");
                 }
 
                 if (startIndex < 0 || startIndex + 1 > buffer.Length)
                 {
-                    throw new GameFrameworkException("Start index is invalid.");
+                    throw new GXException("Start index is invalid.");
                 }
 
                 buffer[startIndex] = value ? (byte)1 : (byte)0;
@@ -250,12 +250,12 @@ namespace GX
             {
                 if (buffer == null)
                 {
-                    throw new GameFrameworkException("Buffer is invalid.");
+                    throw new GXException("Buffer is invalid.");
                 }
 
                 if (startIndex < 0 || startIndex + 2 > buffer.Length)
                 {
-                    throw new GameFrameworkException("Start index is invalid.");
+                    throw new GXException("Start index is invalid.");
                 }
 
                 fixed (byte* valueRef = buffer)
@@ -371,12 +371,12 @@ namespace GX
             {
                 if (buffer == null)
                 {
-                    throw new GameFrameworkException("Buffer is invalid.");
+                    throw new GXException("Buffer is invalid.");
                 }
 
                 if (startIndex < 0 || startIndex + 4 > buffer.Length)
                 {
-                    throw new GameFrameworkException("Start index is invalid.");
+                    throw new GXException("Start index is invalid.");
                 }
 
                 fixed (byte* valueRef = buffer)
@@ -492,12 +492,12 @@ namespace GX
             {
                 if (buffer == null)
                 {
-                    throw new GameFrameworkException("Buffer is invalid.");
+                    throw new GXException("Buffer is invalid.");
                 }
 
                 if (startIndex < 0 || startIndex + 8 > buffer.Length)
                 {
-                    throw new GameFrameworkException("Start index is invalid.");
+                    throw new GXException("Start index is invalid.");
                 }
 
                 fixed (byte* valueRef = buffer)
@@ -708,7 +708,7 @@ namespace GX
             {
                 if (value == null)
                 {
-                    throw new GameFrameworkException("Value is invalid.");
+                    throw new GXException("Value is invalid.");
                 }
 
                 return Encoding.UTF8.GetString(value);
@@ -725,7 +725,7 @@ namespace GX
             {
                 if (value == null)
                 {
-                    throw new GameFrameworkException("Value is invalid.");
+                    throw new GXException("Value is invalid.");
                 }
 
                 return Encoding.UTF8.GetString(value, startIndex, length);

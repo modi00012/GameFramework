@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -10,7 +10,7 @@ using System.IO;
 
 namespace GX.Network
 {
-    internal sealed partial class NetworkManager : GameFrameworkModule, INetworkManager
+    internal sealed partial class NetworkManager : GXModule, INetworkManager
     {
         private sealed class ReceiveState : IDisposable
         {
@@ -51,7 +51,7 @@ namespace GX.Network
             {
                 if (packetHeader == null)
                 {
-                    throw new GameFrameworkException("Packet header is invalid.");
+                    throw new GXException("Packet header is invalid.");
                 }
 
                 Reset(packetHeader.PacketLength, packetHeader);
@@ -86,7 +86,7 @@ namespace GX.Network
             {
                 if (targetLength < 0)
                 {
-                    throw new GameFrameworkException("Target length is invalid.");
+                    throw new GXException("Target length is invalid.");
                 }
 
                 m_Stream.Position = 0L;

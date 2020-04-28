@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -12,7 +12,7 @@ namespace GX.Event
     /// <summary>
     /// 事件管理器。
     /// </summary>
-    internal sealed class EventManager : GameFrameworkModule, IEventManager
+    internal sealed class EventManager : GXModule, IEventManager
     {
         private readonly EventPool<GameEventArgs> m_EventPool;
 

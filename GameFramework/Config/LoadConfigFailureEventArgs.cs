@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Config
@@ -10,7 +10,7 @@ namespace GX.Config
     /// <summary>
     /// 加载全局配置失败事件。
     /// </summary>
-    public sealed class LoadConfigFailureEventArgs : GameFrameworkEventArgs
+    public sealed class LoadConfigFailureEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化加载全局配置失败事件的新实例。

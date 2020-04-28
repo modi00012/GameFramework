@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System.Collections;
@@ -14,7 +14,7 @@ namespace GX
     /// 游戏框架链表范围。
     /// </summary>
     /// <typeparam name="T">指定链表范围的元素类型。</typeparam>
-    public struct GameFrameworkLinkedListRange<T> : IEnumerable<T>, IEnumerable
+    public struct GXLinkedListRange<T> : IEnumerable<T>, IEnumerable
     {
         private readonly LinkedListNode<T> m_First;
         private readonly LinkedListNode<T> m_Terminal;
@@ -24,11 +24,11 @@ namespace GX
         /// </summary>
         /// <param name="first">链表范围的开始结点。</param>
         /// <param name="terminal">链表范围的终结标记结点。</param>
-        public GameFrameworkLinkedListRange(LinkedListNode<T> first, LinkedListNode<T> terminal)
+        public GXLinkedListRange(LinkedListNode<T> first, LinkedListNode<T> terminal)
         {
             if (first == null || terminal == null || first == terminal)
             {
-                throw new GameFrameworkException("Range is invalid.");
+                throw new GXException("Range is invalid.");
             }
 
             m_First = first;
@@ -132,19 +132,19 @@ namespace GX
         /// </summary>
         public struct Enumerator : IEnumerator<T>, IEnumerator
         {
-            private readonly GameFrameworkLinkedListRange<T> m_GameFrameworkLinkedListRange;
+            private readonly GXLinkedListRange<T> m_GXLinkedListRange;
             private LinkedListNode<T> m_Current;
             private T m_CurrentValue;
 
-            internal Enumerator(GameFrameworkLinkedListRange<T> range)
+            internal Enumerator(GXLinkedListRange<T> range)
             {
                 if (!range.IsValid)
                 {
-                    throw new GameFrameworkException("Range is invalid.");
+                    throw new GXException("Range is invalid.");
                 }
 
-                m_GameFrameworkLinkedListRange = range;
-                m_Current = m_GameFrameworkLinkedListRange.m_First;
+                m_GXLinkedListRange = range;
+                m_Current = m_GXLinkedListRange.m_First;
                 m_CurrentValue = default(T);
             }
 
@@ -183,7 +183,7 @@ namespace GX
             /// <returns>返回下一个结点。</returns>
             public bool MoveNext()
             {
-                if (m_Current == null || m_Current == m_GameFrameworkLinkedListRange.m_Terminal)
+                if (m_Current == null || m_Current == m_GXLinkedListRange.m_Terminal)
                 {
                     return false;
                 }
@@ -198,7 +198,7 @@ namespace GX
             /// </summary>
             void IEnumerator.Reset()
             {
-                m_Current = m_GameFrameworkLinkedListRange.m_First;
+                m_Current = m_GXLinkedListRange.m_First;
                 m_CurrentValue = default(T);
             }
         }

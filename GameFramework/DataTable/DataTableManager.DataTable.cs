@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -12,7 +12,7 @@ using System.IO;
 
 namespace GX.DataTable
 {
-    internal sealed partial class DataTableManager : GameFrameworkModule, IDataTableManager
+    internal sealed partial class DataTableManager : GXModule, IDataTableManager
     {
         /// <summary>
         /// 数据表。
@@ -112,7 +112,7 @@ namespace GX.DataTable
             {
                 if (condition == null)
                 {
-                    throw new GameFrameworkException("Condition is invalid.");
+                    throw new GXException("Condition is invalid.");
                 }
 
                 foreach (KeyValuePair<int, T> dataRow in m_DataSet)
@@ -152,7 +152,7 @@ namespace GX.DataTable
             {
                 if (condition == null)
                 {
-                    throw new GameFrameworkException("Condition is invalid.");
+                    throw new GXException("Condition is invalid.");
                 }
 
                 foreach (KeyValuePair<int, T> dataRow in m_DataSet)
@@ -175,7 +175,7 @@ namespace GX.DataTable
             {
                 if (condition == null)
                 {
-                    throw new GameFrameworkException("Condition is invalid.");
+                    throw new GXException("Condition is invalid.");
                 }
 
                 List<T> results = new List<T>();
@@ -199,12 +199,12 @@ namespace GX.DataTable
             {
                 if (condition == null)
                 {
-                    throw new GameFrameworkException("Condition is invalid.");
+                    throw new GXException("Condition is invalid.");
                 }
 
                 if (results == null)
                 {
-                    throw new GameFrameworkException("Results is invalid.");
+                    throw new GXException("Results is invalid.");
                 }
 
                 results.Clear();
@@ -226,7 +226,7 @@ namespace GX.DataTable
             {
                 if (comparison == null)
                 {
-                    throw new GameFrameworkException("Comparison is invalid.");
+                    throw new GXException("Comparison is invalid.");
                 }
 
                 List<T> results = new List<T>();
@@ -248,12 +248,12 @@ namespace GX.DataTable
             {
                 if (comparison == null)
                 {
-                    throw new GameFrameworkException("Comparison is invalid.");
+                    throw new GXException("Comparison is invalid.");
                 }
 
                 if (results == null)
                 {
-                    throw new GameFrameworkException("Results is invalid.");
+                    throw new GXException("Results is invalid.");
                 }
 
                 results.Clear();
@@ -275,12 +275,12 @@ namespace GX.DataTable
             {
                 if (condition == null)
                 {
-                    throw new GameFrameworkException("Condition is invalid.");
+                    throw new GXException("Condition is invalid.");
                 }
 
                 if (comparison == null)
                 {
-                    throw new GameFrameworkException("Comparison is invalid.");
+                    throw new GXException("Comparison is invalid.");
                 }
 
                 List<T> results = new List<T>();
@@ -306,17 +306,17 @@ namespace GX.DataTable
             {
                 if (condition == null)
                 {
-                    throw new GameFrameworkException("Condition is invalid.");
+                    throw new GXException("Condition is invalid.");
                 }
 
                 if (comparison == null)
                 {
-                    throw new GameFrameworkException("Comparison is invalid.");
+                    throw new GXException("Comparison is invalid.");
                 }
 
                 if (results == null)
                 {
-                    throw new GameFrameworkException("Results is invalid.");
+                    throw new GXException("Results is invalid.");
                 }
 
                 results.Clear();
@@ -355,7 +355,7 @@ namespace GX.DataTable
             {
                 if (results == null)
                 {
-                    throw new GameFrameworkException("Results is invalid.");
+                    throw new GXException("Results is invalid.");
                 }
 
                 results.Clear();
@@ -392,7 +392,7 @@ namespace GX.DataTable
             /// </summary>
             /// <param name="dataRowSegment">要解析的数据表行片段。</param>
             /// <returns>是否增加数据表行成功。</returns>
-            internal override bool AddDataRow(GameFrameworkSegment<string> dataRowSegment)
+            internal override bool AddDataRow(GXSegment<string> dataRowSegment)
             {
                 try
                 {
@@ -407,12 +407,12 @@ namespace GX.DataTable
                 }
                 catch (Exception exception)
                 {
-                    if (exception is GameFrameworkException)
+                    if (exception is GXException)
                     {
                         throw;
                     }
 
-                    throw new GameFrameworkException(Utility.Text.Format("Can not parse data table '{0}' with exception '{1}'.", new TypeNamePair(typeof(T), Name).ToString(), exception.ToString()), exception);
+                    throw new GXException(Utility.Text.Format("Can not parse data table '{0}' with exception '{1}'.", new TypeNamePair(typeof(T), Name).ToString(), exception.ToString()), exception);
                 }
             }
 
@@ -421,7 +421,7 @@ namespace GX.DataTable
             /// </summary>
             /// <param name="dataRowSegment">要解析的数据表行片段。</param>
             /// <returns>是否增加数据表行成功。</returns>
-            internal override bool AddDataRow(GameFrameworkSegment<byte[]> dataRowSegment)
+            internal override bool AddDataRow(GXSegment<byte[]> dataRowSegment)
             {
                 try
                 {
@@ -436,12 +436,12 @@ namespace GX.DataTable
                 }
                 catch (Exception exception)
                 {
-                    if (exception is GameFrameworkException)
+                    if (exception is GXException)
                     {
                         throw;
                     }
 
-                    throw new GameFrameworkException(Utility.Text.Format("Can not parse data table '{0}' with exception '{1}'.", new TypeNamePair(typeof(T), Name).ToString(), exception.ToString()), exception);
+                    throw new GXException(Utility.Text.Format("Can not parse data table '{0}' with exception '{1}'.", new TypeNamePair(typeof(T), Name).ToString(), exception.ToString()), exception);
                 }
             }
 
@@ -450,7 +450,7 @@ namespace GX.DataTable
             /// </summary>
             /// <param name="dataRowSegment">要解析的数据表行片段。</param>
             /// <returns>是否增加数据表行成功。</returns>
-            internal override bool AddDataRow(GameFrameworkSegment<Stream> dataRowSegment)
+            internal override bool AddDataRow(GXSegment<Stream> dataRowSegment)
             {
                 try
                 {
@@ -465,12 +465,12 @@ namespace GX.DataTable
                 }
                 catch (Exception exception)
                 {
-                    if (exception is GameFrameworkException)
+                    if (exception is GXException)
                     {
                         throw;
                     }
 
-                    throw new GameFrameworkException(Utility.Text.Format("Can not parse data table '{0}' with exception '{1}'.", new TypeNamePair(typeof(T), Name).ToString(), exception.ToString()), exception);
+                    throw new GXException(Utility.Text.Format("Can not parse data table '{0}' with exception '{1}'.", new TypeNamePair(typeof(T), Name).ToString(), exception.ToString()), exception);
                 }
             }
 
@@ -478,7 +478,7 @@ namespace GX.DataTable
             {
                 if (HasDataRow(dataRow.Id))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Already exist '{0}' in data table '{1}'.", dataRow.Id.ToString(), new TypeNamePair(typeof(T), Name).ToString()));
+                    throw new GXException(Utility.Text.Format("Already exist '{0}' in data table '{1}'.", dataRow.Id.ToString(), new TypeNamePair(typeof(T), Name).ToString()));
                 }
 
                 m_DataSet.Add(dataRow.Id, dataRow);

@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using GX.ObjectPool;
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace GX.Entity
 {
-    internal sealed partial class EntityManager : GameFrameworkModule, IEntityManager
+    internal sealed partial class EntityManager : GXModule, IEntityManager
     {
         /// <summary>
         /// 实体组。
@@ -20,7 +20,7 @@ namespace GX.Entity
             private readonly string m_Name;
             private readonly IEntityGroupHelper m_EntityGroupHelper;
             private readonly IObjectPool<EntityInstanceObject> m_InstancePool;
-            private readonly GameFrameworkLinkedList<IEntity> m_Entities;
+            private readonly GXLinkedList<IEntity> m_Entities;
             private LinkedListNode<IEntity> m_CachedNode;
 
             /// <summary>
@@ -37,19 +37,19 @@ namespace GX.Entity
             {
                 if (string.IsNullOrEmpty(name))
                 {
-                    throw new GameFrameworkException("Entity group name is invalid.");
+                    throw new GXException("Entity group name is invalid.");
                 }
 
                 if (entityGroupHelper == null)
                 {
-                    throw new GameFrameworkException("Entity group helper is invalid.");
+                    throw new GXException("Entity group helper is invalid.");
                 }
 
                 m_Name = name;
                 m_EntityGroupHelper = entityGroupHelper;
                 m_InstancePool = objectPoolManager.CreateSingleSpawnObjectPool<EntityInstanceObject>(Utility.Text.Format("Entity Instance Pool ({0})", name), instanceCapacity, instanceExpireTime, instancePriority);
                 m_InstancePool.AutoReleaseInterval = instanceAutoReleaseInterval;
-                m_Entities = new GameFrameworkLinkedList<IEntity>();
+                m_Entities = new GXLinkedList<IEntity>();
                 m_CachedNode = null;
             }
 
@@ -190,7 +190,7 @@ namespace GX.Entity
             {
                 if (string.IsNullOrEmpty(entityAssetName))
                 {
-                    throw new GameFrameworkException("Entity asset name is invalid.");
+                    throw new GXException("Entity asset name is invalid.");
                 }
 
                 foreach (IEntity entity in m_Entities)
@@ -231,7 +231,7 @@ namespace GX.Entity
             {
                 if (string.IsNullOrEmpty(entityAssetName))
                 {
-                    throw new GameFrameworkException("Entity asset name is invalid.");
+                    throw new GXException("Entity asset name is invalid.");
                 }
 
                 foreach (IEntity entity in m_Entities)
@@ -254,7 +254,7 @@ namespace GX.Entity
             {
                 if (string.IsNullOrEmpty(entityAssetName))
                 {
-                    throw new GameFrameworkException("Entity asset name is invalid.");
+                    throw new GXException("Entity asset name is invalid.");
                 }
 
                 List<IEntity> results = new List<IEntity>();
@@ -278,12 +278,12 @@ namespace GX.Entity
             {
                 if (string.IsNullOrEmpty(entityAssetName))
                 {
-                    throw new GameFrameworkException("Entity asset name is invalid.");
+                    throw new GXException("Entity asset name is invalid.");
                 }
 
                 if (results == null)
                 {
-                    throw new GameFrameworkException("Results is invalid.");
+                    throw new GXException("Results is invalid.");
                 }
 
                 results.Clear();
@@ -319,7 +319,7 @@ namespace GX.Entity
             {
                 if (results == null)
                 {
-                    throw new GameFrameworkException("Results is invalid.");
+                    throw new GXException("Results is invalid.");
                 }
 
                 results.Clear();
@@ -351,7 +351,7 @@ namespace GX.Entity
 
                 if (!m_Entities.Remove(entity))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Entity group '{0}' not exists specified entity '[{1}]{2}'.", m_Name, entity.Id.ToString(), entity.EntityAssetName));
+                    throw new GXException(Utility.Text.Format("Entity group '{0}' not exists specified entity '[{1}]{2}'.", m_Name, entity.Id.ToString(), entity.EntityAssetName));
                 }
             }
 
@@ -374,7 +374,7 @@ namespace GX.Entity
             {
                 if (entityInstance == null)
                 {
-                    throw new GameFrameworkException("Entity instance is invalid.");
+                    throw new GXException("Entity instance is invalid.");
                 }
 
                 m_InstancePool.SetLocked(entityInstance, locked);
@@ -384,7 +384,7 @@ namespace GX.Entity
             {
                 if (entityInstance == null)
                 {
-                    throw new GameFrameworkException("Entity instance is invalid.");
+                    throw new GXException("Entity instance is invalid.");
                 }
 
                 m_InstancePool.SetPriority(entityInstance, priority);

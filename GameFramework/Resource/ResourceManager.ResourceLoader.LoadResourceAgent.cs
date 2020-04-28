@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -11,7 +11,7 @@ using System.IO;
 
 namespace GX.Resource
 {
-    internal sealed partial class ResourceManager : GameFrameworkModule, IResourceManager
+    internal sealed partial class ResourceManager : GXModule, IResourceManager
     {
         private sealed partial class ResourceLoader
         {
@@ -45,22 +45,22 @@ namespace GX.Resource
                 {
                     if (loadResourceAgentHelper == null)
                     {
-                        throw new GameFrameworkException("Load resource agent helper is invalid.");
+                        throw new GXException("Load resource agent helper is invalid.");
                     }
 
                     if (resourceHelper == null)
                     {
-                        throw new GameFrameworkException("Resource helper is invalid.");
+                        throw new GXException("Resource helper is invalid.");
                     }
 
                     if (resourceLoader == null)
                     {
-                        throw new GameFrameworkException("Resource loader is invalid.");
+                        throw new GXException("Resource loader is invalid.");
                     }
 
                     if (decryptResourceCallback == null)
                     {
-                        throw new GameFrameworkException("Decrypt resource callback is invalid.");
+                        throw new GXException("Decrypt resource callback is invalid.");
                     }
 
                     m_Helper = loadResourceAgentHelper;
@@ -143,7 +143,7 @@ namespace GX.Resource
                 {
                     if (task == null)
                     {
-                        throw new GameFrameworkException("Task is invalid.");
+                        throw new GXException("Task is invalid.");
                     }
 
                     m_Task = task;
@@ -313,7 +313,7 @@ namespace GX.Resource
                             }
                             else
                             {
-                                throw new GameFrameworkException("Can not find dependency resource.");
+                                throw new GXException("Can not find dependency resource.");
                             }
                         }
                     }

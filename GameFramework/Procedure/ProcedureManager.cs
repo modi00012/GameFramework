@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using GX.Fsm;
@@ -13,7 +13,7 @@ namespace GX.Procedure
     /// <summary>
     /// 流程管理器。
     /// </summary>
-    internal sealed class ProcedureManager : GameFrameworkModule, IProcedureManager
+    internal sealed class ProcedureManager : GXModule, IProcedureManager
     {
         private IFsmManager m_FsmManager;
         private IFsm<IProcedureManager> m_ProcedureFsm;
@@ -48,7 +48,7 @@ namespace GX.Procedure
             {
                 if (m_ProcedureFsm == null)
                 {
-                    throw new GameFrameworkException("You must initialize procedure first.");
+                    throw new GXException("You must initialize procedure first.");
                 }
 
                 return (ProcedureBase)m_ProcedureFsm.CurrentState;
@@ -64,7 +64,7 @@ namespace GX.Procedure
             {
                 if (m_ProcedureFsm == null)
                 {
-                    throw new GameFrameworkException("You must initialize procedure first.");
+                    throw new GXException("You must initialize procedure first.");
                 }
 
                 return m_ProcedureFsm.CurrentStateTime;
@@ -106,7 +106,7 @@ namespace GX.Procedure
         {
             if (fsmManager == null)
             {
-                throw new GameFrameworkException("FSM manager is invalid.");
+                throw new GXException("FSM manager is invalid.");
             }
 
             m_FsmManager = fsmManager;
@@ -121,7 +121,7 @@ namespace GX.Procedure
         {
             if (m_ProcedureFsm == null)
             {
-                throw new GameFrameworkException("You must initialize procedure first.");
+                throw new GXException("You must initialize procedure first.");
             }
 
             m_ProcedureFsm.Start<T>();
@@ -135,7 +135,7 @@ namespace GX.Procedure
         {
             if (m_ProcedureFsm == null)
             {
-                throw new GameFrameworkException("You must initialize procedure first.");
+                throw new GXException("You must initialize procedure first.");
             }
 
             m_ProcedureFsm.Start(procedureType);
@@ -150,7 +150,7 @@ namespace GX.Procedure
         {
             if (m_ProcedureFsm == null)
             {
-                throw new GameFrameworkException("You must initialize procedure first.");
+                throw new GXException("You must initialize procedure first.");
             }
 
             return m_ProcedureFsm.HasState<T>();
@@ -165,7 +165,7 @@ namespace GX.Procedure
         {
             if (m_ProcedureFsm == null)
             {
-                throw new GameFrameworkException("You must initialize procedure first.");
+                throw new GXException("You must initialize procedure first.");
             }
 
             return m_ProcedureFsm.HasState(procedureType);
@@ -180,7 +180,7 @@ namespace GX.Procedure
         {
             if (m_ProcedureFsm == null)
             {
-                throw new GameFrameworkException("You must initialize procedure first.");
+                throw new GXException("You must initialize procedure first.");
             }
 
             return m_ProcedureFsm.GetState<T>();
@@ -195,7 +195,7 @@ namespace GX.Procedure
         {
             if (m_ProcedureFsm == null)
             {
-                throw new GameFrameworkException("You must initialize procedure first.");
+                throw new GXException("You must initialize procedure first.");
             }
 
             return (ProcedureBase)m_ProcedureFsm.GetState(procedureType);

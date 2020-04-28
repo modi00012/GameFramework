@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -11,7 +11,7 @@ using System.Net.Sockets;
 
 namespace GX.Network
 {
-    internal sealed partial class NetworkManager : GameFrameworkModule, INetworkManager
+    internal sealed partial class NetworkManager : GXModule, INetworkManager
     {
         /// <summary>
         /// 使用同步接收的 TCP 网络频道。
@@ -63,7 +63,7 @@ namespace GX.Network
                         return;
                     }
 
-                    throw new GameFrameworkException(errorMessage);
+                    throw new GXException(errorMessage);
                 }
 
                 m_NetworkChannelHelper.PrepareForConnecting();

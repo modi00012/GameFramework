@@ -1,13 +1,13 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Config
 {
-    internal sealed partial class ConfigManager : GameFrameworkModule, IConfigManager
+    internal sealed partial class ConfigManager : GXModule, IConfigManager
     {
         private struct ConfigData
         {

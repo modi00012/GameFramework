@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Resource
@@ -10,7 +10,7 @@ namespace GX.Resource
     /// <summary>
     /// 本地读写区版本资源列表序列化器。
     /// </summary>
-    public sealed class ReadWriteVersionListSerializer : GameFrameworkSerializer<LocalVersionList>
+    public sealed class ReadWriteVersionListSerializer : GXSerializer<LocalVersionList>
     {
         private static readonly byte[] Header = new byte[] { (byte)'E', (byte)'L', (byte)'W' };
 

@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -16,7 +16,7 @@ namespace GX
     /// <typeparam name="T">事件类型。</typeparam>
     internal sealed partial class EventPool<T> where T : BaseEventArgs
     {
-        private readonly GameFrameworkMultiDictionary<int, EventHandler<T>> m_EventHandlers;
+        private readonly GXMultiDictionary<int, EventHandler<T>> m_EventHandlers;
         private readonly Queue<Event> m_Events;
         private readonly Dictionary<object, LinkedListNode<EventHandler<T>>> m_CachedNodes;
         private readonly Dictionary<object, LinkedListNode<EventHandler<T>>> m_TempNodes;
@@ -29,7 +29,7 @@ namespace GX
         /// <param name="mode">事件池模式。</param>
         public EventPool(EventPoolMode mode)
         {
-            m_EventHandlers = new GameFrameworkMultiDictionary<int, EventHandler<T>>();
+            m_EventHandlers = new GXMultiDictionary<int, EventHandler<T>>();
             m_Events = new Queue<Event>();
             m_CachedNodes = new Dictionary<object, LinkedListNode<EventHandler<T>>>();
             m_TempNodes = new Dictionary<object, LinkedListNode<EventHandler<T>>>();
@@ -109,7 +109,7 @@ namespace GX
         /// <returns>事件处理函数的数量。</returns>
         public int Count(int id)
         {
-            GameFrameworkLinkedListRange<EventHandler<T>> range = default(GameFrameworkLinkedListRange<EventHandler<T>>);
+            GXLinkedListRange<EventHandler<T>> range = default(GXLinkedListRange<EventHandler<T>>);
             if (m_EventHandlers.TryGetValue(id, out range))
             {
                 return range.Count;
@@ -128,7 +128,7 @@ namespace GX
         {
             if (handler == null)
             {
-                throw new GameFrameworkException("Event handler is invalid.");
+                throw new GXException("Event handler is invalid.");
             }
 
             return m_EventHandlers.Contains(id, handler);
@@ -143,7 +143,7 @@ namespace GX
         {
             if (handler == null)
             {
-                throw new GameFrameworkException("Event handler is invalid.");
+                throw new GXException("Event handler is invalid.");
             }
 
             if (!m_EventHandlers.Contains(id))
@@ -152,11 +152,11 @@ namespace GX
             }
             else if ((m_EventPoolMode & EventPoolMode.AllowMultiHandler) == 0)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Event '{0}' not allow multi handler.", id.ToString()));
+                throw new GXException(Utility.Text.Format("Event '{0}' not allow multi handler.", id.ToString()));
             }
             else if ((m_EventPoolMode & EventPoolMode.AllowDuplicateHandler) == 0 && Check(id, handler))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Event '{0}' not allow duplicate handler.", id.ToString()));
+                throw new GXException(Utility.Text.Format("Event '{0}' not allow duplicate handler.", id.ToString()));
             }
             else
             {
@@ -173,7 +173,7 @@ namespace GX
         {
             if (handler == null)
             {
-                throw new GameFrameworkException("Event handler is invalid.");
+                throw new GXException("Event handler is invalid.");
             }
 
             if (m_CachedNodes.Count > 0)
@@ -199,7 +199,7 @@ namespace GX
 
             if (!m_EventHandlers.Remove(id, handler))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Event '{0}' not exists specified handler.", id.ToString()));
+                throw new GXException(Utility.Text.Format("Event '{0}' not exists specified handler.", id.ToString()));
             }
         }
 
@@ -244,7 +244,7 @@ namespace GX
         private void HandleEvent(object sender, T e)
         {
             bool noHandlerException = false;
-            GameFrameworkLinkedListRange<EventHandler<T>> range = default(GameFrameworkLinkedListRange<EventHandler<T>>);
+            GXLinkedListRange<EventHandler<T>> range = default(GXLinkedListRange<EventHandler<T>>);
             if (m_EventHandlers.TryGetValue(e.Id, out range))
             {
                 LinkedListNode<EventHandler<T>> current = range.First;
@@ -270,7 +270,7 @@ namespace GX
 
             if (noHandlerException)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Event '{0}' not allow no handler.", e.Id.ToString()));
+                throw new GXException(Utility.Text.Format("Event '{0}' not allow no handler.", e.Id.ToString()));
             }
         }
     }

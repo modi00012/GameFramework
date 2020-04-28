@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using GX.Resource;
@@ -15,7 +15,7 @@ namespace GX.Localization
     /// <summary>
     /// 本地化管理器。
     /// </summary>
-    internal sealed partial class LocalizationManager : GameFrameworkModule, ILocalizationManager
+    internal sealed partial class LocalizationManager : GXModule, ILocalizationManager
     {
         private readonly Dictionary<string, string> m_Dictionary;
         private readonly LoadAssetCallbacks m_LoadAssetCallbacks;
@@ -58,7 +58,7 @@ namespace GX.Localization
             {
                 if (value == Language.Unspecified)
                 {
-                    throw new GameFrameworkException("Language is invalid.");
+                    throw new GXException("Language is invalid.");
                 }
 
                 m_Language = value;
@@ -74,7 +74,7 @@ namespace GX.Localization
             {
                 if (m_LocalizationHelper == null)
                 {
-                    throw new GameFrameworkException("You must set localization helper first.");
+                    throw new GXException("You must set localization helper first.");
                 }
 
                 return m_LocalizationHelper.SystemLanguage;
@@ -176,7 +176,7 @@ namespace GX.Localization
         {
             if (resourceManager == null)
             {
-                throw new GameFrameworkException("Resource manager is invalid.");
+                throw new GXException("Resource manager is invalid.");
             }
 
             m_ResourceManager = resourceManager;
@@ -190,7 +190,7 @@ namespace GX.Localization
         {
             if (localizationHelper == null)
             {
-                throw new GameFrameworkException("Localization helper is invalid.");
+                throw new GXException("Localization helper is invalid.");
             }
 
             m_LocalizationHelper = localizationHelper;
@@ -239,12 +239,12 @@ namespace GX.Localization
         {
             if (m_ResourceManager == null)
             {
-                throw new GameFrameworkException("You must set resource manager first.");
+                throw new GXException("You must set resource manager first.");
             }
 
             if (m_LocalizationHelper == null)
             {
-                throw new GameFrameworkException("You must set localization helper first.");
+                throw new GXException("You must set localization helper first.");
             }
 
             LoadDictionaryInfo loadDictionaryInfo = LoadDictionaryInfo.Create(loadType, userData);
@@ -278,7 +278,7 @@ namespace GX.Localization
         {
             if (m_LocalizationHelper == null)
             {
-                throw new GameFrameworkException("You must set localization helper first.");
+                throw new GXException("You must set localization helper first.");
             }
 
             try
@@ -287,12 +287,12 @@ namespace GX.Localization
             }
             catch (Exception exception)
             {
-                if (exception is GameFrameworkException)
+                if (exception is GXException)
                 {
                     throw;
                 }
 
-                throw new GameFrameworkException(Utility.Text.Format("Can not parse dictionary with exception '{0}'.", exception.ToString()), exception);
+                throw new GXException(Utility.Text.Format("Can not parse dictionary with exception '{0}'.", exception.ToString()), exception);
             }
         }
 
@@ -316,7 +316,7 @@ namespace GX.Localization
         {
             if (m_LocalizationHelper == null)
             {
-                throw new GameFrameworkException("You must set localization helper first.");
+                throw new GXException("You must set localization helper first.");
             }
 
             try
@@ -325,12 +325,12 @@ namespace GX.Localization
             }
             catch (Exception exception)
             {
-                if (exception is GameFrameworkException)
+                if (exception is GXException)
                 {
                     throw;
                 }
 
-                throw new GameFrameworkException(Utility.Text.Format("Can not parse dictionary with exception '{0}'.", exception.ToString()), exception);
+                throw new GXException(Utility.Text.Format("Can not parse dictionary with exception '{0}'.", exception.ToString()), exception);
             }
         }
 
@@ -354,7 +354,7 @@ namespace GX.Localization
         {
             if (m_LocalizationHelper == null)
             {
-                throw new GameFrameworkException("You must set localization helper first.");
+                throw new GXException("You must set localization helper first.");
             }
 
             try
@@ -363,12 +363,12 @@ namespace GX.Localization
             }
             catch (Exception exception)
             {
-                if (exception is GameFrameworkException)
+                if (exception is GXException)
                 {
                     throw;
                 }
 
-                throw new GameFrameworkException(Utility.Text.Format("Can not parse dictionary with exception '{0}'.", exception.ToString()), exception);
+                throw new GXException(Utility.Text.Format("Can not parse dictionary with exception '{0}'.", exception.ToString()), exception);
             }
         }
 
@@ -381,7 +381,7 @@ namespace GX.Localization
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new GameFrameworkException("Key is invalid.");
+                throw new GXException("Key is invalid.");
             }
 
             string value = null;
@@ -403,7 +403,7 @@ namespace GX.Localization
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new GameFrameworkException("Key is invalid.");
+                throw new GXException("Key is invalid.");
             }
 
             string value = null;
@@ -433,7 +433,7 @@ namespace GX.Localization
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new GameFrameworkException("Key is invalid.");
+                throw new GXException("Key is invalid.");
             }
 
             string value = null;
@@ -464,7 +464,7 @@ namespace GX.Localization
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new GameFrameworkException("Key is invalid.");
+                throw new GXException("Key is invalid.");
             }
 
             string value = null;
@@ -493,7 +493,7 @@ namespace GX.Localization
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new GameFrameworkException("Key is invalid.");
+                throw new GXException("Key is invalid.");
             }
 
             string value = null;
@@ -531,7 +531,7 @@ namespace GX.Localization
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new GameFrameworkException("Key is invalid.");
+                throw new GXException("Key is invalid.");
             }
 
             return m_Dictionary.ContainsKey(key);
@@ -546,7 +546,7 @@ namespace GX.Localization
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new GameFrameworkException("Key is invalid.");
+                throw new GXException("Key is invalid.");
             }
 
             string value = null;
@@ -595,14 +595,14 @@ namespace GX.Localization
             LoadDictionaryInfo loadDictionaryInfo = (LoadDictionaryInfo)userData;
             if (loadDictionaryInfo == null)
             {
-                throw new GameFrameworkException("Load dictionary info is invalid.");
+                throw new GXException("Load dictionary info is invalid.");
             }
 
             try
             {
                 if (!m_LocalizationHelper.LoadDictionary(dictionaryAsset, loadDictionaryInfo.LoadType, loadDictionaryInfo.UserData))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Load dictionary failure in helper, asset name '{0}'.", dictionaryAssetName));
+                    throw new GXException(Utility.Text.Format("Load dictionary failure in helper, asset name '{0}'.", dictionaryAssetName));
                 }
 
                 if (m_LoadDictionarySuccessEventHandler != null)
@@ -636,7 +636,7 @@ namespace GX.Localization
             LoadDictionaryInfo loadDictionaryInfo = (LoadDictionaryInfo)userData;
             if (loadDictionaryInfo == null)
             {
-                throw new GameFrameworkException("Load dictionary info is invalid.");
+                throw new GXException("Load dictionary info is invalid.");
             }
 
             string appendErrorMessage = Utility.Text.Format("Load dictionary failure, asset name '{0}', status '{1}', error message '{2}'.", dictionaryAssetName, status.ToString(), errorMessage);
@@ -648,7 +648,7 @@ namespace GX.Localization
                 return;
             }
 
-            throw new GameFrameworkException(appendErrorMessage);
+            throw new GXException(appendErrorMessage);
         }
 
         private void LoadAssetUpdateCallback(string dictionaryAssetName, float progress, object userData)
@@ -656,7 +656,7 @@ namespace GX.Localization
             LoadDictionaryInfo loadDictionaryInfo = (LoadDictionaryInfo)userData;
             if (loadDictionaryInfo == null)
             {
-                throw new GameFrameworkException("Load dictionary info is invalid.");
+                throw new GXException("Load dictionary info is invalid.");
             }
 
             if (m_LoadDictionaryUpdateEventHandler != null)
@@ -672,7 +672,7 @@ namespace GX.Localization
             LoadDictionaryInfo loadDictionaryInfo = (LoadDictionaryInfo)userData;
             if (loadDictionaryInfo == null)
             {
-                throw new GameFrameworkException("Load dictionary info is invalid.");
+                throw new GXException("Load dictionary info is invalid.");
             }
 
             if (m_LoadDictionaryDependencyAssetEventHandler != null)
@@ -688,14 +688,14 @@ namespace GX.Localization
             LoadDictionaryInfo loadDictionaryInfo = (LoadDictionaryInfo)userData;
             if (loadDictionaryInfo == null)
             {
-                throw new GameFrameworkException("Load dictionary info is invalid.");
+                throw new GXException("Load dictionary info is invalid.");
             }
 
             try
             {
                 if (!m_LocalizationHelper.LoadDictionary(binaryBytes, loadDictionaryInfo.LoadType, loadDictionaryInfo.UserData))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Load dictionary failure in helper, asset name '{0}'.", dictionaryAssetName));
+                    throw new GXException(Utility.Text.Format("Load dictionary failure in helper, asset name '{0}'.", dictionaryAssetName));
                 }
 
                 if (m_LoadDictionarySuccessEventHandler != null)

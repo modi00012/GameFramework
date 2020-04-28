@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX
@@ -10,7 +10,7 @@ namespace GX
     /// <summary>
     /// 事件基类。
     /// </summary>
-    public abstract class BaseEventArgs : GameFrameworkEventArgs
+    public abstract class BaseEventArgs : GXEventArgs
     {
         /// <summary>
         /// 获取类型编号。

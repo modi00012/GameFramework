@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using GX.Resource;
@@ -15,7 +15,7 @@ namespace GX.Config
     /// <summary>
     /// 全局配置管理器。
     /// </summary>
-    internal sealed partial class ConfigManager : GameFrameworkModule, IConfigManager
+    internal sealed partial class ConfigManager : GXModule, IConfigManager
     {
         private readonly Dictionary<string, ConfigData> m_ConfigDatas;
         private readonly LoadAssetCallbacks m_LoadAssetCallbacks;
@@ -138,7 +138,7 @@ namespace GX.Config
         {
             if (resourceManager == null)
             {
-                throw new GameFrameworkException("Resource manager is invalid.");
+                throw new GXException("Resource manager is invalid.");
             }
 
             m_ResourceManager = resourceManager;
@@ -152,7 +152,7 @@ namespace GX.Config
         {
             if (configHelper == null)
             {
-                throw new GameFrameworkException("Config helper is invalid.");
+                throw new GXException("Config helper is invalid.");
             }
 
             m_ConfigHelper = configHelper;
@@ -201,12 +201,12 @@ namespace GX.Config
         {
             if (m_ResourceManager == null)
             {
-                throw new GameFrameworkException("You must set resource manager first.");
+                throw new GXException("You must set resource manager first.");
             }
 
             if (m_ConfigHelper == null)
             {
-                throw new GameFrameworkException("You must set config helper first.");
+                throw new GXException("You must set config helper first.");
             }
 
             LoadConfigInfo loadConfigInfo = LoadConfigInfo.Create(loadType, userData);
@@ -240,7 +240,7 @@ namespace GX.Config
         {
             if (m_ConfigHelper == null)
             {
-                throw new GameFrameworkException("You must set config helper first.");
+                throw new GXException("You must set config helper first.");
             }
 
             try
@@ -249,12 +249,12 @@ namespace GX.Config
             }
             catch (Exception exception)
             {
-                if (exception is GameFrameworkException)
+                if (exception is GXException)
                 {
                     throw;
                 }
 
-                throw new GameFrameworkException(Utility.Text.Format("Can not parse config with exception '{0}'.", exception.ToString()), exception);
+                throw new GXException(Utility.Text.Format("Can not parse config with exception '{0}'.", exception.ToString()), exception);
             }
         }
 
@@ -278,7 +278,7 @@ namespace GX.Config
         {
             if (m_ConfigHelper == null)
             {
-                throw new GameFrameworkException("You must set config helper first.");
+                throw new GXException("You must set config helper first.");
             }
 
             try
@@ -287,12 +287,12 @@ namespace GX.Config
             }
             catch (Exception exception)
             {
-                if (exception is GameFrameworkException)
+                if (exception is GXException)
                 {
                     throw;
                 }
 
-                throw new GameFrameworkException(Utility.Text.Format("Can not parse config with exception '{0}'.", exception.ToString()), exception);
+                throw new GXException(Utility.Text.Format("Can not parse config with exception '{0}'.", exception.ToString()), exception);
             }
         }
 
@@ -316,7 +316,7 @@ namespace GX.Config
         {
             if (m_ConfigHelper == null)
             {
-                throw new GameFrameworkException("You must set config helper first.");
+                throw new GXException("You must set config helper first.");
             }
 
             try
@@ -325,12 +325,12 @@ namespace GX.Config
             }
             catch (Exception exception)
             {
-                if (exception is GameFrameworkException)
+                if (exception is GXException)
                 {
                     throw;
                 }
 
-                throw new GameFrameworkException(Utility.Text.Format("Can not parse config with exception '{0}'.", exception.ToString()), exception);
+                throw new GXException(Utility.Text.Format("Can not parse config with exception '{0}'.", exception.ToString()), exception);
             }
         }
 
@@ -391,7 +391,7 @@ namespace GX.Config
             ConfigData? configData = GetConfigData(configName);
             if (!configData.HasValue)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Config name '{0}' is not exist.", configName));
+                throw new GXException(Utility.Text.Format("Config name '{0}' is not exist.", configName));
             }
 
             return configData.Value.BoolValue;
@@ -419,7 +419,7 @@ namespace GX.Config
             ConfigData? configData = GetConfigData(configName);
             if (!configData.HasValue)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Config name '{0}' is not exist.", configName));
+                throw new GXException(Utility.Text.Format("Config name '{0}' is not exist.", configName));
             }
 
             return configData.Value.IntValue;
@@ -447,7 +447,7 @@ namespace GX.Config
             ConfigData? configData = GetConfigData(configName);
             if (!configData.HasValue)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Config name '{0}' is not exist.", configName));
+                throw new GXException(Utility.Text.Format("Config name '{0}' is not exist.", configName));
             }
 
             return configData.Value.FloatValue;
@@ -475,7 +475,7 @@ namespace GX.Config
             ConfigData? configData = GetConfigData(configName);
             if (!configData.HasValue)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Config name '{0}' is not exist.", configName));
+                throw new GXException(Utility.Text.Format("Config name '{0}' is not exist.", configName));
             }
 
             return configData.Value.StringValue;
@@ -497,7 +497,7 @@ namespace GX.Config
         {
             if (string.IsNullOrEmpty(configName))
             {
-                throw new GameFrameworkException("Config name is invalid.");
+                throw new GXException("Config name is invalid.");
             }
 
             ConfigData configData = default(ConfigData);
@@ -514,14 +514,14 @@ namespace GX.Config
             LoadConfigInfo loadConfigInfo = (LoadConfigInfo)userData;
             if (loadConfigInfo == null)
             {
-                throw new GameFrameworkException("Load config info is invalid.");
+                throw new GXException("Load config info is invalid.");
             }
 
             try
             {
                 if (!m_ConfigHelper.LoadConfig(configAsset, loadConfigInfo.LoadType, loadConfigInfo.UserData))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Load config failure in helper, asset name '{0}'.", configAssetName));
+                    throw new GXException(Utility.Text.Format("Load config failure in helper, asset name '{0}'.", configAssetName));
                 }
 
                 if (m_LoadConfigSuccessEventHandler != null)
@@ -555,7 +555,7 @@ namespace GX.Config
             LoadConfigInfo loadConfigInfo = (LoadConfigInfo)userData;
             if (loadConfigInfo == null)
             {
-                throw new GameFrameworkException("Load config info is invalid.");
+                throw new GXException("Load config info is invalid.");
             }
 
             string appendErrorMessage = Utility.Text.Format("Load config failure, asset name '{0}', status '{1}', error message '{2}'.", configAssetName, status.ToString(), errorMessage);
@@ -567,7 +567,7 @@ namespace GX.Config
                 return;
             }
 
-            throw new GameFrameworkException(appendErrorMessage);
+            throw new GXException(appendErrorMessage);
         }
 
         private void LoadAssetUpdateCallback(string configAssetName, float progress, object userData)
@@ -575,7 +575,7 @@ namespace GX.Config
             LoadConfigInfo loadConfigInfo = (LoadConfigInfo)userData;
             if (loadConfigInfo == null)
             {
-                throw new GameFrameworkException("Load config info is invalid.");
+                throw new GXException("Load config info is invalid.");
             }
 
             if (m_LoadConfigUpdateEventHandler != null)
@@ -591,7 +591,7 @@ namespace GX.Config
             LoadConfigInfo loadConfigInfo = (LoadConfigInfo)userData;
             if (loadConfigInfo == null)
             {
-                throw new GameFrameworkException("Load config info is invalid.");
+                throw new GXException("Load config info is invalid.");
             }
 
             if (m_LoadConfigDependencyAssetEventHandler != null)
@@ -607,14 +607,14 @@ namespace GX.Config
             LoadConfigInfo loadConfigInfo = (LoadConfigInfo)userData;
             if (loadConfigInfo == null)
             {
-                throw new GameFrameworkException("Load config info is invalid.");
+                throw new GXException("Load config info is invalid.");
             }
 
             try
             {
                 if (!m_ConfigHelper.LoadConfig(binaryBytes, loadConfigInfo.LoadType, loadConfigInfo.UserData))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Load config failure in helper, asset name '{0}'.", configAssetName));
+                    throw new GXException(Utility.Text.Format("Load config failure in helper, asset name '{0}'.", configAssetName));
                 }
 
                 if (m_LoadConfigSuccessEventHandler != null)

@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace GX
     /// 游戏框架序列化器基类。
     /// </summary>
     /// <typeparam name="T">要序列化的数据类型。</typeparam>
-    public abstract class GameFrameworkSerializer<T>
+    public abstract class GXSerializer<T>
     {
         private readonly Dictionary<byte, SerializeCallback> m_SerializeCallbacks;
         private readonly Dictionary<byte, DeserializeCallback> m_DeserializeCallbacks;
@@ -25,7 +25,7 @@ namespace GX
         /// <summary>
         /// 初始化游戏框架序列化器基类的新实例。
         /// </summary>
-        public GameFrameworkSerializer()
+        public GXSerializer()
         {
             m_SerializeCallbacks = new Dictionary<byte, SerializeCallback>();
             m_DeserializeCallbacks = new Dictionary<byte, DeserializeCallback>();
@@ -66,7 +66,7 @@ namespace GX
         {
             if (callback == null)
             {
-                throw new GameFrameworkException("Serialize callback is invalid.");
+                throw new GXException("Serialize callback is invalid.");
             }
 
             m_SerializeCallbacks[version] = callback;
@@ -85,7 +85,7 @@ namespace GX
         {
             if (callback == null)
             {
-                throw new GameFrameworkException("Deserialize callback is invalid.");
+                throw new GXException("Deserialize callback is invalid.");
             }
 
             m_DeserializeCallbacks[version] = callback;
@@ -100,7 +100,7 @@ namespace GX
         {
             if (callback == null)
             {
-                throw new GameFrameworkException("Try get value callback is invalid.");
+                throw new GXException("Try get value callback is invalid.");
             }
 
             m_TryGetValueCallbacks[version] = callback;
@@ -116,7 +116,7 @@ namespace GX
         {
             if (m_SerializeCallbacks.Count <= 0)
             {
-                throw new GameFrameworkException("No serialize callback registered.");
+                throw new GXException("No serialize callback registered.");
             }
 
             return Serialize(stream, data, m_LatestSerializeCallbackVersion);
@@ -141,7 +141,7 @@ namespace GX
                 SerializeCallback callback = null;
                 if (!m_SerializeCallbacks.TryGetValue(version, out callback))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Serialize callback '{0}' is not exist.", version.ToString()));
+                    throw new GXException(Utility.Text.Format("Serialize callback '{0}' is not exist.", version.ToString()));
                 }
 
                 return callback(binaryWriter, data);
@@ -160,14 +160,14 @@ namespace GX
                 byte[] header = GetHeader();
                 if (binaryReader.ReadByte() != header[0] || binaryReader.ReadByte() != header[1] || binaryReader.ReadByte() != header[2])
                 {
-                    throw new GameFrameworkException("Header is invalid.");
+                    throw new GXException("Header is invalid.");
                 }
 
                 byte version = binaryReader.ReadByte();
                 DeserializeCallback callback = null;
                 if (!m_DeserializeCallbacks.TryGetValue(version, out callback))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Deserialize callback '{0}' is not exist.", version.ToString()));
+                    throw new GXException(Utility.Text.Format("Deserialize callback '{0}' is not exist.", version.ToString()));
                 }
 
                 return callback(binaryReader);

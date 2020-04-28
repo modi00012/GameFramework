@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -12,7 +12,7 @@ namespace GX.WebRequest
     /// <summary>
     /// Web 请求管理器。
     /// </summary>
-    internal sealed partial class WebRequestManager : GameFrameworkModule, IWebRequestManager
+    internal sealed partial class WebRequestManager : GXModule, IWebRequestManager
     {
         private readonly TaskPool<WebRequestTask> m_TaskPool;
         private float m_Timeout;
@@ -256,12 +256,12 @@ namespace GX.WebRequest
         {
             if (string.IsNullOrEmpty(webRequestUri))
             {
-                throw new GameFrameworkException("Web request uri is invalid.");
+                throw new GXException("Web request uri is invalid.");
             }
 
             if (TotalAgentCount <= 0)
             {
-                throw new GameFrameworkException("You must add web request agent first.");
+                throw new GXException("You must add web request agent first.");
             }
 
             WebRequestTask webRequestTask = WebRequestTask.Create(webRequestUri, postData, priority, m_Timeout, userData);

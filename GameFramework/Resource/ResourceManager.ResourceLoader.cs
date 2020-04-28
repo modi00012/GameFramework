@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using GX.ObjectPool;
@@ -12,7 +12,7 @@ using System.IO;
 
 namespace GX.Resource
 {
-    internal sealed partial class ResourceManager : GameFrameworkModule, IResourceManager
+    internal sealed partial class ResourceManager : GXModule, IResourceManager
     {
         /// <summary>
         /// 加载资源器。
@@ -259,7 +259,7 @@ namespace GX.Resource
             {
                 if (m_AssetPool == null || m_ResourcePool == null)
                 {
-                    throw new GameFrameworkException("You must set object pool manager first.");
+                    throw new GXException("You must set object pool manager first.");
                 }
 
                 LoadResourceAgent agent = new LoadResourceAgent(loadResourceAgentHelper, resourceHelper, this, readOnlyPath, readWritePath, decryptResourceCallback ?? DefaultDecryptResourceCallback);
@@ -302,7 +302,7 @@ namespace GX.Resource
                         return;
                     }
 
-                    throw new GameFrameworkException(errorMessage);
+                    throw new GXException(errorMessage);
                 }
 
                 if (IsLoadFromBinary(resourceInfo.Value.LoadType))
@@ -314,7 +314,7 @@ namespace GX.Resource
                         return;
                     }
 
-                    throw new GameFrameworkException(errorMessage);
+                    throw new GXException(errorMessage);
                 }
 
                 LoadAssetTask mainTask = LoadAssetTask.Create(assetName, assetType, priority, resourceInfo.Value, dependencyAssetNames, loadAssetCallbacks, userData);
@@ -329,7 +329,7 @@ namespace GX.Resource
                             return;
                         }
 
-                        throw new GameFrameworkException(errorMessage);
+                        throw new GXException(errorMessage);
                     }
                 }
 
@@ -365,7 +365,7 @@ namespace GX.Resource
                         return;
                     }
 
-                    throw new GameFrameworkException(errorMessage);
+                    throw new GXException(errorMessage);
                 }
 
                 if (IsLoadFromBinary(resourceInfo.Value.LoadType))
@@ -377,7 +377,7 @@ namespace GX.Resource
                         return;
                     }
 
-                    throw new GameFrameworkException(errorMessage);
+                    throw new GXException(errorMessage);
                 }
 
                 LoadSceneTask mainTask = LoadSceneTask.Create(sceneAssetName, priority, resourceInfo.Value, dependencyAssetNames, loadSceneCallbacks, userData);
@@ -392,7 +392,7 @@ namespace GX.Resource
                             return;
                         }
 
-                        throw new GameFrameworkException(errorMessage);
+                        throw new GXException(errorMessage);
                     }
                 }
 
@@ -409,7 +409,7 @@ namespace GX.Resource
             {
                 if (m_ResourceManager.m_ResourceHelper == null)
                 {
-                    throw new GameFrameworkException("You must set resource helper first.");
+                    throw new GXException("You must set resource helper first.");
                 }
 
                 object asset = null;
@@ -420,7 +420,7 @@ namespace GX.Resource
                 }
                 else
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not find asset of scene '{0}'.", sceneAssetName));
+                    throw new GXException(Utility.Text.Format("Can not find asset of scene '{0}'.", sceneAssetName));
                 }
 
                 m_ResourceManager.m_ResourceHelper.UnloadScene(sceneAssetName, unloadSceneCallbacks, userData);
@@ -485,7 +485,7 @@ namespace GX.Resource
                         return;
                     }
 
-                    throw new GameFrameworkException(errorMessage);
+                    throw new GXException(errorMessage);
                 }
 
                 if (!IsLoadFromBinary(resourceInfo.Value.LoadType))
@@ -497,7 +497,7 @@ namespace GX.Resource
                         return;
                     }
 
-                    throw new GameFrameworkException(errorMessage);
+                    throw new GXException(errorMessage);
                 }
 
                 string path = Utility.Path.GetRemotePath(Path.Combine(resourceInfo.Value.StorageInReadOnly ? m_ResourceManager.m_ReadOnlyPath : m_ResourceManager.m_ReadWritePath, resourceInfo.Value.ResourceName.FullName));
@@ -517,7 +517,7 @@ namespace GX.Resource
             {
                 if (mainTask == null)
                 {
-                    throw new GameFrameworkException("Main task is invalid.");
+                    throw new GXException("Main task is invalid.");
                 }
 
                 ResourceInfo? resourceInfo = null;
@@ -604,7 +604,7 @@ namespace GX.Resource
                 LoadBinaryInfo loadBinaryInfo = (LoadBinaryInfo)userData;
                 if (loadBinaryInfo == null)
                 {
-                    throw new GameFrameworkException("Load binary info is invalid.");
+                    throw new GXException("Load binary info is invalid.");
                 }
 
                 if (loadBinaryInfo.ResourceInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt || loadBinaryInfo.ResourceInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
@@ -622,7 +622,7 @@ namespace GX.Resource
                 LoadBinaryInfo loadBinaryInfo = (LoadBinaryInfo)userData;
                 if (loadBinaryInfo == null)
                 {
-                    throw new GameFrameworkException("Load binary info is invalid.");
+                    throw new GXException("Load binary info is invalid.");
                 }
 
                 if (loadBinaryInfo.LoadBinaryCallbacks.LoadBinaryFailureCallback != null)

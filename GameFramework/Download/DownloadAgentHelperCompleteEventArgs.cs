@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Download
@@ -10,7 +10,7 @@ namespace GX.Download
     /// <summary>
     /// 下载代理辅助器完成事件。
     /// </summary>
-    public sealed class DownloadAgentHelperCompleteEventArgs : GameFrameworkEventArgs
+    public sealed class DownloadAgentHelperCompleteEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化下载代理辅助器完成事件的新实例。
@@ -38,7 +38,7 @@ namespace GX.Download
         {
             if (length < 0)
             {
-                throw new GameFrameworkException("Length is invalid.");
+                throw new GXException("Length is invalid.");
             }
 
             DownloadAgentHelperCompleteEventArgs downloadAgentHelperCompleteEventArgs = ReferencePool.Acquire<DownloadAgentHelperCompleteEventArgs>();

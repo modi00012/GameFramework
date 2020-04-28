@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using GX.Download;
@@ -11,7 +11,7 @@ using System.IO;
 
 namespace GX.Resource
 {
-    internal sealed partial class ResourceManager : GameFrameworkModule, IResourceManager
+    internal sealed partial class ResourceManager : GXModule, IResourceManager
     {
         /// <summary>
         /// 版本资源列表处理器。
@@ -25,8 +25,8 @@ namespace GX.Resource
             private int m_VersionListZipLength;
             private int m_VersionListZipHashCode;
 
-            public GameFrameworkAction<string, string> VersionListUpdateSuccess;
-            public GameFrameworkAction<string, string> VersionListUpdateFailure;
+            public GXAction<string, string> VersionListUpdateSuccess;
+            public GXAction<string, string> VersionListUpdateFailure;
 
             /// <summary>
             /// 初始化版本资源列表处理器的新实例。
@@ -65,7 +65,7 @@ namespace GX.Resource
             {
                 if (downloadManager == null)
                 {
-                    throw new GameFrameworkException("Download manager is invalid.");
+                    throw new GXException("Download manager is invalid.");
                 }
 
                 m_DownloadManager = downloadManager;
@@ -82,7 +82,7 @@ namespace GX.Resource
             {
                 if (string.IsNullOrEmpty(m_ResourceManager.m_ReadWritePath))
                 {
-                    throw new GameFrameworkException("Read-write path is invalid.");
+                    throw new GXException("Read-write path is invalid.");
                 }
 
                 string versionListFileName = Utility.Path.GetRegularPath(Path.Combine(m_ResourceManager.m_ReadWritePath, RemoteVersionListFileName));
@@ -136,7 +136,7 @@ namespace GX.Resource
             {
                 if (m_DownloadManager == null)
                 {
-                    throw new GameFrameworkException("You must set download manager first.");
+                    throw new GXException("You must set download manager first.");
                 }
 
                 m_VersionListLength = versionListLength;

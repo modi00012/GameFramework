@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -135,12 +135,12 @@ namespace GX.Fsm
         {
             if (owner == null)
             {
-                throw new GameFrameworkException("FSM owner is invalid.");
+                throw new GXException("FSM owner is invalid.");
             }
 
             if (states == null || states.Length < 1)
             {
-                throw new GameFrameworkException("FSM states is invalid.");
+                throw new GXException("FSM states is invalid.");
             }
 
             Fsm<T> fsm = ReferencePool.Acquire<Fsm<T>>();
@@ -151,13 +151,13 @@ namespace GX.Fsm
             {
                 if (state == null)
                 {
-                    throw new GameFrameworkException("FSM states is invalid.");
+                    throw new GXException("FSM states is invalid.");
                 }
 
                 Type stateType = state.GetType();
                 if (fsm.m_States.ContainsKey(stateType))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("FSM '{0}' state '{1}' is already exist.", new TypeNamePair(typeof(T), name).ToString(), stateType));
+                    throw new GXException(Utility.Text.Format("FSM '{0}' state '{1}' is already exist.", new TypeNamePair(typeof(T), name).ToString(), stateType));
                 }
 
                 fsm.m_States.Add(stateType, state);
@@ -178,12 +178,12 @@ namespace GX.Fsm
         {
             if (owner == null)
             {
-                throw new GameFrameworkException("FSM owner is invalid.");
+                throw new GXException("FSM owner is invalid.");
             }
 
             if (states == null || states.Count < 1)
             {
-                throw new GameFrameworkException("FSM states is invalid.");
+                throw new GXException("FSM states is invalid.");
             }
 
             Fsm<T> fsm = ReferencePool.Acquire<Fsm<T>>();
@@ -194,13 +194,13 @@ namespace GX.Fsm
             {
                 if (state == null)
                 {
-                    throw new GameFrameworkException("FSM states is invalid.");
+                    throw new GXException("FSM states is invalid.");
                 }
 
                 Type stateType = state.GetType();
                 if (fsm.m_States.ContainsKey(stateType))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("FSM '{0}' state '{1}' is already exist.", new TypeNamePair(typeof(T), name).ToString(), stateType));
+                    throw new GXException(Utility.Text.Format("FSM '{0}' state '{1}' is already exist.", new TypeNamePair(typeof(T), name).ToString(), stateType));
                 }
 
                 fsm.m_States.Add(stateType, state);
@@ -242,13 +242,13 @@ namespace GX.Fsm
         {
             if (IsRunning)
             {
-                throw new GameFrameworkException("FSM is running, can not start again.");
+                throw new GXException("FSM is running, can not start again.");
             }
 
             FsmState<T> state = GetState<TState>();
             if (state == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("FSM '{0}' can not start state '{1}' which is not exist.", new TypeNamePair(typeof(T), Name).ToString(), typeof(TState).FullName));
+                throw new GXException(Utility.Text.Format("FSM '{0}' can not start state '{1}' which is not exist.", new TypeNamePair(typeof(T), Name).ToString(), typeof(TState).FullName));
             }
 
             m_CurrentStateTime = 0f;
@@ -264,23 +264,23 @@ namespace GX.Fsm
         {
             if (IsRunning)
             {
-                throw new GameFrameworkException("FSM is running, can not start again.");
+                throw new GXException("FSM is running, can not start again.");
             }
 
             if (stateType == null)
             {
-                throw new GameFrameworkException("State type is invalid.");
+                throw new GXException("State type is invalid.");
             }
 
             if (!typeof(FsmState<T>).IsAssignableFrom(stateType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("State type '{0}' is invalid.", stateType.FullName));
+                throw new GXException(Utility.Text.Format("State type '{0}' is invalid.", stateType.FullName));
             }
 
             FsmState<T> state = GetState(stateType);
             if (state == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("FSM '{0}' can not start state '{1}' which is not exist.", new TypeNamePair(typeof(T), Name).ToString(), stateType.FullName));
+                throw new GXException(Utility.Text.Format("FSM '{0}' can not start state '{1}' which is not exist.", new TypeNamePair(typeof(T), Name).ToString(), stateType.FullName));
             }
 
             m_CurrentStateTime = 0f;
@@ -307,12 +307,12 @@ namespace GX.Fsm
         {
             if (stateType == null)
             {
-                throw new GameFrameworkException("State type is invalid.");
+                throw new GXException("State type is invalid.");
             }
 
             if (!typeof(FsmState<T>).IsAssignableFrom(stateType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("State type '{0}' is invalid.", stateType.FullName));
+                throw new GXException(Utility.Text.Format("State type '{0}' is invalid.", stateType.FullName));
             }
 
             return m_States.ContainsKey(stateType);
@@ -343,12 +343,12 @@ namespace GX.Fsm
         {
             if (stateType == null)
             {
-                throw new GameFrameworkException("State type is invalid.");
+                throw new GXException("State type is invalid.");
             }
 
             if (!typeof(FsmState<T>).IsAssignableFrom(stateType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("State type '{0}' is invalid.", stateType.FullName));
+                throw new GXException(Utility.Text.Format("State type '{0}' is invalid.", stateType.FullName));
             }
 
             FsmState<T> state = null;
@@ -384,7 +384,7 @@ namespace GX.Fsm
         {
             if (results == null)
             {
-                throw new GameFrameworkException("Results is invalid.");
+                throw new GXException("Results is invalid.");
             }
 
             results.Clear();
@@ -403,7 +403,7 @@ namespace GX.Fsm
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new GameFrameworkException("Data name is invalid.");
+                throw new GXException("Data name is invalid.");
             }
 
             return m_Datas.ContainsKey(name);
@@ -429,7 +429,7 @@ namespace GX.Fsm
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new GameFrameworkException("Data name is invalid.");
+                throw new GXException("Data name is invalid.");
             }
 
             Variable data = null;
@@ -451,7 +451,7 @@ namespace GX.Fsm
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new GameFrameworkException("Data name is invalid.");
+                throw new GXException("Data name is invalid.");
             }
 
             m_Datas[name] = data;
@@ -466,7 +466,7 @@ namespace GX.Fsm
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new GameFrameworkException("Data name is invalid.");
+                throw new GXException("Data name is invalid.");
             }
 
             m_Datas[name] = data;
@@ -481,7 +481,7 @@ namespace GX.Fsm
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new GameFrameworkException("Data name is invalid.");
+                throw new GXException("Data name is invalid.");
             }
 
             return m_Datas.Remove(name);
@@ -528,13 +528,13 @@ namespace GX.Fsm
         {
             if (m_CurrentState == null)
             {
-                throw new GameFrameworkException("Current state is invalid.");
+                throw new GXException("Current state is invalid.");
             }
 
             FsmState<T> state = GetState(stateType);
             if (state == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("FSM '{0}' can not change state to '{1}' which is not exist.", new TypeNamePair(typeof(T), Name).ToString(), stateType.FullName));
+                throw new GXException(Utility.Text.Format("FSM '{0}' can not change state to '{1}' which is not exist.", new TypeNamePair(typeof(T), Name).ToString(), stateType.FullName));
             }
 
             m_CurrentState.OnLeave(this, false);

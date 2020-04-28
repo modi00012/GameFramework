@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -12,7 +12,7 @@ using System.Net.Sockets;
 
 namespace GX.Network
 {
-    internal sealed partial class NetworkManager : GameFrameworkModule, INetworkManager
+    internal sealed partial class NetworkManager : GXModule, INetworkManager
     {
         /// <summary>
         /// 网络频道基类。
@@ -37,11 +37,11 @@ namespace GX.Network
             protected bool m_Active;
             private bool m_Disposed;
 
-            public GameFrameworkAction<NetworkChannelBase, object> NetworkChannelConnected;
-            public GameFrameworkAction<NetworkChannelBase> NetworkChannelClosed;
-            public GameFrameworkAction<NetworkChannelBase, int> NetworkChannelMissHeartBeat;
-            public GameFrameworkAction<NetworkChannelBase, NetworkErrorCode, SocketError, string> NetworkChannelError;
-            public GameFrameworkAction<NetworkChannelBase, object> NetworkChannelCustomError;
+            public GXAction<NetworkChannelBase, object> NetworkChannelConnected;
+            public GXAction<NetworkChannelBase> NetworkChannelClosed;
+            public GXAction<NetworkChannelBase, int> NetworkChannelMissHeartBeat;
+            public GXAction<NetworkChannelBase, NetworkErrorCode, SocketError, string> NetworkChannelError;
+            public GXAction<NetworkChannelBase, object> NetworkChannelCustomError;
 
             /// <summary>
             /// 初始化网络频道基类的新实例。
@@ -298,7 +298,7 @@ namespace GX.Network
             {
                 if (handler == null)
                 {
-                    throw new GameFrameworkException("Packet handler is invalid.");
+                    throw new GXException("Packet handler is invalid.");
                 }
 
                 m_ReceivePacketPool.Subscribe(handler.Id, handler.Handle);
@@ -355,7 +355,7 @@ namespace GX.Network
                             return;
                         }
 
-                        throw new GameFrameworkException(errorMessage);
+                        throw new GXException(errorMessage);
                 }
 
                 m_SendState.Reset();
@@ -427,7 +427,7 @@ namespace GX.Network
                         return;
                     }
 
-                    throw new GameFrameworkException(errorMessage);
+                    throw new GXException(errorMessage);
                 }
 
                 if (!m_Active)
@@ -439,7 +439,7 @@ namespace GX.Network
                         return;
                     }
 
-                    throw new GameFrameworkException(errorMessage);
+                    throw new GXException(errorMessage);
                 }
 
                 if (packet == null)
@@ -451,7 +451,7 @@ namespace GX.Network
                         return;
                     }
 
-                    throw new GameFrameworkException(errorMessage);
+                    throw new GXException(errorMessage);
                 }
 
                 lock (m_SendPacketPool)
@@ -532,7 +532,7 @@ namespace GX.Network
                             return false;
                         }
 
-                        throw new GameFrameworkException(errorMessage);
+                        throw new GXException(errorMessage);
                     }
                 }
 
@@ -565,7 +565,7 @@ namespace GX.Network
                             return false;
                         }
 
-                        throw new GameFrameworkException(errorMessage);
+                        throw new GXException(errorMessage);
                     }
 
                     m_ReceiveState.PrepareForPacket(packetHeader);

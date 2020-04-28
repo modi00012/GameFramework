@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using GX.Resource;
@@ -15,7 +15,7 @@ namespace GX.DataTable
     /// <summary>
     /// 数据表管理器。
     /// </summary>
-    internal sealed partial class DataTableManager : GameFrameworkModule, IDataTableManager
+    internal sealed partial class DataTableManager : GXModule, IDataTableManager
     {
         private readonly Dictionary<TypeNamePair, DataTableBase> m_DataTables;
         private readonly LoadAssetCallbacks m_LoadAssetCallbacks;
@@ -144,7 +144,7 @@ namespace GX.DataTable
         {
             if (resourceManager == null)
             {
-                throw new GameFrameworkException("Resource manager is invalid.");
+                throw new GXException("Resource manager is invalid.");
             }
 
             m_ResourceManager = resourceManager;
@@ -158,7 +158,7 @@ namespace GX.DataTable
         {
             if (dataTableHelper == null)
             {
-                throw new GameFrameworkException("Data table helper is invalid.");
+                throw new GXException("Data table helper is invalid.");
             }
 
             m_DataTableHelper = dataTableHelper;
@@ -207,12 +207,12 @@ namespace GX.DataTable
         {
             if (m_ResourceManager == null)
             {
-                throw new GameFrameworkException("You must set resource manager first.");
+                throw new GXException("You must set resource manager first.");
             }
 
             if (m_DataTableHelper == null)
             {
-                throw new GameFrameworkException("You must set data table helper first.");
+                throw new GXException("You must set data table helper first.");
             }
 
             LoadDataTableInfo loadDataTableInfo = LoadDataTableInfo.Create(loadType, userData);
@@ -245,12 +245,12 @@ namespace GX.DataTable
         {
             if (dataRowType == null)
             {
-                throw new GameFrameworkException("Data row type is invalid.");
+                throw new GXException("Data row type is invalid.");
             }
 
             if (!typeof(IDataRow).IsAssignableFrom(dataRowType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
+                throw new GXException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
             }
 
             return InternalHasDataTable(new TypeNamePair(dataRowType));
@@ -277,12 +277,12 @@ namespace GX.DataTable
         {
             if (dataRowType == null)
             {
-                throw new GameFrameworkException("Data row type is invalid.");
+                throw new GXException("Data row type is invalid.");
             }
 
             if (!typeof(IDataRow).IsAssignableFrom(dataRowType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
+                throw new GXException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
             }
 
             return InternalHasDataTable(new TypeNamePair(dataRowType, name));
@@ -307,12 +307,12 @@ namespace GX.DataTable
         {
             if (dataRowType == null)
             {
-                throw new GameFrameworkException("Data row type is invalid.");
+                throw new GXException("Data row type is invalid.");
             }
 
             if (!typeof(IDataRow).IsAssignableFrom(dataRowType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
+                throw new GXException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
             }
 
             return InternalGetDataTable(new TypeNamePair(dataRowType));
@@ -339,12 +339,12 @@ namespace GX.DataTable
         {
             if (dataRowType == null)
             {
-                throw new GameFrameworkException("Data row type is invalid.");
+                throw new GXException("Data row type is invalid.");
             }
 
             if (!typeof(IDataRow).IsAssignableFrom(dataRowType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
+                throw new GXException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
             }
 
             return InternalGetDataTable(new TypeNamePair(dataRowType, name));
@@ -374,7 +374,7 @@ namespace GX.DataTable
         {
             if (results == null)
             {
-                throw new GameFrameworkException("Results is invalid.");
+                throw new GXException("Results is invalid.");
             }
 
             results.Clear();
@@ -418,7 +418,7 @@ namespace GX.DataTable
             TypeNamePair typeNamePair = new TypeNamePair(typeof(T), name);
             if (HasDataTable<T>(name))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Already exist data table '{0}'.", typeNamePair.ToString()));
+                throw new GXException(Utility.Text.Format("Already exist data table '{0}'.", typeNamePair.ToString()));
             }
 
             DataTable<T> dataTable = new DataTable<T>(name);
@@ -438,18 +438,18 @@ namespace GX.DataTable
         {
             if (dataRowType == null)
             {
-                throw new GameFrameworkException("Data row type is invalid.");
+                throw new GXException("Data row type is invalid.");
             }
 
             if (!typeof(IDataRow).IsAssignableFrom(dataRowType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
+                throw new GXException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
             }
 
             TypeNamePair typeNamePair = new TypeNamePair(dataRowType, name);
             if (HasDataTable(dataRowType, name))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Already exist data table '{0}'.", typeNamePair.ToString()));
+                throw new GXException(Utility.Text.Format("Already exist data table '{0}'.", typeNamePair.ToString()));
             }
 
             Type dataTableType = typeof(DataTable<>).MakeGenericType(dataRowType);
@@ -493,7 +493,7 @@ namespace GX.DataTable
             TypeNamePair typeNamePair = new TypeNamePair(typeof(T), name);
             if (HasDataTable<T>(name))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Already exist data table '{0}'.", typeNamePair.ToString()));
+                throw new GXException(Utility.Text.Format("Already exist data table '{0}'.", typeNamePair.ToString()));
             }
 
             DataTable<T> dataTable = new DataTable<T>(name);
@@ -513,18 +513,18 @@ namespace GX.DataTable
         {
             if (dataRowType == null)
             {
-                throw new GameFrameworkException("Data row type is invalid.");
+                throw new GXException("Data row type is invalid.");
             }
 
             if (!typeof(IDataRow).IsAssignableFrom(dataRowType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
+                throw new GXException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
             }
 
             TypeNamePair typeNamePair = new TypeNamePair(dataRowType, name);
             if (HasDataTable(dataRowType, name))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Already exist data table '{0}'.", typeNamePair.ToString()));
+                throw new GXException(Utility.Text.Format("Already exist data table '{0}'.", typeNamePair.ToString()));
             }
 
             Type dataTableType = typeof(DataTable<>).MakeGenericType(dataRowType);
@@ -568,7 +568,7 @@ namespace GX.DataTable
             TypeNamePair typeNamePair = new TypeNamePair(typeof(T), name);
             if (HasDataTable<T>(name))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Already exist data table '{0}'.", typeNamePair.ToString()));
+                throw new GXException(Utility.Text.Format("Already exist data table '{0}'.", typeNamePair.ToString()));
             }
 
             DataTable<T> dataTable = new DataTable<T>(name);
@@ -588,18 +588,18 @@ namespace GX.DataTable
         {
             if (dataRowType == null)
             {
-                throw new GameFrameworkException("Data row type is invalid.");
+                throw new GXException("Data row type is invalid.");
             }
 
             if (!typeof(IDataRow).IsAssignableFrom(dataRowType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
+                throw new GXException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
             }
 
             TypeNamePair typeNamePair = new TypeNamePair(dataRowType, name);
             if (HasDataTable(dataRowType, name))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Already exist data table '{0}'.", typeNamePair.ToString()));
+                throw new GXException(Utility.Text.Format("Already exist data table '{0}'.", typeNamePair.ToString()));
             }
 
             Type dataTableType = typeof(DataTable<>).MakeGenericType(dataRowType);
@@ -627,12 +627,12 @@ namespace GX.DataTable
         {
             if (dataRowType == null)
             {
-                throw new GameFrameworkException("Data row type is invalid.");
+                throw new GXException("Data row type is invalid.");
             }
 
             if (!typeof(IDataRow).IsAssignableFrom(dataRowType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
+                throw new GXException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
             }
 
             return InternalDestroyDataTable(new TypeNamePair(dataRowType));
@@ -658,12 +658,12 @@ namespace GX.DataTable
         {
             if (dataRowType == null)
             {
-                throw new GameFrameworkException("Data row type is invalid.");
+                throw new GXException("Data row type is invalid.");
             }
 
             if (!typeof(IDataRow).IsAssignableFrom(dataRowType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
+                throw new GXException(Utility.Text.Format("Data row type '{0}' is invalid.", dataRowType.FullName));
             }
 
             return InternalDestroyDataTable(new TypeNamePair(dataRowType, name));
@@ -679,7 +679,7 @@ namespace GX.DataTable
         {
             if (dataTable == null)
             {
-                throw new GameFrameworkException("Data table is invalid.");
+                throw new GXException("Data table is invalid.");
             }
 
             return InternalDestroyDataTable(new TypeNamePair(typeof(T), dataTable.Name));
@@ -694,7 +694,7 @@ namespace GX.DataTable
         {
             if (dataTable == null)
             {
-                throw new GameFrameworkException("Data table is invalid.");
+                throw new GXException("Data table is invalid.");
             }
 
             return InternalDestroyDataTable(new TypeNamePair(dataTable.Type, dataTable.Name));
@@ -718,93 +718,93 @@ namespace GX.DataTable
 
         private void InternalCreateDataTable(DataTableBase dataTable, string text)
         {
-            IEnumerable<GameFrameworkSegment<string>> dataRowSegments = null;
+            IEnumerable<GXSegment<string>> dataRowSegments = null;
             try
             {
                 dataRowSegments = m_DataTableHelper.GetDataRowSegments(text);
             }
             catch (Exception exception)
             {
-                if (exception is GameFrameworkException)
+                if (exception is GXException)
                 {
                     throw;
                 }
 
-                throw new GameFrameworkException(Utility.Text.Format("Can not get data row segments with exception '{0}'.", exception.ToString()), exception);
+                throw new GXException(Utility.Text.Format("Can not get data row segments with exception '{0}'.", exception.ToString()), exception);
             }
 
             if (dataRowSegments == null)
             {
-                throw new GameFrameworkException("Data row segments is invalid.");
+                throw new GXException("Data row segments is invalid.");
             }
 
-            foreach (GameFrameworkSegment<string> dataRowSegment in dataRowSegments)
+            foreach (GXSegment<string> dataRowSegment in dataRowSegments)
             {
                 if (!dataTable.AddDataRow(dataRowSegment))
                 {
-                    throw new GameFrameworkException("Add data row failure.");
+                    throw new GXException("Add data row failure.");
                 }
             }
         }
 
         private void InternalCreateDataTable(DataTableBase dataTable, byte[] bytes)
         {
-            IEnumerable<GameFrameworkSegment<byte[]>> dataRowSegments = null;
+            IEnumerable<GXSegment<byte[]>> dataRowSegments = null;
             try
             {
                 dataRowSegments = m_DataTableHelper.GetDataRowSegments(bytes);
             }
             catch (Exception exception)
             {
-                if (exception is GameFrameworkException)
+                if (exception is GXException)
                 {
                     throw;
                 }
 
-                throw new GameFrameworkException(Utility.Text.Format("Can not get data row segments with exception '{0}'.", exception.ToString()), exception);
+                throw new GXException(Utility.Text.Format("Can not get data row segments with exception '{0}'.", exception.ToString()), exception);
             }
 
             if (dataRowSegments == null)
             {
-                throw new GameFrameworkException("Data row segments is invalid.");
+                throw new GXException("Data row segments is invalid.");
             }
 
-            foreach (GameFrameworkSegment<byte[]> dataRowSegment in dataRowSegments)
+            foreach (GXSegment<byte[]> dataRowSegment in dataRowSegments)
             {
                 if (!dataTable.AddDataRow(dataRowSegment))
                 {
-                    throw new GameFrameworkException("Add data row failure.");
+                    throw new GXException("Add data row failure.");
                 }
             }
         }
 
         private void InternalCreateDataTable(DataTableBase dataTable, Stream stream)
         {
-            IEnumerable<GameFrameworkSegment<Stream>> dataRowSegments = null;
+            IEnumerable<GXSegment<Stream>> dataRowSegments = null;
             try
             {
                 dataRowSegments = m_DataTableHelper.GetDataRowSegments(stream);
             }
             catch (Exception exception)
             {
-                if (exception is GameFrameworkException)
+                if (exception is GXException)
                 {
                     throw;
                 }
 
-                throw new GameFrameworkException(Utility.Text.Format("Can not get data row segments with exception '{0}'.", exception.ToString()), exception);
+                throw new GXException(Utility.Text.Format("Can not get data row segments with exception '{0}'.", exception.ToString()), exception);
             }
 
             if (dataRowSegments == null)
             {
-                throw new GameFrameworkException("Data row segments is invalid.");
+                throw new GXException("Data row segments is invalid.");
             }
 
-            foreach (GameFrameworkSegment<Stream> dataRowSegment in dataRowSegments)
+            foreach (GXSegment<Stream> dataRowSegment in dataRowSegments)
             {
                 if (!dataTable.AddDataRow(dataRowSegment))
                 {
-                    throw new GameFrameworkException("Add data row failure.");
+                    throw new GXException("Add data row failure.");
                 }
             }
         }
@@ -826,14 +826,14 @@ namespace GX.DataTable
             LoadDataTableInfo loadDataTableInfo = (LoadDataTableInfo)userData;
             if (loadDataTableInfo == null)
             {
-                throw new GameFrameworkException("Load data table info is invalid.");
+                throw new GXException("Load data table info is invalid.");
             }
 
             try
             {
                 if (!m_DataTableHelper.LoadDataTable(dataTableAsset, loadDataTableInfo.LoadType, loadDataTableInfo.UserData))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Load data table failure in helper, asset name '{0}'.", dataTableAssetName));
+                    throw new GXException(Utility.Text.Format("Load data table failure in helper, asset name '{0}'.", dataTableAssetName));
                 }
 
                 if (m_LoadDataTableSuccessEventHandler != null)
@@ -867,7 +867,7 @@ namespace GX.DataTable
             LoadDataTableInfo loadDataTableInfo = (LoadDataTableInfo)userData;
             if (loadDataTableInfo == null)
             {
-                throw new GameFrameworkException("Load data table info is invalid.");
+                throw new GXException("Load data table info is invalid.");
             }
 
             string appendErrorMessage = Utility.Text.Format("Load data table failure, asset name '{0}', status '{1}', error message '{2}'.", dataTableAssetName, status.ToString(), errorMessage);
@@ -879,7 +879,7 @@ namespace GX.DataTable
                 return;
             }
 
-            throw new GameFrameworkException(appendErrorMessage);
+            throw new GXException(appendErrorMessage);
         }
 
         private void LoadAssetUpdateCallback(string dataTableAssetName, float progress, object userData)
@@ -887,7 +887,7 @@ namespace GX.DataTable
             LoadDataTableInfo loadDataTableInfo = (LoadDataTableInfo)userData;
             if (loadDataTableInfo == null)
             {
-                throw new GameFrameworkException("Load data table info is invalid.");
+                throw new GXException("Load data table info is invalid.");
             }
 
             if (m_LoadDataTableUpdateEventHandler != null)
@@ -903,7 +903,7 @@ namespace GX.DataTable
             LoadDataTableInfo loadDataTableInfo = (LoadDataTableInfo)userData;
             if (loadDataTableInfo == null)
             {
-                throw new GameFrameworkException("Load data table info is invalid.");
+                throw new GXException("Load data table info is invalid.");
             }
 
             if (m_LoadDataTableDependencyAssetEventHandler != null)
@@ -919,14 +919,14 @@ namespace GX.DataTable
             LoadDataTableInfo loadDataTableInfo = (LoadDataTableInfo)userData;
             if (loadDataTableInfo == null)
             {
-                throw new GameFrameworkException("Load data table info is invalid.");
+                throw new GXException("Load data table info is invalid.");
             }
 
             try
             {
                 if (!m_DataTableHelper.LoadDataTable(binaryBytes, loadDataTableInfo.LoadType, loadDataTableInfo.UserData))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Load data table failure in helper, asset name '{0}'.", dataTableAssetName));
+                    throw new GXException(Utility.Text.Format("Load data table failure in helper, asset name '{0}'.", dataTableAssetName));
                 }
 
                 if (m_LoadDataTableSuccessEventHandler != null)

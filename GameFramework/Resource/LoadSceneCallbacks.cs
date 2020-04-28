@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Resource
@@ -89,7 +89,7 @@ namespace GX.Resource
         {
             if (loadSceneSuccessCallback == null)
             {
-                throw new GameFrameworkException("Load scene success callback is invalid.");
+                throw new GXException("Load scene success callback is invalid.");
             }
 
             m_LoadSceneSuccessCallback = loadSceneSuccessCallback;

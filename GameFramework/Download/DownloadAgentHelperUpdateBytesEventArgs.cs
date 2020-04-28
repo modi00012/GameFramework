@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Download
@@ -10,7 +10,7 @@ namespace GX.Download
     /// <summary>
     /// 下载代理辅助器更新数据流事件。
     /// </summary>
-    public sealed class DownloadAgentHelperUpdateBytesEventArgs : GameFrameworkEventArgs
+    public sealed class DownloadAgentHelperUpdateBytesEventArgs : GXEventArgs
     {
         private byte[] m_Bytes;
 
@@ -53,17 +53,17 @@ namespace GX.Download
         {
             if (bytes == null)
             {
-                throw new GameFrameworkException("Bytes is invalid.");
+                throw new GXException("Bytes is invalid.");
             }
 
             if (offset < 0 || offset >= bytes.Length)
             {
-                throw new GameFrameworkException("Offset is invalid.");
+                throw new GXException("Offset is invalid.");
             }
 
             if (length <= 0 || offset + length > bytes.Length)
             {
-                throw new GameFrameworkException("Length is invalid.");
+                throw new GXException("Length is invalid.");
             }
 
             DownloadAgentHelperUpdateBytesEventArgs downloadAgentHelperUpdateBytesEventArgs = ReferencePool.Acquire<DownloadAgentHelperUpdateBytesEventArgs>();

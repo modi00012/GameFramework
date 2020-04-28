@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -36,7 +36,7 @@ namespace GX
             {
                 if (s_JsonHelper == null)
                 {
-                    throw new GameFrameworkException("JSON helper is invalid.");
+                    throw new GXException("JSON helper is invalid.");
                 }
 
                 try
@@ -45,12 +45,12 @@ namespace GX
                 }
                 catch (Exception exception)
                 {
-                    if (exception is GameFrameworkException)
+                    if (exception is GXException)
                     {
                         throw;
                     }
 
-                    throw new GameFrameworkException(Text.Format("Can not convert to JSON with exception '{0}'.", exception.ToString()), exception);
+                    throw new GXException(Text.Format("Can not convert to JSON with exception '{0}'.", exception.ToString()), exception);
                 }
             }
 
@@ -74,7 +74,7 @@ namespace GX
             {
                 if (s_JsonHelper == null)
                 {
-                    throw new GameFrameworkException("JSON helper is invalid.");
+                    throw new GXException("JSON helper is invalid.");
                 }
 
                 try
@@ -83,12 +83,12 @@ namespace GX
                 }
                 catch (Exception exception)
                 {
-                    if (exception is GameFrameworkException)
+                    if (exception is GXException)
                     {
                         throw;
                     }
 
-                    throw new GameFrameworkException(Text.Format("Can not convert to object with exception '{0}'.", exception.ToString()), exception);
+                    throw new GXException(Text.Format("Can not convert to object with exception '{0}'.", exception.ToString()), exception);
                 }
             }
 
@@ -102,12 +102,12 @@ namespace GX
             {
                 if (s_JsonHelper == null)
                 {
-                    throw new GameFrameworkException("JSON helper is invalid.");
+                    throw new GXException("JSON helper is invalid.");
                 }
 
                 if (objectType == null)
                 {
-                    throw new GameFrameworkException("Object type is invalid.");
+                    throw new GXException("Object type is invalid.");
                 }
 
                 try
@@ -116,12 +116,12 @@ namespace GX
                 }
                 catch (Exception exception)
                 {
-                    if (exception is GameFrameworkException)
+                    if (exception is GXException)
                     {
                         throw;
                     }
 
-                    throw new GameFrameworkException(Text.Format("Can not convert to object with exception '{0}'.", exception.ToString()), exception);
+                    throw new GXException(Text.Format("Can not convert to object with exception '{0}'.", exception.ToString()), exception);
                 }
             }
 

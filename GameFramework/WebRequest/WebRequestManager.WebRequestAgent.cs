@@ -1,13 +1,13 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.WebRequest
 {
-    internal sealed partial class WebRequestManager : GameFrameworkModule, IWebRequestManager
+    internal sealed partial class WebRequestManager : GXModule, IWebRequestManager
     {
         /// <summary>
         /// Web 请求代理。
@@ -18,9 +18,9 @@ namespace GX.WebRequest
             private WebRequestTask m_Task;
             private float m_WaitTime;
 
-            public GameFrameworkAction<WebRequestAgent> WebRequestAgentStart;
-            public GameFrameworkAction<WebRequestAgent, byte[]> WebRequestAgentSuccess;
-            public GameFrameworkAction<WebRequestAgent, string> WebRequestAgentFailure;
+            public GXAction<WebRequestAgent> WebRequestAgentStart;
+            public GXAction<WebRequestAgent, byte[]> WebRequestAgentSuccess;
+            public GXAction<WebRequestAgent, string> WebRequestAgentFailure;
 
             /// <summary>
             /// 初始化 Web 请求代理的新实例。
@@ -30,7 +30,7 @@ namespace GX.WebRequest
             {
                 if (webRequestAgentHelper == null)
                 {
-                    throw new GameFrameworkException("Web request agent helper is invalid.");
+                    throw new GXException("Web request agent helper is invalid.");
                 }
 
                 m_Helper = webRequestAgentHelper;
@@ -111,7 +111,7 @@ namespace GX.WebRequest
             {
                 if (task == null)
                 {
-                    throw new GameFrameworkException("Task is invalid.");
+                    throw new GXException("Task is invalid.");
                 }
 
                 m_Task = task;

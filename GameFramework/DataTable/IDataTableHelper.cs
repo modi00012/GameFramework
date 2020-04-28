@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System.Collections.Generic;
@@ -29,21 +29,21 @@ namespace GX.DataTable
         /// </summary>
         /// <param name="text">要解析的数据表文本。</param>
         /// <returns>数据表行片段。</returns>
-        IEnumerable<GameFrameworkSegment<string>> GetDataRowSegments(string text);
+        IEnumerable<GXSegment<string>> GetDataRowSegments(string text);
 
         /// <summary>
         /// 获取数据表行片段。
         /// </summary>
         /// <param name="bytes">要解析的数据表二进制流。</param>
         /// <returns>数据表行片段。</returns>
-        IEnumerable<GameFrameworkSegment<byte[]>> GetDataRowSegments(byte[] bytes);
+        IEnumerable<GXSegment<byte[]>> GetDataRowSegments(byte[] bytes);
 
         /// <summary>
         /// 获取数据表行片段。
         /// </summary>
         /// <param name="stream">要解析的数据表二进制流。</param>
         /// <returns>数据表行片段。</returns>
-        IEnumerable<GameFrameworkSegment<Stream>> GetDataRowSegments(Stream stream);
+        IEnumerable<GXSegment<Stream>> GetDataRowSegments(Stream stream);
 
         /// <summary>
         /// 释放数据表资源。

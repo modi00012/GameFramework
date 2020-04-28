@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -15,7 +15,7 @@ namespace GX
     /// 游戏框架链表类。
     /// </summary>
     /// <typeparam name="T">指定链表的元素类型。</typeparam>
-    public sealed class GameFrameworkLinkedList<T> : ICollection<T>, IEnumerable<T>, ICollection, IEnumerable
+    public sealed class GXLinkedList<T> : ICollection<T>, IEnumerable<T>, ICollection, IEnumerable
     {
         private readonly LinkedList<T> m_LinkedList;
         private readonly Queue<LinkedListNode<T>> m_CachedNodes;
@@ -23,7 +23,7 @@ namespace GX
         /// <summary>
         /// 初始化游戏框架链表类的新实例。
         /// </summary>
-        public GameFrameworkLinkedList()
+        public GXLinkedList()
         {
             m_LinkedList = new LinkedList<T>();
             m_CachedNodes = new Queue<LinkedListNode<T>>();
@@ -312,7 +312,7 @@ namespace GX
             LinkedListNode<T> first = m_LinkedList.First;
             if (first == null)
             {
-                throw new GameFrameworkException("First is invalid.");
+                throw new GXException("First is invalid.");
             }
 
             m_LinkedList.RemoveFirst();
@@ -327,7 +327,7 @@ namespace GX
             LinkedListNode<T> last = m_LinkedList.Last;
             if (last == null)
             {
-                throw new GameFrameworkException("Last is invalid.");
+                throw new GXException("Last is invalid.");
             }
 
             m_LinkedList.RemoveLast();
@@ -386,7 +386,7 @@ namespace GX
             {
                 if (linkedList == null)
                 {
-                    throw new GameFrameworkException("Linked list is invalid.");
+                    throw new GXException("Linked list is invalid.");
                 }
 
                 m_Enumerator = linkedList.GetEnumerator();

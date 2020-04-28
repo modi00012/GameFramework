@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System.Collections.Generic;
@@ -16,8 +16,8 @@ namespace GX
     internal sealed class TaskPool<T> where T : TaskBase
     {
         private readonly Stack<ITaskAgent<T>> m_FreeAgents;
-        private readonly GameFrameworkLinkedList<ITaskAgent<T>> m_WorkingAgents;
-        private readonly GameFrameworkLinkedList<T> m_WaitingTasks;
+        private readonly GXLinkedList<ITaskAgent<T>> m_WorkingAgents;
+        private readonly GXLinkedList<T> m_WaitingTasks;
         private bool m_Paused;
 
         /// <summary>
@@ -26,8 +26,8 @@ namespace GX
         public TaskPool()
         {
             m_FreeAgents = new Stack<ITaskAgent<T>>();
-            m_WorkingAgents = new GameFrameworkLinkedList<ITaskAgent<T>>();
-            m_WaitingTasks = new GameFrameworkLinkedList<T>();
+            m_WorkingAgents = new GXLinkedList<ITaskAgent<T>>();
+            m_WaitingTasks = new GXLinkedList<T>();
             m_Paused = false;
         }
 
@@ -127,7 +127,7 @@ namespace GX
         {
             if (agent == null)
             {
-                throw new GameFrameworkException("Task agent is invalid.");
+                throw new GXException("Task agent is invalid.");
             }
 
             agent.Initialize();

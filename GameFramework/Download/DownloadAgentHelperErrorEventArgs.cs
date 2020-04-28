@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Download
@@ -10,7 +10,7 @@ namespace GX.Download
     /// <summary>
     /// 下载代理辅助器错误事件。
     /// </summary>
-    public sealed class DownloadAgentHelperErrorEventArgs : GameFrameworkEventArgs
+    public sealed class DownloadAgentHelperErrorEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化下载代理辅助器错误事件的新实例。

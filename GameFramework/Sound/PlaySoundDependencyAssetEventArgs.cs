@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Sound
@@ -10,7 +10,7 @@ namespace GX.Sound
     /// <summary>
     /// 播放声音时加载依赖资源事件。
     /// </summary>
-    public sealed class PlaySoundDependencyAssetEventArgs : GameFrameworkEventArgs
+    public sealed class PlaySoundDependencyAssetEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化播放声音时加载依赖资源事件的新实例。

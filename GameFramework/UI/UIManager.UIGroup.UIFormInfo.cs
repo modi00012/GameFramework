@@ -1,13 +1,13 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.UI
 {
-    internal sealed partial class UIManager : GameFrameworkModule, IUIManager
+    internal sealed partial class UIManager : GXModule, IUIManager
     {
         private sealed partial class UIGroup : IUIGroup
         {
@@ -63,7 +63,7 @@ namespace GX.UI
                 {
                     if (uiForm == null)
                     {
-                        throw new GameFrameworkException("UI form is invalid.");
+                        throw new GXException("UI form is invalid.");
                     }
 
                     UIFormInfo uiFormInfo = ReferencePool.Acquire<UIFormInfo>();

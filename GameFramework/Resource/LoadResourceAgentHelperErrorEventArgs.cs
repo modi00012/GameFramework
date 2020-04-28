@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Resource
@@ -10,7 +10,7 @@ namespace GX.Resource
     /// <summary>
     /// 加载资源代理辅助器错误事件。
     /// </summary>
-    public sealed class LoadResourceAgentHelperErrorEventArgs : GameFrameworkEventArgs
+    public sealed class LoadResourceAgentHelperErrorEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化加载资源代理辅助器错误事件的新实例。

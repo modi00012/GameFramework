@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.UI
@@ -10,7 +10,7 @@ namespace GX.UI
     /// <summary>
     /// 打开界面时加载依赖资源事件。
     /// </summary>
-    public sealed class OpenUIFormDependencyAssetEventArgs : GameFrameworkEventArgs
+    public sealed class OpenUIFormDependencyAssetEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化打开界面时加载依赖资源事件的新实例。

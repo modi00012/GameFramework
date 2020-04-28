@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System.Collections.Generic;
@@ -12,9 +12,9 @@ namespace GX.Task
     /// <summary>
     /// 任务管理器。
     /// </summary>
-    internal sealed class TaskManager : GameFrameworkModule, ITaskManager
+    internal sealed class TaskManager : GXModule, ITaskManager
     {
-        private readonly GameFrameworkLinkedList<TaskBase> m_Tasks;
+        private readonly GXLinkedList<TaskBase> m_Tasks;
         private int m_Serial;
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace GX.Task
         /// </summary>
         public TaskManager()
         {
-            m_Tasks = new GameFrameworkLinkedList<TaskBase>();
+            m_Tasks = new GXLinkedList<TaskBase>();
             m_Serial = 0;
         }
 
@@ -50,7 +50,7 @@ namespace GX.Task
                 TaskBase task = current.Value;
                 if (task.Status == TaskStatus.Free)
                 {
-                    throw new GameFrameworkException("Task status is invalid.");
+                    throw new GXException("Task status is invalid.");
                 }
 
                 if (task.Status == TaskStatus.Waiting)
@@ -179,7 +179,7 @@ namespace GX.Task
         {
             if (task == null)
             {
-                throw new GameFrameworkException("Task is invalid.");
+                throw new GXException("Task is invalid.");
             }
 
             return CancelTask(task.SerialId, null);
@@ -195,7 +195,7 @@ namespace GX.Task
         {
             if (task == null)
             {
-                throw new GameFrameworkException("Task is invalid.");
+                throw new GXException("Task is invalid.");
             }
 
             return CancelTask(task.SerialId, reason);

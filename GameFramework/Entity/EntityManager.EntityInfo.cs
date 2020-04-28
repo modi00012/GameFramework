@@ -1,15 +1,15 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System.Collections.Generic;
 
 namespace GX.Entity
 {
-    internal sealed partial class EntityManager : GameFrameworkModule, IEntityManager
+    internal sealed partial class EntityManager : GXModule, IEntityManager
     {
         /// <summary>
         /// 实体信息。
@@ -65,7 +65,7 @@ namespace GX.Entity
             {
                 if (entity == null)
                 {
-                    throw new GameFrameworkException("Entity is invalid.");
+                    throw new GXException("Entity is invalid.");
                 }
 
                 EntityInfo entityInfo = ReferencePool.Acquire<EntityInfo>();
@@ -91,7 +91,7 @@ namespace GX.Entity
             {
                 if (results == null)
                 {
-                    throw new GameFrameworkException("Results is invalid.");
+                    throw new GXException("Results is invalid.");
                 }
 
                 results.Clear();
@@ -105,7 +105,7 @@ namespace GX.Entity
             {
                 if (m_ChildEntities.Contains(childEntity))
                 {
-                    throw new GameFrameworkException("Can not add child entity which is already exist.");
+                    throw new GXException("Can not add child entity which is already exist.");
                 }
 
                 m_ChildEntities.Add(childEntity);
@@ -115,7 +115,7 @@ namespace GX.Entity
             {
                 if (!m_ChildEntities.Remove(childEntity))
                 {
-                    throw new GameFrameworkException("Can not remove child entity which is not exist.");
+                    throw new GXException("Can not remove child entity which is not exist.");
                 }
             }
         }

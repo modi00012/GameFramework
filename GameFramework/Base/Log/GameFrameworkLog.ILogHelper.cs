@@ -1,13 +1,13 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX
 {
-    public static partial class GameFrameworkLog
+    public static partial class GXLog
     {
         /// <summary>
         /// 游戏框架日志辅助器接口。
@@ -19,7 +19,7 @@ namespace GX
             /// </summary>
             /// <param name="level">游戏框架日志等级。</param>
             /// <param name="message">日志内容。</param>
-            void Log(GameFrameworkLogLevel level, object message);
+            void Log(GXLogLevel level, object message);
         }
     }
 }

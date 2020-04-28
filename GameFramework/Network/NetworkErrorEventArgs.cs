@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System.Net.Sockets;
@@ -12,7 +12,7 @@ namespace GX.Network
     /// <summary>
     /// 网络错误事件。
     /// </summary>
-    public sealed class NetworkErrorEventArgs : GameFrameworkEventArgs
+    public sealed class NetworkErrorEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化网络错误事件的新实例。

@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX
@@ -10,7 +10,7 @@ namespace GX
     /// <summary>
     /// 游戏框架日志等级。
     /// </summary>
-    public enum GameFrameworkLogLevel : byte
+    public enum GXLogLevel : byte
     {
         /// <summary>
         /// 调试。

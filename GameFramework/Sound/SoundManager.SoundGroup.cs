@@ -1,15 +1,15 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System.Collections.Generic;
 
 namespace GX.Sound
 {
-    internal sealed partial class SoundManager : GameFrameworkModule, ISoundManager
+    internal sealed partial class SoundManager : GXModule, ISoundManager
     {
         /// <summary>
         /// 声音组。
@@ -32,12 +32,12 @@ namespace GX.Sound
             {
                 if (string.IsNullOrEmpty(name))
                 {
-                    throw new GameFrameworkException("Sound group name is invalid.");
+                    throw new GXException("Sound group name is invalid.");
                 }
 
                 if (soundGroupHelper == null)
                 {
-                    throw new GameFrameworkException("Sound group helper is invalid.");
+                    throw new GXException("Sound group helper is invalid.");
                 }
 
                 m_Name = name;

@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX
@@ -12,18 +12,18 @@ namespace GX
     /// </summary>
     public static partial class Version
     {
-        private const string GameFrameworkVersionString = "2020.04.21";
+        private const string GXVersionString = "2020.04.21";
 
         private static IVersionHelper s_VersionHelper = null;
 
         /// <summary>
         /// 获取游戏框架版本号。
         /// </summary>
-        public static string GameFrameworkVersion
+        public static string GXVersion
         {
             get
             {
-                return GameFrameworkVersionString;
+                return GXVersionString;
             }
         }
 

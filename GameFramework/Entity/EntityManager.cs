@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using GX.ObjectPool;
@@ -15,7 +15,7 @@ namespace GX.Entity
     /// <summary>
     /// 实体管理器。
     /// </summary>
-    internal sealed partial class EntityManager : GameFrameworkModule, IEntityManager
+    internal sealed partial class EntityManager : GXModule, IEntityManager
     {
         private readonly Dictionary<int, EntityInfo> m_EntityInfos;
         private readonly Dictionary<string, EntityGroup> m_EntityGroups;
@@ -168,7 +168,7 @@ namespace GX.Entity
                 EntityGroup entityGroup = (EntityGroup)entity.EntityGroup;
                 if (entityGroup == null)
                 {
-                    throw new GameFrameworkException("Entity group is invalid.");
+                    throw new GXException("Entity group is invalid.");
                 }
 
                 entityInfo.Status = EntityStatus.WillRecycle;
@@ -205,7 +205,7 @@ namespace GX.Entity
         {
             if (objectPoolManager == null)
             {
-                throw new GameFrameworkException("Object pool manager is invalid.");
+                throw new GXException("Object pool manager is invalid.");
             }
 
             m_ObjectPoolManager = objectPoolManager;
@@ -219,7 +219,7 @@ namespace GX.Entity
         {
             if (resourceManager == null)
             {
-                throw new GameFrameworkException("Resource manager is invalid.");
+                throw new GXException("Resource manager is invalid.");
             }
 
             m_ResourceManager = resourceManager;
@@ -233,7 +233,7 @@ namespace GX.Entity
         {
             if (entityHelper == null)
             {
-                throw new GameFrameworkException("Entity helper is invalid.");
+                throw new GXException("Entity helper is invalid.");
             }
 
             m_EntityHelper = entityHelper;
@@ -248,7 +248,7 @@ namespace GX.Entity
         {
             if (string.IsNullOrEmpty(entityGroupName))
             {
-                throw new GameFrameworkException("Entity group name is invalid.");
+                throw new GXException("Entity group name is invalid.");
             }
 
             return m_EntityGroups.ContainsKey(entityGroupName);
@@ -263,7 +263,7 @@ namespace GX.Entity
         {
             if (string.IsNullOrEmpty(entityGroupName))
             {
-                throw new GameFrameworkException("Entity group name is invalid.");
+                throw new GXException("Entity group name is invalid.");
             }
 
             EntityGroup entityGroup = null;
@@ -299,7 +299,7 @@ namespace GX.Entity
         {
             if (results == null)
             {
-                throw new GameFrameworkException("Results is invalid.");
+                throw new GXException("Results is invalid.");
             }
 
             results.Clear();
@@ -323,17 +323,17 @@ namespace GX.Entity
         {
             if (string.IsNullOrEmpty(entityGroupName))
             {
-                throw new GameFrameworkException("Entity group name is invalid.");
+                throw new GXException("Entity group name is invalid.");
             }
 
             if (entityGroupHelper == null)
             {
-                throw new GameFrameworkException("Entity group helper is invalid.");
+                throw new GXException("Entity group helper is invalid.");
             }
 
             if (m_ObjectPoolManager == null)
             {
-                throw new GameFrameworkException("You must set object pool manager first.");
+                throw new GXException("You must set object pool manager first.");
             }
 
             if (HasEntityGroup(entityGroupName))
@@ -365,7 +365,7 @@ namespace GX.Entity
         {
             if (string.IsNullOrEmpty(entityAssetName))
             {
-                throw new GameFrameworkException("Entity asset name is invalid.");
+                throw new GXException("Entity asset name is invalid.");
             }
 
             foreach (KeyValuePair<int, EntityInfo> entityInfo in m_EntityInfos)
@@ -404,7 +404,7 @@ namespace GX.Entity
         {
             if (string.IsNullOrEmpty(entityAssetName))
             {
-                throw new GameFrameworkException("Entity asset name is invalid.");
+                throw new GXException("Entity asset name is invalid.");
             }
 
             foreach (KeyValuePair<int, EntityInfo> entityInfo in m_EntityInfos)
@@ -427,7 +427,7 @@ namespace GX.Entity
         {
             if (string.IsNullOrEmpty(entityAssetName))
             {
-                throw new GameFrameworkException("Entity asset name is invalid.");
+                throw new GXException("Entity asset name is invalid.");
             }
 
             List<IEntity> results = new List<IEntity>();
@@ -451,12 +451,12 @@ namespace GX.Entity
         {
             if (string.IsNullOrEmpty(entityAssetName))
             {
-                throw new GameFrameworkException("Entity asset name is invalid.");
+                throw new GXException("Entity asset name is invalid.");
             }
 
             if (results == null)
             {
-                throw new GameFrameworkException("Results is invalid.");
+                throw new GXException("Results is invalid.");
             }
 
             results.Clear();
@@ -493,7 +493,7 @@ namespace GX.Entity
         {
             if (results == null)
             {
-                throw new GameFrameworkException("Results is invalid.");
+                throw new GXException("Results is invalid.");
             }
 
             results.Clear();
@@ -527,7 +527,7 @@ namespace GX.Entity
         {
             if (results == null)
             {
-                throw new GameFrameworkException("Results is invalid.");
+                throw new GXException("Results is invalid.");
             }
 
             results.Clear();
@@ -609,38 +609,38 @@ namespace GX.Entity
         {
             if (m_ResourceManager == null)
             {
-                throw new GameFrameworkException("You must set resource manager first.");
+                throw new GXException("You must set resource manager first.");
             }
 
             if (m_EntityHelper == null)
             {
-                throw new GameFrameworkException("You must set entity helper first.");
+                throw new GXException("You must set entity helper first.");
             }
 
             if (string.IsNullOrEmpty(entityAssetName))
             {
-                throw new GameFrameworkException("Entity asset name is invalid.");
+                throw new GXException("Entity asset name is invalid.");
             }
 
             if (string.IsNullOrEmpty(entityGroupName))
             {
-                throw new GameFrameworkException("Entity group name is invalid.");
+                throw new GXException("Entity group name is invalid.");
             }
 
             if (HasEntity(entityId))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Entity id '{0}' is already exist.", entityId.ToString()));
+                throw new GXException(Utility.Text.Format("Entity id '{0}' is already exist.", entityId.ToString()));
             }
 
             if (IsLoadingEntity(entityId))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Entity '{0}' is already being loaded.", entityId.ToString()));
+                throw new GXException(Utility.Text.Format("Entity '{0}' is already being loaded.", entityId.ToString()));
             }
 
             EntityGroup entityGroup = (EntityGroup)GetEntityGroup(entityGroupName);
             if (entityGroup == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Entity group '{0}' is not exist.", entityGroupName));
+                throw new GXException(Utility.Text.Format("Entity group '{0}' is not exist.", entityGroupName));
             }
 
             EntityInstanceObject entityInstanceObject = entityGroup.SpawnEntityInstanceObject(entityAssetName);
@@ -681,7 +681,7 @@ namespace GX.Entity
             EntityInfo entityInfo = GetEntityInfo(entityId);
             if (entityInfo == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find entity '{0}'.", entityId.ToString()));
+                throw new GXException(Utility.Text.Format("Can not find entity '{0}'.", entityId.ToString()));
             }
 
             InternalHideEntity(entityInfo, userData);
@@ -705,7 +705,7 @@ namespace GX.Entity
         {
             if (entity == null)
             {
-                throw new GameFrameworkException("Entity is invalid.");
+                throw new GXException("Entity is invalid.");
             }
 
             HideEntity(entity.Id, userData);
@@ -758,7 +758,7 @@ namespace GX.Entity
             EntityInfo childEntityInfo = GetEntityInfo(childEntityId);
             if (childEntityInfo == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find child entity '{0}'.", childEntityId.ToString()));
+                throw new GXException(Utility.Text.Format("Can not find child entity '{0}'.", childEntityId.ToString()));
             }
 
             return childEntityInfo.ParentEntity;
@@ -773,7 +773,7 @@ namespace GX.Entity
         {
             if (childEntity == null)
             {
-                throw new GameFrameworkException("Child entity is invalid.");
+                throw new GXException("Child entity is invalid.");
             }
 
             return GetParentEntity(childEntity.Id);
@@ -789,7 +789,7 @@ namespace GX.Entity
             EntityInfo parentEntityInfo = GetEntityInfo(parentEntityId);
             if (parentEntityInfo == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find parent entity '{0}'.", parentEntityId.ToString()));
+                throw new GXException(Utility.Text.Format("Can not find parent entity '{0}'.", parentEntityId.ToString()));
             }
 
             return parentEntityInfo.GetChildEntities();
@@ -805,7 +805,7 @@ namespace GX.Entity
             EntityInfo parentEntityInfo = GetEntityInfo(parentEntityId);
             if (parentEntityInfo == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find parent entity '{0}'.", parentEntityId.ToString()));
+                throw new GXException(Utility.Text.Format("Can not find parent entity '{0}'.", parentEntityId.ToString()));
             }
 
             parentEntityInfo.GetChildEntities(results);
@@ -820,7 +820,7 @@ namespace GX.Entity
         {
             if (parentEntity == null)
             {
-                throw new GameFrameworkException("Parent entity is invalid.");
+                throw new GXException("Parent entity is invalid.");
             }
 
             return GetChildEntities(parentEntity.Id);
@@ -835,7 +835,7 @@ namespace GX.Entity
         {
             if (parentEntity == null)
             {
-                throw new GameFrameworkException("Parent entity is invalid.");
+                throw new GXException("Parent entity is invalid.");
             }
 
             GetChildEntities(parentEntity.Id, results);
@@ -861,29 +861,29 @@ namespace GX.Entity
         {
             if (childEntityId == parentEntityId)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not attach entity when child entity id equals to parent entity id '{0}'.", parentEntityId.ToString()));
+                throw new GXException(Utility.Text.Format("Can not attach entity when child entity id equals to parent entity id '{0}'.", parentEntityId.ToString()));
             }
 
             EntityInfo childEntityInfo = GetEntityInfo(childEntityId);
             if (childEntityInfo == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find child entity '{0}'.", childEntityId.ToString()));
+                throw new GXException(Utility.Text.Format("Can not find child entity '{0}'.", childEntityId.ToString()));
             }
 
             if (childEntityInfo.Status >= EntityStatus.WillHide)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not attach entity when child entity status is '{0}'.", childEntityInfo.Status.ToString()));
+                throw new GXException(Utility.Text.Format("Can not attach entity when child entity status is '{0}'.", childEntityInfo.Status.ToString()));
             }
 
             EntityInfo parentEntityInfo = GetEntityInfo(parentEntityId);
             if (parentEntityInfo == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find parent entity '{0}'.", parentEntityId.ToString()));
+                throw new GXException(Utility.Text.Format("Can not find parent entity '{0}'.", parentEntityId.ToString()));
             }
 
             if (parentEntityInfo.Status >= EntityStatus.WillHide)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not attach entity when parent entity status is '{0}'.", parentEntityInfo.Status.ToString()));
+                throw new GXException(Utility.Text.Format("Can not attach entity when parent entity status is '{0}'.", parentEntityInfo.Status.ToString()));
             }
 
             IEntity childEntity = childEntityInfo.Entity;
@@ -915,7 +915,7 @@ namespace GX.Entity
         {
             if (parentEntity == null)
             {
-                throw new GameFrameworkException("Parent entity is invalid.");
+                throw new GXException("Parent entity is invalid.");
             }
 
             AttachEntity(childEntityId, parentEntity.Id, userData);
@@ -941,7 +941,7 @@ namespace GX.Entity
         {
             if (childEntity == null)
             {
-                throw new GameFrameworkException("Child entity is invalid.");
+                throw new GXException("Child entity is invalid.");
             }
 
             AttachEntity(childEntity.Id, parentEntityId, userData);
@@ -967,12 +967,12 @@ namespace GX.Entity
         {
             if (childEntity == null)
             {
-                throw new GameFrameworkException("Child entity is invalid.");
+                throw new GXException("Child entity is invalid.");
             }
 
             if (parentEntity == null)
             {
-                throw new GameFrameworkException("Parent entity is invalid.");
+                throw new GXException("Parent entity is invalid.");
             }
 
             AttachEntity(childEntity.Id, parentEntity.Id, userData);
@@ -997,7 +997,7 @@ namespace GX.Entity
             EntityInfo childEntityInfo = GetEntityInfo(childEntityId);
             if (childEntityInfo == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find child entity '{0}'.", childEntityId.ToString()));
+                throw new GXException(Utility.Text.Format("Can not find child entity '{0}'.", childEntityId.ToString()));
             }
 
             IEntity parentEntity = childEntityInfo.ParentEntity;
@@ -1009,7 +1009,7 @@ namespace GX.Entity
             EntityInfo parentEntityInfo = GetEntityInfo(parentEntity.Id);
             if (parentEntityInfo == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find parent entity '{0}'.", parentEntity.Id.ToString()));
+                throw new GXException(Utility.Text.Format("Can not find parent entity '{0}'.", parentEntity.Id.ToString()));
             }
 
             IEntity childEntity = childEntityInfo.Entity;
@@ -1037,7 +1037,7 @@ namespace GX.Entity
         {
             if (childEntity == null)
             {
-                throw new GameFrameworkException("Child entity is invalid.");
+                throw new GXException("Child entity is invalid.");
             }
 
             DetachEntity(childEntity.Id, userData);
@@ -1062,7 +1062,7 @@ namespace GX.Entity
             EntityInfo parentEntityInfo = GetEntityInfo(parentEntityId);
             if (parentEntityInfo == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find parent entity '{0}'.", parentEntityId.ToString()));
+                throw new GXException(Utility.Text.Format("Can not find parent entity '{0}'.", parentEntityId.ToString()));
             }
 
             IEntity[] childEntities = parentEntityInfo.GetChildEntities();
@@ -1090,7 +1090,7 @@ namespace GX.Entity
         {
             if (parentEntity == null)
             {
-                throw new GameFrameworkException("Parent entity is invalid.");
+                throw new GXException("Parent entity is invalid.");
             }
 
             DetachChildEntities(parentEntity.Id, userData);
@@ -1119,7 +1119,7 @@ namespace GX.Entity
                 IEntity entity = m_EntityHelper.CreateEntity(entityInstance, entityGroup, userData);
                 if (entity == null)
                 {
-                    throw new GameFrameworkException("Can not create entity in helper.");
+                    throw new GXException("Can not create entity in helper.");
                 }
 
                 EntityInfo entityInfo = EntityInfo.Create(entity);
@@ -1175,13 +1175,13 @@ namespace GX.Entity
             EntityGroup entityGroup = (EntityGroup)entity.EntityGroup;
             if (entityGroup == null)
             {
-                throw new GameFrameworkException("Entity group is invalid.");
+                throw new GXException("Entity group is invalid.");
             }
 
             entityGroup.RemoveEntity(entity);
             if (!m_EntityInfos.Remove(entity.Id))
             {
-                throw new GameFrameworkException("Entity info is unmanaged.");
+                throw new GXException("Entity info is unmanaged.");
             }
 
             if (m_HideEntityCompleteEventHandler != null)
@@ -1199,7 +1199,7 @@ namespace GX.Entity
             ShowEntityInfo showEntityInfo = (ShowEntityInfo)userData;
             if (showEntityInfo == null)
             {
-                throw new GameFrameworkException("Show entity info is invalid.");
+                throw new GXException("Show entity info is invalid.");
             }
 
             if (m_EntitiesToReleaseOnLoad.Contains(showEntityInfo.SerialId))
@@ -1223,7 +1223,7 @@ namespace GX.Entity
             ShowEntityInfo showEntityInfo = (ShowEntityInfo)userData;
             if (showEntityInfo == null)
             {
-                throw new GameFrameworkException("Show entity info is invalid.");
+                throw new GXException("Show entity info is invalid.");
             }
 
             if (m_EntitiesToReleaseOnLoad.Contains(showEntityInfo.SerialId))
@@ -1242,7 +1242,7 @@ namespace GX.Entity
                 return;
             }
 
-            throw new GameFrameworkException(appendErrorMessage);
+            throw new GXException(appendErrorMessage);
         }
 
         private void LoadAssetUpdateCallback(string entityAssetName, float progress, object userData)
@@ -1250,7 +1250,7 @@ namespace GX.Entity
             ShowEntityInfo showEntityInfo = (ShowEntityInfo)userData;
             if (showEntityInfo == null)
             {
-                throw new GameFrameworkException("Show entity info is invalid.");
+                throw new GXException("Show entity info is invalid.");
             }
 
             if (m_ShowEntityUpdateEventHandler != null)
@@ -1266,7 +1266,7 @@ namespace GX.Entity
             ShowEntityInfo showEntityInfo = (ShowEntityInfo)userData;
             if (showEntityInfo == null)
             {
-                throw new GameFrameworkException("Show entity info is invalid.");
+                throw new GXException("Show entity info is invalid.");
             }
 
             if (m_ShowEntityDependencyAssetEventHandler != null)

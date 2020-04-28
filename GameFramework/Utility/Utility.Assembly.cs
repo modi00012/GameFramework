@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -57,7 +57,7 @@ namespace GX
             {
                 if (results == null)
                 {
-                    throw new GameFrameworkException("Results is invalid.");
+                    throw new GXException("Results is invalid.");
                 }
 
                 results.Clear();
@@ -76,7 +76,7 @@ namespace GX
             {
                 if (string.IsNullOrEmpty(typeName))
                 {
-                    throw new GameFrameworkException("Type name is invalid.");
+                    throw new GXException("Type name is invalid.");
                 }
 
                 Type type = null;

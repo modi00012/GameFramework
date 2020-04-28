@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -96,13 +96,13 @@ namespace GX
 
                 if (code == null)
                 {
-                    throw new GameFrameworkException("Code is invalid.");
+                    throw new GXException("Code is invalid.");
                 }
 
                 int codeLength = code.Length;
                 if (codeLength <= 0)
                 {
-                    throw new GameFrameworkException("Code length is invalid.");
+                    throw new GXException("Code length is invalid.");
                 }
 
                 int bytesLength = bytes.Length;

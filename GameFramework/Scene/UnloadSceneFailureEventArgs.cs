@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Scene
@@ -10,7 +10,7 @@ namespace GX.Scene
     /// <summary>
     /// 卸载场景失败事件。
     /// </summary>
-    public sealed class UnloadSceneFailureEventArgs : GameFrameworkEventArgs
+    public sealed class UnloadSceneFailureEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化卸载场景失败事件的新实例。

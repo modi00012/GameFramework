@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System.IO;
@@ -27,20 +27,20 @@ namespace GX.DataTable
         /// </summary>
         /// <param name="dataRowSegment">要解析的数据表行片段。</param>
         /// <returns>是否解析数据表行成功。</returns>
-        bool ParseDataRow(GameFrameworkSegment<string> dataRowSegment);
+        bool ParseDataRow(GXSegment<string> dataRowSegment);
 
         /// <summary>
         /// 数据表行二进制流解析器。
         /// </summary>
         /// <param name="dataRowSegment">要解析的数据表行片段。</param>
         /// <returns>是否解析数据表行成功。</returns>
-        bool ParseDataRow(GameFrameworkSegment<byte[]> dataRowSegment);
+        bool ParseDataRow(GXSegment<byte[]> dataRowSegment);
 
         /// <summary>
         /// 数据表行二进制流解析器。
         /// </summary>
         /// <param name="dataRowSegment">要解析的数据表行片段。</param>
         /// <returns>是否解析数据表行成功。</returns>
-        bool ParseDataRow(GameFrameworkSegment<Stream> dataRowSegment);
+        bool ParseDataRow(GXSegment<Stream> dataRowSegment);
     }
 }

@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using GX.Resource;
@@ -14,7 +14,7 @@ namespace GX.Scene
     /// <summary>
     /// 场景管理器。
     /// </summary>
-    internal sealed class SceneManager : GameFrameworkModule, ISceneManager
+    internal sealed class SceneManager : GXModule, ISceneManager
     {
         private readonly List<string> m_LoadedSceneAssetNames;
         private readonly List<string> m_LoadingSceneAssetNames;
@@ -188,7 +188,7 @@ namespace GX.Scene
         {
             if (resourceManager == null)
             {
-                throw new GameFrameworkException("Resource manager is invalid.");
+                throw new GXException("Resource manager is invalid.");
             }
 
             m_ResourceManager = resourceManager;
@@ -203,7 +203,7 @@ namespace GX.Scene
         {
             if (string.IsNullOrEmpty(sceneAssetName))
             {
-                throw new GameFrameworkException("Scene asset name is invalid.");
+                throw new GXException("Scene asset name is invalid.");
             }
 
             return m_LoadedSceneAssetNames.Contains(sceneAssetName);
@@ -226,7 +226,7 @@ namespace GX.Scene
         {
             if (results == null)
             {
-                throw new GameFrameworkException("Results is invalid.");
+                throw new GXException("Results is invalid.");
             }
 
             results.Clear();
@@ -242,7 +242,7 @@ namespace GX.Scene
         {
             if (string.IsNullOrEmpty(sceneAssetName))
             {
-                throw new GameFrameworkException("Scene asset name is invalid.");
+                throw new GXException("Scene asset name is invalid.");
             }
 
             return m_LoadingSceneAssetNames.Contains(sceneAssetName);
@@ -265,7 +265,7 @@ namespace GX.Scene
         {
             if (results == null)
             {
-                throw new GameFrameworkException("Results is invalid.");
+                throw new GXException("Results is invalid.");
             }
 
             results.Clear();
@@ -281,7 +281,7 @@ namespace GX.Scene
         {
             if (string.IsNullOrEmpty(sceneAssetName))
             {
-                throw new GameFrameworkException("Scene asset name is invalid.");
+                throw new GXException("Scene asset name is invalid.");
             }
 
             return m_UnloadingSceneAssetNames.Contains(sceneAssetName);
@@ -304,7 +304,7 @@ namespace GX.Scene
         {
             if (results == null)
             {
-                throw new GameFrameworkException("Results is invalid.");
+                throw new GXException("Results is invalid.");
             }
 
             results.Clear();
@@ -360,27 +360,27 @@ namespace GX.Scene
         {
             if (string.IsNullOrEmpty(sceneAssetName))
             {
-                throw new GameFrameworkException("Scene asset name is invalid.");
+                throw new GXException("Scene asset name is invalid.");
             }
 
             if (m_ResourceManager == null)
             {
-                throw new GameFrameworkException("You must set resource manager first.");
+                throw new GXException("You must set resource manager first.");
             }
 
             if (SceneIsUnloading(sceneAssetName))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is being unloaded.", sceneAssetName));
+                throw new GXException(Utility.Text.Format("Scene asset '{0}' is being unloaded.", sceneAssetName));
             }
 
             if (SceneIsLoading(sceneAssetName))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is being loaded.", sceneAssetName));
+                throw new GXException(Utility.Text.Format("Scene asset '{0}' is being loaded.", sceneAssetName));
             }
 
             if (SceneIsLoaded(sceneAssetName))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is already loaded.", sceneAssetName));
+                throw new GXException(Utility.Text.Format("Scene asset '{0}' is already loaded.", sceneAssetName));
             }
 
             m_LoadingSceneAssetNames.Add(sceneAssetName);
@@ -405,27 +405,27 @@ namespace GX.Scene
         {
             if (string.IsNullOrEmpty(sceneAssetName))
             {
-                throw new GameFrameworkException("Scene asset name is invalid.");
+                throw new GXException("Scene asset name is invalid.");
             }
 
             if (m_ResourceManager == null)
             {
-                throw new GameFrameworkException("You must set resource manager first.");
+                throw new GXException("You must set resource manager first.");
             }
 
             if (SceneIsUnloading(sceneAssetName))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is being unloaded.", sceneAssetName));
+                throw new GXException(Utility.Text.Format("Scene asset '{0}' is being unloaded.", sceneAssetName));
             }
 
             if (SceneIsLoading(sceneAssetName))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is being loaded.", sceneAssetName));
+                throw new GXException(Utility.Text.Format("Scene asset '{0}' is being loaded.", sceneAssetName));
             }
 
             if (!SceneIsLoaded(sceneAssetName))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is not loaded yet.", sceneAssetName));
+                throw new GXException(Utility.Text.Format("Scene asset '{0}' is not loaded yet.", sceneAssetName));
             }
 
             m_UnloadingSceneAssetNames.Add(sceneAssetName);
@@ -456,7 +456,7 @@ namespace GX.Scene
                 return;
             }
 
-            throw new GameFrameworkException(appendErrorMessage);
+            throw new GXException(appendErrorMessage);
         }
 
         private void LoadSceneUpdateCallback(string sceneAssetName, float progress, object userData)
@@ -502,7 +502,7 @@ namespace GX.Scene
                 return;
             }
 
-            throw new GameFrameworkException(Utility.Text.Format("Unload scene failure, scene asset name '{0}'.", sceneAssetName));
+            throw new GXException(Utility.Text.Format("Unload scene failure, scene asset name '{0}'.", sceneAssetName));
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using GX.Download;
@@ -12,7 +12,7 @@ using System.IO;
 
 namespace GX.Resource
 {
-    internal sealed partial class ResourceManager : GameFrameworkModule, IResourceManager
+    internal sealed partial class ResourceManager : GXModule, IResourceManager
     {
         /// <summary>
         /// 资源更新器。
@@ -36,11 +36,11 @@ namespace GX.Resource
             private string m_ReadWriteVersionListFileName;
             private string m_ReadWriteVersionListBackupFileName;
 
-            public GameFrameworkAction<ResourceName, string, string, int, int, int> ResourceUpdateStart;
-            public GameFrameworkAction<ResourceName, string, string, int, int> ResourceUpdateChanged;
-            public GameFrameworkAction<ResourceName, string, string, int, int> ResourceUpdateSuccess;
-            public GameFrameworkAction<ResourceName, string, int, int, string> ResourceUpdateFailure;
-            public GameFrameworkAction<ResourceGroup, bool, bool> ResourceUpdateAllComplete;
+            public GXAction<ResourceName, string, string, int, int, int> ResourceUpdateStart;
+            public GXAction<ResourceName, string, string, int, int> ResourceUpdateChanged;
+            public GXAction<ResourceName, string, string, int, int> ResourceUpdateSuccess;
+            public GXAction<ResourceName, string, int, int, string> ResourceUpdateFailure;
+            public GXAction<ResourceGroup, bool, bool> ResourceUpdateAllComplete;
 
             /// <summary>
             /// 初始化资源更新器的新实例。
@@ -203,7 +203,7 @@ namespace GX.Resource
             {
                 if (downloadManager == null)
                 {
-                    throw new GameFrameworkException("Download manager is invalid.");
+                    throw new GXException("Download manager is invalid.");
                 }
 
                 m_DownloadManager = downloadManager;
@@ -249,17 +249,17 @@ namespace GX.Resource
             {
                 if (m_DownloadManager == null)
                 {
-                    throw new GameFrameworkException("You must set download manager first.");
+                    throw new GXException("You must set download manager first.");
                 }
 
                 if (!m_CheckResourcesComplete)
                 {
-                    throw new GameFrameworkException("You must check resources complete first.");
+                    throw new GXException("You must check resources complete first.");
                 }
 
                 if (m_UpdatingResourceGroup != null)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("There is already a resource group '{0}' being updated.", m_UpdatingResourceGroup.Name));
+                    throw new GXException(Utility.Text.Format("There is already a resource group '{0}' being updated.", m_UpdatingResourceGroup.Name));
                 }
 
                 if (string.IsNullOrEmpty(resourceGroup.Name))
@@ -316,7 +316,7 @@ namespace GX.Resource
                     LocalVersionList versionList = new LocalVersionList(resources);
                     if (!m_ResourceManager.m_ReadWriteVersionListSerializer.Serialize(fileStream, versionList))
                     {
-                        throw new GameFrameworkException("Serialize read write version list failure.");
+                        throw new GXException("Serialize read write version list failure.");
                     }
 
                     if (fileStream != null)
@@ -348,7 +348,7 @@ namespace GX.Resource
                         File.Move(m_ReadWriteVersionListBackupFileName, m_ReadWriteVersionListFileName);
                     }
 
-                    throw new GameFrameworkException(Utility.Text.Format("Generate read write version list exception '{0}'.", exception.ToString()), exception);
+                    throw new GXException(Utility.Text.Format("Generate read write version list exception '{0}'.", exception.ToString()), exception);
                 }
             }
 
@@ -362,7 +362,7 @@ namespace GX.Resource
 
                 if (m_DownloadManager == null)
                 {
-                    throw new GameFrameworkException("You must set download manager first.");
+                    throw new GXException("You must set download manager first.");
                 }
 
                 if (ResourceUpdateStart != null)
@@ -381,7 +381,7 @@ namespace GX.Resource
 
                 if (m_DownloadManager == null)
                 {
-                    throw new GameFrameworkException("You must set download manager first.");
+                    throw new GXException("You must set download manager first.");
                 }
 
                 if (e.CurrentLength > updateInfo.ZipLength)

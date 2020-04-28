@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System.IO;
@@ -56,7 +56,7 @@ namespace GX
             {
                 if (string.IsNullOrEmpty(directoryName))
                 {
-                    throw new GameFrameworkException("Directory name is invalid.");
+                    throw new GXException("Directory name is invalid.");
                 }
 
                 try

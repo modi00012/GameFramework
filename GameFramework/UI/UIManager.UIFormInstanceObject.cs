@@ -1,15 +1,15 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using GX.ObjectPool;
 
 namespace GX.UI
 {
-    internal sealed partial class UIManager : GameFrameworkModule, IUIManager
+    internal sealed partial class UIManager : GXModule, IUIManager
     {
         /// <summary>
         /// 界面实例对象。
@@ -29,12 +29,12 @@ namespace GX.UI
             {
                 if (uiFormAsset == null)
                 {
-                    throw new GameFrameworkException("UI form asset is invalid.");
+                    throw new GXException("UI form asset is invalid.");
                 }
 
                 if (uiFormHelper == null)
                 {
-                    throw new GameFrameworkException("UI form helper is invalid.");
+                    throw new GXException("UI form helper is invalid.");
                 }
 
                 UIFormInstanceObject uiFormInstanceObject = ReferencePool.Acquire<UIFormInstanceObject>();

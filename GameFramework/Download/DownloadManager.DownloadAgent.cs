@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -10,7 +10,7 @@ using System.IO;
 
 namespace GX.Download
 {
-    internal sealed partial class DownloadManager : GameFrameworkModule, IDownloadManager
+    internal sealed partial class DownloadManager : GXModule, IDownloadManager
     {
         /// <summary>
         /// 下载代理。
@@ -27,10 +27,10 @@ namespace GX.Download
             private int m_SavedLength;
             private bool m_Disposed;
 
-            public GameFrameworkAction<DownloadAgent> DownloadAgentStart;
-            public GameFrameworkAction<DownloadAgent, int> DownloadAgentUpdate;
-            public GameFrameworkAction<DownloadAgent, int> DownloadAgentSuccess;
-            public GameFrameworkAction<DownloadAgent, string> DownloadAgentFailure;
+            public GXAction<DownloadAgent> DownloadAgentStart;
+            public GXAction<DownloadAgent, int> DownloadAgentUpdate;
+            public GXAction<DownloadAgent, int> DownloadAgentSuccess;
+            public GXAction<DownloadAgent, string> DownloadAgentFailure;
 
             /// <summary>
             /// 初始化下载代理的新实例。
@@ -40,7 +40,7 @@ namespace GX.Download
             {
                 if (downloadAgentHelper == null)
                 {
-                    throw new GameFrameworkException("Download agent helper is invalid.");
+                    throw new GXException("Download agent helper is invalid.");
                 }
 
                 m_Helper = downloadAgentHelper;
@@ -177,7 +177,7 @@ namespace GX.Download
             {
                 if (task == null)
                 {
-                    throw new GameFrameworkException("Task is invalid.");
+                    throw new GXException("Task is invalid.");
                 }
 
                 m_Task = task;
@@ -323,7 +323,7 @@ namespace GX.Download
                 m_DownloadedLength = e.Length;
                 if (m_SavedLength != CurrentLength)
                 {
-                    throw new GameFrameworkException("Internal download error.");
+                    throw new GXException("Internal download error.");
                 }
 
                 m_Helper.Reset();

@@ -1,13 +1,13 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.WebRequest
 {
-    internal sealed partial class WebRequestManager : GameFrameworkModule, IWebRequestManager
+    internal sealed partial class WebRequestManager : GXModule, IWebRequestManager
     {
         /// <summary>
         /// Web 请求任务的状态。

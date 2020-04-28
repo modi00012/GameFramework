@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -11,7 +11,7 @@ using System.IO;
 
 namespace GX.Resource
 {
-    internal sealed partial class ResourceManager : GameFrameworkModule, IResourceManager
+    internal sealed partial class ResourceManager : GXModule, IResourceManager
     {
         /// <summary>
         /// 资源检查器。
@@ -25,8 +25,8 @@ namespace GX.Resource
             private bool m_ReadOnlyVersionListReady;
             private bool m_ReadWriteVersionListReady;
 
-            public GameFrameworkAction<ResourceName, LoadType, int, int, int, int> ResourceNeedUpdate;
-            public GameFrameworkAction<int, int, long, long> ResourceCheckComplete;
+            public GXAction<ResourceName, LoadType, int, int, int, int> ResourceNeedUpdate;
+            public GXAction<int, int, long, long> ResourceCheckComplete;
 
             /// <summary>
             /// 初始化资源检查器的新实例。
@@ -61,17 +61,17 @@ namespace GX.Resource
 
                 if (m_ResourceManager.m_ResourceHelper == null)
                 {
-                    throw new GameFrameworkException("Resource helper is invalid.");
+                    throw new GXException("Resource helper is invalid.");
                 }
 
                 if (string.IsNullOrEmpty(m_ResourceManager.m_ReadOnlyPath))
                 {
-                    throw new GameFrameworkException("Readonly path is invalid.");
+                    throw new GXException("Readonly path is invalid.");
                 }
 
                 if (string.IsNullOrEmpty(m_ResourceManager.m_ReadWritePath))
                 {
-                    throw new GameFrameworkException("Read-write path is invalid.");
+                    throw new GXException("Read-write path is invalid.");
                 }
 
                 m_ResourceManager.m_ResourceHelper.LoadBytes(Utility.Path.GetRemotePath(Path.Combine(m_ResourceManager.m_ReadWritePath, RemoteVersionListFileName)), new LoadBytesCallbacks(OnLoadUpdatableVersionListSuccess, OnLoadUpdatableVersionListFailure), null);
@@ -146,7 +146,7 @@ namespace GX.Resource
                     }
                     else
                     {
-                        throw new GameFrameworkException(Utility.Text.Format("Check resources '{0}' error with unknown status.", ci.ResourceName.FullName));
+                        throw new GXException(Utility.Text.Format("Check resources '{0}' error with unknown status.", ci.ResourceName.FullName));
                     }
 
                     if (ci.NeedRemove)
@@ -200,7 +200,7 @@ namespace GX.Resource
             {
                 if (m_UpdatableVersionListReady)
                 {
-                    throw new GameFrameworkException("Updatable version list has been parsed.");
+                    throw new GXException("Updatable version list has been parsed.");
                 }
 
                 MemoryStream memoryStream = null;
@@ -210,7 +210,7 @@ namespace GX.Resource
                     UpdatableVersionList versionList = m_ResourceManager.m_UpdatableVersionListSerializer.Deserialize(memoryStream);
                     if (!versionList.IsValid)
                     {
-                        throw new GameFrameworkException("Deserialize updatable version list failure.");
+                        throw new GXException("Deserialize updatable version list failure.");
                     }
 
                     UpdatableVersionList.Asset[] assets = versionList.GetAssets();
@@ -270,12 +270,12 @@ namespace GX.Resource
                 }
                 catch (Exception exception)
                 {
-                    if (exception is GameFrameworkException)
+                    if (exception is GXException)
                     {
                         throw;
                     }
 
-                    throw new GameFrameworkException(Utility.Text.Format("Parse updatable version list exception '{0}'.", exception.ToString()), exception);
+                    throw new GXException(Utility.Text.Format("Parse updatable version list exception '{0}'.", exception.ToString()), exception);
                 }
                 finally
                 {
@@ -289,14 +289,14 @@ namespace GX.Resource
 
             private void OnLoadUpdatableVersionListFailure(string fileUri, string errorMessage, object userData)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Updatable version list '{0}' is invalid, error message is '{1}'.", fileUri, string.IsNullOrEmpty(errorMessage) ? "<Empty>" : errorMessage));
+                throw new GXException(Utility.Text.Format("Updatable version list '{0}' is invalid, error message is '{1}'.", fileUri, string.IsNullOrEmpty(errorMessage) ? "<Empty>" : errorMessage));
             }
 
             private void OnLoadReadOnlyVersionListSuccess(string fileUri, byte[] bytes, float duration, object userData)
             {
                 if (m_ReadOnlyVersionListReady)
                 {
-                    throw new GameFrameworkException("Read only version list has been parsed.");
+                    throw new GXException("Read only version list has been parsed.");
                 }
 
                 MemoryStream memoryStream = null;
@@ -306,7 +306,7 @@ namespace GX.Resource
                     LocalVersionList versionList = m_ResourceManager.m_ReadOnlyVersionListSerializer.Deserialize(memoryStream);
                     if (!versionList.IsValid)
                     {
-                        throw new GameFrameworkException("Deserialize read only version list failure.");
+                        throw new GXException("Deserialize read only version list failure.");
                     }
 
                     LocalVersionList.Resource[] resources = versionList.GetResources();
@@ -320,12 +320,12 @@ namespace GX.Resource
                 }
                 catch (Exception exception)
                 {
-                    if (exception is GameFrameworkException)
+                    if (exception is GXException)
                     {
                         throw;
                     }
 
-                    throw new GameFrameworkException(Utility.Text.Format("Parse read only version list exception '{0}'.", exception.ToString()), exception);
+                    throw new GXException(Utility.Text.Format("Parse read only version list exception '{0}'.", exception.ToString()), exception);
                 }
                 finally
                 {
@@ -341,7 +341,7 @@ namespace GX.Resource
             {
                 if (m_ReadOnlyVersionListReady)
                 {
-                    throw new GameFrameworkException("Read only version list has been parsed.");
+                    throw new GXException("Read only version list has been parsed.");
                 }
 
                 m_ReadOnlyVersionListReady = true;
@@ -352,7 +352,7 @@ namespace GX.Resource
             {
                 if (m_ReadWriteVersionListReady)
                 {
-                    throw new GameFrameworkException("Read write version list has been parsed.");
+                    throw new GXException("Read write version list has been parsed.");
                 }
 
                 MemoryStream memoryStream = null;
@@ -362,7 +362,7 @@ namespace GX.Resource
                     LocalVersionList versionList = m_ResourceManager.m_ReadWriteVersionListSerializer.Deserialize(memoryStream);
                     if (!versionList.IsValid)
                     {
-                        throw new GameFrameworkException("Deserialize read write version list failure.");
+                        throw new GXException("Deserialize read write version list failure.");
                     }
 
                     LocalVersionList.Resource[] resources = versionList.GetResources();
@@ -378,12 +378,12 @@ namespace GX.Resource
                 }
                 catch (Exception exception)
                 {
-                    if (exception is GameFrameworkException)
+                    if (exception is GXException)
                     {
                         throw;
                     }
 
-                    throw new GameFrameworkException(Utility.Text.Format("Parse read write version list exception '{0}'.", exception.ToString()), exception);
+                    throw new GXException(Utility.Text.Format("Parse read write version list exception '{0}'.", exception.ToString()), exception);
                 }
                 finally
                 {
@@ -399,7 +399,7 @@ namespace GX.Resource
             {
                 if (m_ReadWriteVersionListReady)
                 {
-                    throw new GameFrameworkException("Read write version list has been parsed.");
+                    throw new GXException("Read write version list has been parsed.");
                 }
 
                 m_ReadWriteVersionListReady = true;

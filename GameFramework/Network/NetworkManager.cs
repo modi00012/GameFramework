@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -14,7 +14,7 @@ namespace GX.Network
     /// <summary>
     /// 网络管理器。
     /// </summary>
-    internal sealed partial class NetworkManager : GameFrameworkModule, INetworkManager
+    internal sealed partial class NetworkManager : GXModule, INetworkManager
     {
         private readonly Dictionary<string, NetworkChannelBase> m_NetworkChannels;
 
@@ -206,7 +206,7 @@ namespace GX.Network
         {
             if (results == null)
             {
-                throw new GameFrameworkException("Results is invalid.");
+                throw new GXException("Results is invalid.");
             }
 
             results.Clear();
@@ -227,17 +227,17 @@ namespace GX.Network
         {
             if (networkChannelHelper == null)
             {
-                throw new GameFrameworkException("Network channel helper is invalid.");
+                throw new GXException("Network channel helper is invalid.");
             }
 
             if (networkChannelHelper.PacketHeaderLength < 0)
             {
-                throw new GameFrameworkException("Packet header length is invalid.");
+                throw new GXException("Packet header length is invalid.");
             }
 
             if (HasNetworkChannel(name))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Already exist network channel '{0}'.", name ?? string.Empty));
+                throw new GXException(Utility.Text.Format("Already exist network channel '{0}'.", name ?? string.Empty));
             }
 
             NetworkChannelBase networkChannel = null;
@@ -252,7 +252,7 @@ namespace GX.Network
                     break;
 
                 default:
-                    throw new GameFrameworkException(Utility.Text.Format("Not supported service type '{0}'.", serviceType.ToString()));
+                    throw new GXException(Utility.Text.Format("Not supported service type '{0}'.", serviceType.ToString()));
             }
 
             networkChannel.NetworkChannelConnected += OnNetworkChannelConnected;

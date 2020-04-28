@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Entity
@@ -10,7 +10,7 @@ namespace GX.Entity
     /// <summary>
     /// 隐藏实体完成事件。
     /// </summary>
-    public sealed class HideEntityCompleteEventArgs : GameFrameworkEventArgs
+    public sealed class HideEntityCompleteEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化隐藏实体完成事件的新实例。

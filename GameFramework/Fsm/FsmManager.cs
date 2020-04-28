@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -13,7 +13,7 @@ namespace GX.Fsm
     /// <summary>
     /// 有限状态机管理器。
     /// </summary>
-    internal sealed class FsmManager : GameFrameworkModule, IFsmManager
+    internal sealed class FsmManager : GXModule, IFsmManager
     {
         private readonly Dictionary<TypeNamePair, FsmBase> m_Fsms;
         private readonly List<FsmBase> m_TempFsms;
@@ -112,7 +112,7 @@ namespace GX.Fsm
         {
             if (ownerType == null)
             {
-                throw new GameFrameworkException("Owner type is invalid.");
+                throw new GXException("Owner type is invalid.");
             }
 
             return InternalHasFsm(new TypeNamePair(ownerType));
@@ -139,7 +139,7 @@ namespace GX.Fsm
         {
             if (ownerType == null)
             {
-                throw new GameFrameworkException("Owner type is invalid.");
+                throw new GXException("Owner type is invalid.");
             }
 
             return InternalHasFsm(new TypeNamePair(ownerType, name));
@@ -164,7 +164,7 @@ namespace GX.Fsm
         {
             if (ownerType == null)
             {
-                throw new GameFrameworkException("Owner type is invalid.");
+                throw new GXException("Owner type is invalid.");
             }
 
             return InternalGetFsm(new TypeNamePair(ownerType));
@@ -191,7 +191,7 @@ namespace GX.Fsm
         {
             if (ownerType == null)
             {
-                throw new GameFrameworkException("Owner type is invalid.");
+                throw new GXException("Owner type is invalid.");
             }
 
             return InternalGetFsm(new TypeNamePair(ownerType, name));
@@ -221,7 +221,7 @@ namespace GX.Fsm
         {
             if (results == null)
             {
-                throw new GameFrameworkException("Results is invalid.");
+                throw new GXException("Results is invalid.");
             }
 
             results.Clear();
@@ -256,7 +256,7 @@ namespace GX.Fsm
             TypeNamePair typeNamePair = new TypeNamePair(typeof(T), name);
             if (HasFsm<T>(name))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Already exist FSM '{0}'.", typeNamePair.ToString()));
+                throw new GXException(Utility.Text.Format("Already exist FSM '{0}'.", typeNamePair.ToString()));
             }
 
             Fsm<T> fsm = Fsm<T>.Create(name, owner, states);
@@ -289,7 +289,7 @@ namespace GX.Fsm
             TypeNamePair typeNamePair = new TypeNamePair(typeof(T), name);
             if (HasFsm<T>(name))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Already exist FSM '{0}'.", typeNamePair));
+                throw new GXException(Utility.Text.Format("Already exist FSM '{0}'.", typeNamePair));
             }
 
             Fsm<T> fsm = Fsm<T>.Create(name, owner, states);
@@ -316,7 +316,7 @@ namespace GX.Fsm
         {
             if (ownerType == null)
             {
-                throw new GameFrameworkException("Owner type is invalid.");
+                throw new GXException("Owner type is invalid.");
             }
 
             return InternalDestroyFsm(new TypeNamePair(ownerType));
@@ -343,7 +343,7 @@ namespace GX.Fsm
         {
             if (ownerType == null)
             {
-                throw new GameFrameworkException("Owner type is invalid.");
+                throw new GXException("Owner type is invalid.");
             }
 
             return InternalDestroyFsm(new TypeNamePair(ownerType, name));
@@ -359,7 +359,7 @@ namespace GX.Fsm
         {
             if (fsm == null)
             {
-                throw new GameFrameworkException("FSM is invalid.");
+                throw new GXException("FSM is invalid.");
             }
 
             return InternalDestroyFsm(new TypeNamePair(typeof(T), fsm.Name));
@@ -374,7 +374,7 @@ namespace GX.Fsm
         {
             if (fsm == null)
             {
-                throw new GameFrameworkException("FSM is invalid.");
+                throw new GXException("FSM is invalid.");
             }
 
             return InternalDestroyFsm(new TypeNamePair(fsm.OwnerType, fsm.Name));

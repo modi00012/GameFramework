@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace GX.ObjectPool
 {
-    internal sealed partial class ObjectPoolManager : GameFrameworkModule, IObjectPoolManager
+    internal sealed partial class ObjectPoolManager : GXModule, IObjectPoolManager
     {
         /// <summary>
         /// 对象池。
@@ -18,7 +18,7 @@ namespace GX.ObjectPool
         /// <typeparam name="T">对象类型。</typeparam>
         private sealed class ObjectPool<T> : ObjectPoolBase, IObjectPool<T> where T : ObjectBase
         {
-            private readonly GameFrameworkMultiDictionary<string, Object<T>> m_Objects;
+            private readonly GXMultiDictionary<string, Object<T>> m_Objects;
             private readonly Dictionary<object, Object<T>> m_ObjectMap;
             private readonly ReleaseObjectFilterCallback<T> m_DefaultReleaseObjectFilterCallback;
             private readonly List<T> m_CachedCanReleaseObjects;
@@ -42,7 +42,7 @@ namespace GX.ObjectPool
             public ObjectPool(string name, bool allowMultiSpawn, float autoReleaseInterval, int capacity, float expireTime, int priority)
                 : base(name)
             {
-                m_Objects = new GameFrameworkMultiDictionary<string, Object<T>>();
+                m_Objects = new GXMultiDictionary<string, Object<T>>();
                 m_ObjectMap = new Dictionary<object, Object<T>>();
                 m_DefaultReleaseObjectFilterCallback = DefaultReleaseObjectFilterCallback;
                 m_CachedCanReleaseObjects = new List<T>();
@@ -128,7 +128,7 @@ namespace GX.ObjectPool
                 {
                     if (value < 0)
                     {
-                        throw new GameFrameworkException("Capacity is invalid.");
+                        throw new GXException("Capacity is invalid.");
                     }
 
                     if (m_Capacity == value)
@@ -155,7 +155,7 @@ namespace GX.ObjectPool
                 {
                     if (value < 0f)
                     {
-                        throw new GameFrameworkException("ExpireTime is invalid.");
+                        throw new GXException("ExpireTime is invalid.");
                     }
 
                     if (ExpireTime == value)
@@ -192,7 +192,7 @@ namespace GX.ObjectPool
             {
                 if (obj == null)
                 {
-                    throw new GameFrameworkException("Object is invalid.");
+                    throw new GXException("Object is invalid.");
                 }
 
                 Object<T> internalObject = Object<T>.Create(obj, spawned);
@@ -221,7 +221,7 @@ namespace GX.ObjectPool
             /// <returns>要检查的对象是否存在。</returns>
             public bool CanSpawn(string name)
             {
-                GameFrameworkLinkedListRange<Object<T>> objectRange = default(GameFrameworkLinkedListRange<Object<T>>);
+                GXLinkedListRange<Object<T>> objectRange = default(GXLinkedListRange<Object<T>>);
                 if (m_Objects.TryGetValue(name, out objectRange))
                 {
                     foreach (Object<T> internalObject in objectRange)
@@ -252,7 +252,7 @@ namespace GX.ObjectPool
             /// <returns>要获取的对象。</returns>
             public T Spawn(string name)
             {
-                GameFrameworkLinkedListRange<Object<T>> objectRange = default(GameFrameworkLinkedListRange<Object<T>>);
+                GXLinkedListRange<Object<T>> objectRange = default(GXLinkedListRange<Object<T>>);
                 if (m_Objects.TryGetValue(name, out objectRange))
                 {
                     foreach (Object<T> internalObject in objectRange)
@@ -275,7 +275,7 @@ namespace GX.ObjectPool
             {
                 if (obj == null)
                 {
-                    throw new GameFrameworkException("Object is invalid.");
+                    throw new GXException("Object is invalid.");
                 }
 
                 Unspawn(obj.Target);
@@ -289,7 +289,7 @@ namespace GX.ObjectPool
             {
                 if (target == null)
                 {
-                    throw new GameFrameworkException("Target is invalid.");
+                    throw new GXException("Target is invalid.");
                 }
 
                 Object<T> internalObject = GetObject(target);
@@ -303,7 +303,7 @@ namespace GX.ObjectPool
                 }
                 else
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not find target in object pool '{0}', target type is '{1}', target value is '{2}'.", new TypeNamePair(typeof(T), Name).ToString(), target.GetType().FullName, target.ToString()));
+                    throw new GXException(Utility.Text.Format("Can not find target in object pool '{0}', target type is '{1}', target value is '{2}'.", new TypeNamePair(typeof(T), Name).ToString(), target.GetType().FullName, target.ToString()));
                 }
             }
 
@@ -316,7 +316,7 @@ namespace GX.ObjectPool
             {
                 if (obj == null)
                 {
-                    throw new GameFrameworkException("Object is invalid.");
+                    throw new GXException("Object is invalid.");
                 }
 
                 SetLocked(obj.Target, locked);
@@ -331,7 +331,7 @@ namespace GX.ObjectPool
             {
                 if (target == null)
                 {
-                    throw new GameFrameworkException("Target is invalid.");
+                    throw new GXException("Target is invalid.");
                 }
 
                 Object<T> internalObject = GetObject(target);
@@ -341,7 +341,7 @@ namespace GX.ObjectPool
                 }
                 else
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not find target in object pool '{0}', target type is '{1}', target value is '{2}'.", new TypeNamePair(typeof(T), Name).ToString(), target.GetType().FullName, target.ToString()));
+                    throw new GXException(Utility.Text.Format("Can not find target in object pool '{0}', target type is '{1}', target value is '{2}'.", new TypeNamePair(typeof(T), Name).ToString(), target.GetType().FullName, target.ToString()));
                 }
             }
 
@@ -354,7 +354,7 @@ namespace GX.ObjectPool
             {
                 if (obj == null)
                 {
-                    throw new GameFrameworkException("Object is invalid.");
+                    throw new GXException("Object is invalid.");
                 }
 
                 SetPriority(obj.Target, priority);
@@ -369,7 +369,7 @@ namespace GX.ObjectPool
             {
                 if (target == null)
                 {
-                    throw new GameFrameworkException("Target is invalid.");
+                    throw new GXException("Target is invalid.");
                 }
 
                 Object<T> internalObject = GetObject(target);
@@ -379,7 +379,7 @@ namespace GX.ObjectPool
                 }
                 else
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not find target in object pool '{0}', target type is '{1}', target value is '{2}'.", new TypeNamePair(typeof(T), Name).ToString(), target.GetType().FullName, target.ToString()));
+                    throw new GXException(Utility.Text.Format("Can not find target in object pool '{0}', target type is '{1}', target value is '{2}'.", new TypeNamePair(typeof(T), Name).ToString(), target.GetType().FullName, target.ToString()));
                 }
             }
 
@@ -418,7 +418,7 @@ namespace GX.ObjectPool
             {
                 if (releaseObjectFilterCallback == null)
                 {
-                    throw new GameFrameworkException("Release object filter callback is invalid.");
+                    throw new GXException("Release object filter callback is invalid.");
                 }
 
                 if (toReleaseCount < 0)
@@ -466,7 +466,7 @@ namespace GX.ObjectPool
             public override ObjectInfo[] GetAllObjectInfos()
             {
                 List<ObjectInfo> results = new List<ObjectInfo>();
-                foreach (KeyValuePair<string, GameFrameworkLinkedListRange<Object<T>>> objectRanges in m_Objects)
+                foreach (KeyValuePair<string, GXLinkedListRange<Object<T>>> objectRanges in m_Objects)
                 {
                     foreach (Object<T> internalObject in objectRanges.Value)
                     {
@@ -506,7 +506,7 @@ namespace GX.ObjectPool
             {
                 if (target == null)
                 {
-                    throw new GameFrameworkException("Target is invalid.");
+                    throw new GXException("Target is invalid.");
                 }
 
                 Object<T> internalObject = null;
@@ -522,13 +522,13 @@ namespace GX.ObjectPool
             {
                 if (obj == null)
                 {
-                    throw new GameFrameworkException("Object is invalid.");
+                    throw new GXException("Object is invalid.");
                 }
 
                 Object<T> internalObject = GetObject(obj.Target);
                 if (internalObject == null)
                 {
-                    throw new GameFrameworkException("Can not release object which is not found.");
+                    throw new GXException("Can not release object which is not found.");
                 }
 
                 m_Objects.Remove(obj.Name, internalObject);
@@ -542,7 +542,7 @@ namespace GX.ObjectPool
             {
                 if (results == null)
                 {
-                    throw new GameFrameworkException("Results is invalid.");
+                    throw new GXException("Results is invalid.");
                 }
 
                 results.Clear();

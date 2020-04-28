@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Download
@@ -10,7 +10,7 @@ namespace GX.Download
     /// <summary>
     /// 下载失败事件。
     /// </summary>
-    public sealed class DownloadFailureEventArgs : GameFrameworkEventArgs
+    public sealed class DownloadFailureEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化下载失败事件的新实例。

@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -75,7 +75,7 @@ namespace GX.Fsm
             Fsm<T> fsmImplement = (Fsm<T>)fsm;
             if (fsmImplement == null)
             {
-                throw new GameFrameworkException("FSM is invalid.");
+                throw new GXException("FSM is invalid.");
             }
 
             fsmImplement.ChangeState<TState>();
@@ -91,17 +91,17 @@ namespace GX.Fsm
             Fsm<T> fsmImplement = (Fsm<T>)fsm;
             if (fsmImplement == null)
             {
-                throw new GameFrameworkException("FSM is invalid.");
+                throw new GXException("FSM is invalid.");
             }
 
             if (stateType == null)
             {
-                throw new GameFrameworkException("State type is invalid.");
+                throw new GXException("State type is invalid.");
             }
 
             if (!typeof(FsmState<T>).IsAssignableFrom(stateType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("State type '{0}' is invalid.", stateType.FullName));
+                throw new GXException(Utility.Text.Format("State type '{0}' is invalid.", stateType.FullName));
             }
 
             fsmImplement.ChangeState(stateType);

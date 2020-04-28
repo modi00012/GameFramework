@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Network
@@ -10,7 +10,7 @@ namespace GX.Network
     /// <summary>
     /// 网络连接关闭事件。
     /// </summary>
-    public sealed class NetworkClosedEventArgs : GameFrameworkEventArgs
+    public sealed class NetworkClosedEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化网络连接关闭事件的新实例。

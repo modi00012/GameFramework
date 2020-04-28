@@ -1,13 +1,13 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Entity
 {
-    internal sealed partial class EntityManager : GameFrameworkModule, IEntityManager
+    internal sealed partial class EntityManager : GXModule, IEntityManager
     {
         private sealed class ShowEntityInfo : IReference
         {

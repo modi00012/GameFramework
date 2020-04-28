@@ -1,15 +1,15 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
 
 namespace GX.ObjectPool
 {
-    internal sealed partial class ObjectPoolManager : GameFrameworkModule, IObjectPoolManager
+    internal sealed partial class ObjectPoolManager : GXModule, IObjectPoolManager
     {
         /// <summary>
         /// 内部对象。
@@ -124,7 +124,7 @@ namespace GX.ObjectPool
             {
                 if (obj == null)
                 {
-                    throw new GameFrameworkException("Object is invalid.");
+                    throw new GXException("Object is invalid.");
                 }
 
                 Object<T> internalObject = ReferencePool.Acquire<Object<T>>();
@@ -178,7 +178,7 @@ namespace GX.ObjectPool
                 m_SpawnCount--;
                 if (m_SpawnCount < 0)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Object '{0}' spawn count is less than 0.", Name));
+                    throw new GXException(Utility.Text.Format("Object '{0}' spawn count is less than 0.", Name));
                 }
             }
 

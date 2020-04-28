@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.WebRequest
@@ -10,7 +10,7 @@ namespace GX.WebRequest
     /// <summary>
     /// Web 请求成功事件。
     /// </summary>
-    public sealed class WebRequestSuccessEventArgs : GameFrameworkEventArgs
+    public sealed class WebRequestSuccessEventArgs : GXEventArgs
     {
         private byte[] m_WebResponseBytes;
 

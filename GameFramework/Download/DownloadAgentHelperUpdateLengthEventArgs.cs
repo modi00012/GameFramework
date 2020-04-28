@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Download
@@ -10,7 +10,7 @@ namespace GX.Download
     /// <summary>
     /// 下载代理辅助器更新数据大小事件。
     /// </summary>
-    public sealed class DownloadAgentHelperUpdateLengthEventArgs : GameFrameworkEventArgs
+    public sealed class DownloadAgentHelperUpdateLengthEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化下载代理辅助器更新数据大小事件的新实例。
@@ -38,7 +38,7 @@ namespace GX.Download
         {
             if (deltaLength <= 0)
             {
-                throw new GameFrameworkException("Delta length is invalid.");
+                throw new GXException("Delta length is invalid.");
             }
 
             DownloadAgentHelperUpdateLengthEventArgs downloadAgentHelperUpdateLengthEventArgs = ReferencePool.Acquire<DownloadAgentHelperUpdateLengthEventArgs>();

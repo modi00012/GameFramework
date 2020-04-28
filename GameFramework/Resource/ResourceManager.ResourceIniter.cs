@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -11,7 +11,7 @@ using System.IO;
 
 namespace GX.Resource
 {
-    internal sealed partial class ResourceManager : GameFrameworkModule, IResourceManager
+    internal sealed partial class ResourceManager : GXModule, IResourceManager
     {
         /// <summary>
         /// 资源初始化器。
@@ -21,7 +21,7 @@ namespace GX.Resource
             private readonly ResourceManager m_ResourceManager;
             private string m_CurrentVariant;
 
-            public GameFrameworkAction ResourceInitComplete;
+            public GXAction ResourceInitComplete;
 
             /// <summary>
             /// 初始化资源初始化器的新实例。
@@ -51,12 +51,12 @@ namespace GX.Resource
 
                 if (m_ResourceManager.m_ResourceHelper == null)
                 {
-                    throw new GameFrameworkException("Resource helper is invalid.");
+                    throw new GXException("Resource helper is invalid.");
                 }
 
                 if (string.IsNullOrEmpty(m_ResourceManager.m_ReadOnlyPath))
                 {
-                    throw new GameFrameworkException("Readonly path is invalid.");
+                    throw new GXException("Readonly path is invalid.");
                 }
 
                 m_ResourceManager.m_ResourceHelper.LoadBytes(Utility.Path.GetRemotePath(Path.Combine(m_ResourceManager.m_ReadOnlyPath, RemoteVersionListFileName)), new LoadBytesCallbacks(OnLoadPackageVersionListSuccess, OnLoadPackageVersionListFailure), null);
@@ -71,7 +71,7 @@ namespace GX.Resource
                     PackageVersionList versionList = m_ResourceManager.m_PackageVersionListSerializer.Deserialize(memoryStream);
                     if (!versionList.IsValid)
                     {
-                        throw new GameFrameworkException("Deserialize package version list failure.");
+                        throw new GXException("Deserialize package version list failure.");
                     }
 
                     PackageVersionList.Asset[] assets = versionList.GetAssets();
@@ -130,12 +130,12 @@ namespace GX.Resource
                 }
                 catch (Exception exception)
                 {
-                    if (exception is GameFrameworkException)
+                    if (exception is GXException)
                     {
                         throw;
                     }
 
-                    throw new GameFrameworkException(Utility.Text.Format("Parse package version list exception '{0}'.", exception.ToString()), exception);
+                    throw new GXException(Utility.Text.Format("Parse package version list exception '{0}'.", exception.ToString()), exception);
                 }
                 finally
                 {
@@ -149,7 +149,7 @@ namespace GX.Resource
 
             private void OnLoadPackageVersionListFailure(string fileUri, string errorMessage, object userData)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Package version list '{0}' is invalid, error message is '{1}'.", fileUri, string.IsNullOrEmpty(errorMessage) ? "<Empty>" : errorMessage));
+                throw new GXException(Utility.Text.Format("Package version list '{0}' is invalid, error message is '{1}'.", fileUri, string.IsNullOrEmpty(errorMessage) ? "<Empty>" : errorMessage));
             }
         }
     }

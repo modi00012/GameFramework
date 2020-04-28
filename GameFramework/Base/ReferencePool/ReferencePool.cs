@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -110,7 +110,7 @@ namespace GX
         {
             if (reference == null)
             {
-                throw new GameFrameworkException("Reference is invalid.");
+                throw new GXException("Reference is invalid.");
             }
 
             Type referenceType = reference.GetType();
@@ -188,17 +188,17 @@ namespace GX
 
             if (referenceType == null)
             {
-                throw new GameFrameworkException("Reference type is invalid.");
+                throw new GXException("Reference type is invalid.");
             }
 
             if (!referenceType.IsClass || referenceType.IsAbstract)
             {
-                throw new GameFrameworkException("Reference type is not a non-abstract class type.");
+                throw new GXException("Reference type is not a non-abstract class type.");
             }
 
             if (!typeof(IReference).IsAssignableFrom(referenceType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Reference type '{0}' is invalid.", referenceType.FullName));
+                throw new GXException(Utility.Text.Format("Reference type '{0}' is invalid.", referenceType.FullName));
             }
         }
 
@@ -206,7 +206,7 @@ namespace GX
         {
             if (referenceType == null)
             {
-                throw new GameFrameworkException("ReferenceType is invalid.");
+                throw new GXException("ReferenceType is invalid.");
             }
 
             ReferenceCollection referenceCollection = null;

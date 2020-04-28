@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -12,7 +12,7 @@ namespace GX.Setting
     /// <summary>
     /// 游戏配置管理器。
     /// </summary>
-    internal sealed class SettingManager : GameFrameworkModule, ISettingManager
+    internal sealed class SettingManager : GXModule, ISettingManager
     {
         private ISettingHelper m_SettingHelper;
 
@@ -49,7 +49,7 @@ namespace GX.Setting
         {
             if (settingHelper == null)
             {
-                throw new GameFrameworkException("Setting helper is invalid.");
+                throw new GXException("Setting helper is invalid.");
             }
 
             m_SettingHelper = settingHelper;
@@ -82,7 +82,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             return m_SettingHelper.HasSetting(settingName);
@@ -96,7 +96,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             m_SettingHelper.RemoveSetting(settingName);
@@ -119,7 +119,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             return m_SettingHelper.GetBool(settingName);
@@ -135,7 +135,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             return m_SettingHelper.GetBool(settingName, defaultValue);
@@ -150,7 +150,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             m_SettingHelper.SetBool(settingName, value);
@@ -165,7 +165,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             return m_SettingHelper.GetInt(settingName);
@@ -181,7 +181,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             return m_SettingHelper.GetInt(settingName, defaultValue);
@@ -196,7 +196,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             m_SettingHelper.SetInt(settingName, value);
@@ -211,7 +211,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             return m_SettingHelper.GetFloat(settingName);
@@ -227,7 +227,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             return m_SettingHelper.GetFloat(settingName, defaultValue);
@@ -242,7 +242,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             m_SettingHelper.SetFloat(settingName, value);
@@ -257,7 +257,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             return m_SettingHelper.GetString(settingName);
@@ -273,7 +273,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             return m_SettingHelper.GetString(settingName, defaultValue);
@@ -288,7 +288,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             m_SettingHelper.SetString(settingName, value);
@@ -304,7 +304,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             return m_SettingHelper.GetObject<T>(settingName);
@@ -320,12 +320,12 @@ namespace GX.Setting
         {
             if (objectType == null)
             {
-                throw new GameFrameworkException("Object type is invalid.");
+                throw new GXException("Object type is invalid.");
             }
 
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             return m_SettingHelper.GetObject(objectType, settingName);
@@ -342,7 +342,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             return m_SettingHelper.GetObject(settingName, defaultObj);
@@ -359,12 +359,12 @@ namespace GX.Setting
         {
             if (objectType == null)
             {
-                throw new GameFrameworkException("Object type is invalid.");
+                throw new GXException("Object type is invalid.");
             }
 
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             return m_SettingHelper.GetObject(objectType, settingName, defaultObj);
@@ -380,7 +380,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             m_SettingHelper.SetObject(settingName, obj);
@@ -395,7 +395,7 @@ namespace GX.Setting
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new GameFrameworkException("Setting name is invalid.");
+                throw new GXException("Setting name is invalid.");
             }
 
             m_SettingHelper.SetObject(settingName, obj);

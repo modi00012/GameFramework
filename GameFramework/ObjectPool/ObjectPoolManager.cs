@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -13,7 +13,7 @@ namespace GX.ObjectPool
     /// <summary>
     /// 对象池管理器。
     /// </summary>
-    internal sealed partial class ObjectPoolManager : GameFrameworkModule, IObjectPoolManager
+    internal sealed partial class ObjectPoolManager : GXModule, IObjectPoolManager
     {
         private const int DefaultCapacity = int.MaxValue;
         private const float DefaultExpireTime = float.MaxValue;
@@ -100,12 +100,12 @@ namespace GX.ObjectPool
         {
             if (objectType == null)
             {
-                throw new GameFrameworkException("Object type is invalid.");
+                throw new GXException("Object type is invalid.");
             }
 
             if (!typeof(ObjectBase).IsAssignableFrom(objectType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Object type '{0}' is invalid.", objectType.FullName));
+                throw new GXException(Utility.Text.Format("Object type '{0}' is invalid.", objectType.FullName));
             }
 
             return InternalHasObjectPool(new TypeNamePair(objectType));
@@ -132,12 +132,12 @@ namespace GX.ObjectPool
         {
             if (objectType == null)
             {
-                throw new GameFrameworkException("Object type is invalid.");
+                throw new GXException("Object type is invalid.");
             }
 
             if (!typeof(ObjectBase).IsAssignableFrom(objectType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Object type '{0}' is invalid.", objectType.FullName));
+                throw new GXException(Utility.Text.Format("Object type '{0}' is invalid.", objectType.FullName));
             }
 
             return InternalHasObjectPool(new TypeNamePair(objectType, name));
@@ -152,7 +152,7 @@ namespace GX.ObjectPool
         {
             if (condition == null)
             {
-                throw new GameFrameworkException("Condition is invalid.");
+                throw new GXException("Condition is invalid.");
             }
 
             foreach (KeyValuePair<TypeNamePair, ObjectPoolBase> objectPool in m_ObjectPools)
@@ -185,12 +185,12 @@ namespace GX.ObjectPool
         {
             if (objectType == null)
             {
-                throw new GameFrameworkException("Object type is invalid.");
+                throw new GXException("Object type is invalid.");
             }
 
             if (!typeof(ObjectBase).IsAssignableFrom(objectType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Object type '{0}' is invalid.", objectType.FullName));
+                throw new GXException(Utility.Text.Format("Object type '{0}' is invalid.", objectType.FullName));
             }
 
             return InternalGetObjectPool(new TypeNamePair(objectType));
@@ -217,12 +217,12 @@ namespace GX.ObjectPool
         {
             if (objectType == null)
             {
-                throw new GameFrameworkException("Object type is invalid.");
+                throw new GXException("Object type is invalid.");
             }
 
             if (!typeof(ObjectBase).IsAssignableFrom(objectType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Object type '{0}' is invalid.", objectType.FullName));
+                throw new GXException(Utility.Text.Format("Object type '{0}' is invalid.", objectType.FullName));
             }
 
             return InternalGetObjectPool(new TypeNamePair(objectType, name));
@@ -237,7 +237,7 @@ namespace GX.ObjectPool
         {
             if (condition == null)
             {
-                throw new GameFrameworkException("Condition is invalid.");
+                throw new GXException("Condition is invalid.");
             }
 
             foreach (KeyValuePair<TypeNamePair, ObjectPoolBase> objectPool in m_ObjectPools)
@@ -260,7 +260,7 @@ namespace GX.ObjectPool
         {
             if (condition == null)
             {
-                throw new GameFrameworkException("Condition is invalid.");
+                throw new GXException("Condition is invalid.");
             }
 
             List<ObjectPoolBase> results = new List<ObjectPoolBase>();
@@ -284,12 +284,12 @@ namespace GX.ObjectPool
         {
             if (condition == null)
             {
-                throw new GameFrameworkException("Condition is invalid.");
+                throw new GXException("Condition is invalid.");
             }
 
             if (results == null)
             {
-                throw new GameFrameworkException("Results is invalid.");
+                throw new GXException("Results is invalid.");
             }
 
             results.Clear();
@@ -360,7 +360,7 @@ namespace GX.ObjectPool
         {
             if (results == null)
             {
-                throw new GameFrameworkException("Results is invalid.");
+                throw new GXException("Results is invalid.");
             }
 
             results.Clear();
@@ -1130,12 +1130,12 @@ namespace GX.ObjectPool
         {
             if (objectType == null)
             {
-                throw new GameFrameworkException("Object type is invalid.");
+                throw new GXException("Object type is invalid.");
             }
 
             if (!typeof(ObjectBase).IsAssignableFrom(objectType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Object type '{0}' is invalid.", objectType.FullName));
+                throw new GXException(Utility.Text.Format("Object type '{0}' is invalid.", objectType.FullName));
             }
 
             return InternalDestroyObjectPool(new TypeNamePair(objectType));
@@ -1162,12 +1162,12 @@ namespace GX.ObjectPool
         {
             if (objectType == null)
             {
-                throw new GameFrameworkException("Object type is invalid.");
+                throw new GXException("Object type is invalid.");
             }
 
             if (!typeof(ObjectBase).IsAssignableFrom(objectType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Object type '{0}' is invalid.", objectType.FullName));
+                throw new GXException(Utility.Text.Format("Object type '{0}' is invalid.", objectType.FullName));
             }
 
             return InternalDestroyObjectPool(new TypeNamePair(objectType, name));
@@ -1183,7 +1183,7 @@ namespace GX.ObjectPool
         {
             if (objectPool == null)
             {
-                throw new GameFrameworkException("Object pool is invalid.");
+                throw new GXException("Object pool is invalid.");
             }
 
             return InternalDestroyObjectPool(new TypeNamePair(typeof(T), objectPool.Name));
@@ -1198,7 +1198,7 @@ namespace GX.ObjectPool
         {
             if (objectPool == null)
             {
-                throw new GameFrameworkException("Object pool is invalid.");
+                throw new GXException("Object pool is invalid.");
             }
 
             return InternalDestroyObjectPool(new TypeNamePair(objectPool.ObjectType, objectPool.Name));
@@ -1249,7 +1249,7 @@ namespace GX.ObjectPool
             TypeNamePair typeNamePair = new TypeNamePair(typeof(T), name);
             if (HasObjectPool<T>(name))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Already exist object pool '{0}'.", typeNamePair.ToString()));
+                throw new GXException(Utility.Text.Format("Already exist object pool '{0}'.", typeNamePair.ToString()));
             }
 
             ObjectPool<T> objectPool = new ObjectPool<T>(name, allowMultiSpawn, autoReleaseInterval, capacity, expireTime, priority);
@@ -1261,18 +1261,18 @@ namespace GX.ObjectPool
         {
             if (objectType == null)
             {
-                throw new GameFrameworkException("Object type is invalid.");
+                throw new GXException("Object type is invalid.");
             }
 
             if (!typeof(ObjectBase).IsAssignableFrom(objectType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Object type '{0}' is invalid.", objectType.FullName));
+                throw new GXException(Utility.Text.Format("Object type '{0}' is invalid.", objectType.FullName));
             }
 
             TypeNamePair typeNamePair = new TypeNamePair(objectType, name);
             if (HasObjectPool(objectType, name))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Already exist object pool '{0}'.", typeNamePair.ToString()));
+                throw new GXException(Utility.Text.Format("Already exist object pool '{0}'.", typeNamePair.ToString()));
             }
 
             Type objectPoolType = typeof(ObjectPool<>).MakeGenericType(objectType);

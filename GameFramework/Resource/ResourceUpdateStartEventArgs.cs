@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Resource
@@ -10,7 +10,7 @@ namespace GX.Resource
     /// <summary>
     /// 资源更新开始事件。
     /// </summary>
-    public sealed class ResourceUpdateStartEventArgs : GameFrameworkEventArgs
+    public sealed class ResourceUpdateStartEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化资源更新开始事件的新实例。

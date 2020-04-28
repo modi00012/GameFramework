@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.DataTable
@@ -10,7 +10,7 @@ namespace GX.DataTable
     /// <summary>
     /// 加载数据表失败事件。
     /// </summary>
-    public sealed class LoadDataTableFailureEventArgs : GameFrameworkEventArgs
+    public sealed class LoadDataTableFailureEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化加载数据表失败事件的新实例。

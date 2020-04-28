@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Debugger
@@ -10,7 +10,7 @@ namespace GX.Debugger
     /// <summary>
     /// 调试器管理器。
     /// </summary>
-    internal sealed partial class DebuggerManager : GameFrameworkModule, IDebuggerManager
+    internal sealed partial class DebuggerManager : GXModule, IDebuggerManager
     {
         private readonly DebuggerWindowGroup m_DebuggerWindowRoot;
         private bool m_ActiveWindow;
@@ -96,12 +96,12 @@ namespace GX.Debugger
         {
             if (string.IsNullOrEmpty(path))
             {
-                throw new GameFrameworkException("Path is invalid.");
+                throw new GXException("Path is invalid.");
             }
 
             if (debuggerWindow == null)
             {
-                throw new GameFrameworkException("Debugger window is invalid.");
+                throw new GXException("Debugger window is invalid.");
             }
 
             m_DebuggerWindowRoot.RegisterDebuggerWindow(path, debuggerWindow);

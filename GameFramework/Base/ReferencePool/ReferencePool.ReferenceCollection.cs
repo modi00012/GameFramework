@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -93,7 +93,7 @@ namespace GX
             {
                 if (typeof(T) != m_ReferenceType)
                 {
-                    throw new GameFrameworkException("Type is invalid.");
+                    throw new GXException("Type is invalid.");
                 }
 
                 m_UsingReferenceCount++;
@@ -133,7 +133,7 @@ namespace GX
                 {
                     if (m_EnableStrictCheck && m_References.Contains(reference))
                     {
-                        throw new GameFrameworkException("The reference has been released.");
+                        throw new GXException("The reference has been released.");
                     }
 
                     m_References.Enqueue(reference);
@@ -147,7 +147,7 @@ namespace GX
             {
                 if (typeof(T) != m_ReferenceType)
                 {
-                    throw new GameFrameworkException("Type is invalid.");
+                    throw new GXException("Type is invalid.");
                 }
 
                 lock (m_References)

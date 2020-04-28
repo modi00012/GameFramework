@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Resource
@@ -10,7 +10,7 @@ namespace GX.Resource
     /// <summary>
     /// 加载资源代理辅助器异步将资源二进制流转换为加载对象完成事件。
     /// </summary>
-    public sealed class LoadResourceAgentHelperParseBytesCompleteEventArgs : GameFrameworkEventArgs
+    public sealed class LoadResourceAgentHelperParseBytesCompleteEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化加载资源代理辅助器异步将资源二进制流转换为加载对象完成事件的新实例。

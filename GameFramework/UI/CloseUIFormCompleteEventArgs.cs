@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.UI
@@ -10,7 +10,7 @@ namespace GX.UI
     /// <summary>
     /// 关闭界面完成事件。
     /// </summary>
-    public sealed class CloseUIFormCompleteEventArgs : GameFrameworkEventArgs
+    public sealed class CloseUIFormCompleteEventArgs : GXEventArgs
     {
         /// <summary>
         /// 初始化关闭界面完成事件的新实例。

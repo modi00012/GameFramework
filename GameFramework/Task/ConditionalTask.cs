@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -15,9 +15,9 @@ namespace GX.Task
     public sealed class ConditionalTask : TaskBase
     {
         private Predicate<ConditionalTask> m_Condition;
-        private GameFrameworkAction<ConditionalTask, string> m_CompleteAction;
-        private GameFrameworkAction<ConditionalTask, string> m_FailureAction;
-        private GameFrameworkAction<ConditionalTask, string> m_CancelAction;
+        private GXAction<ConditionalTask, string> m_CompleteAction;
+        private GXAction<ConditionalTask, string> m_FailureAction;
+        private GXAction<ConditionalTask, string> m_CancelAction;
 
         /// <summary>
         /// 初始化条件任务的新实例。
@@ -43,7 +43,7 @@ namespace GX.Task
         /// 设置任务完成时的行为。
         /// </summary>
         /// <param name="completeAction">任务完成时的行为。</param>
-        public void SetCompleteAction(GameFrameworkAction<ConditionalTask, string> completeAction)
+        public void SetCompleteAction(GXAction<ConditionalTask, string> completeAction)
         {
             m_CompleteAction = completeAction;
         }
@@ -52,7 +52,7 @@ namespace GX.Task
         /// 设置任务失败时的行为。
         /// </summary>
         /// <param name="failureAction">任务失败时的行为。</param>
-        public void SetFailureAction(GameFrameworkAction<ConditionalTask, string> failureAction)
+        public void SetFailureAction(GXAction<ConditionalTask, string> failureAction)
         {
             m_FailureAction = failureAction;
         }
@@ -61,7 +61,7 @@ namespace GX.Task
         /// 设置任务取消时的行为。
         /// </summary>
         /// <param name="cancelAction">任务取消时的行为。</param>
-        public void SetCancelAction(GameFrameworkAction<ConditionalTask, string> cancelAction)
+        public void SetCancelAction(GXAction<ConditionalTask, string> cancelAction)
         {
             m_CancelAction = cancelAction;
         }

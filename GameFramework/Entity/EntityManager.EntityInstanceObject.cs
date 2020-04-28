@@ -1,15 +1,15 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using GX.ObjectPool;
 
 namespace GX.Entity
 {
-    internal sealed partial class EntityManager : GameFrameworkModule, IEntityManager
+    internal sealed partial class EntityManager : GXModule, IEntityManager
     {
         /// <summary>
         /// 实体实例对象。
@@ -29,12 +29,12 @@ namespace GX.Entity
             {
                 if (entityAsset == null)
                 {
-                    throw new GameFrameworkException("Entity asset is invalid.");
+                    throw new GXException("Entity asset is invalid.");
                 }
 
                 if (entityHelper == null)
                 {
-                    throw new GameFrameworkException("Entity helper is invalid.");
+                    throw new GXException("Entity helper is invalid.");
                 }
 
                 EntityInstanceObject entityInstanceObject = ReferencePool.Acquire<EntityInstanceObject>();

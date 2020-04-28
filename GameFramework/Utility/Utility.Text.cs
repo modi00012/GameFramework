@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -30,7 +30,7 @@ namespace GX
             {
                 if (format == null)
                 {
-                    throw new GameFrameworkException("Format is invalid.");
+                    throw new GXException("Format is invalid.");
                 }
 
                 CheckCachedStringBuilder();
@@ -50,7 +50,7 @@ namespace GX
             {
                 if (format == null)
                 {
-                    throw new GameFrameworkException("Format is invalid.");
+                    throw new GXException("Format is invalid.");
                 }
 
                 CheckCachedStringBuilder();
@@ -71,7 +71,7 @@ namespace GX
             {
                 if (format == null)
                 {
-                    throw new GameFrameworkException("Format is invalid.");
+                    throw new GXException("Format is invalid.");
                 }
 
                 CheckCachedStringBuilder();
@@ -90,12 +90,12 @@ namespace GX
             {
                 if (format == null)
                 {
-                    throw new GameFrameworkException("Format is invalid.");
+                    throw new GXException("Format is invalid.");
                 }
 
                 if (args == null)
                 {
-                    throw new GameFrameworkException("Args is invalid.");
+                    throw new GXException("Args is invalid.");
                 }
 
                 CheckCachedStringBuilder();

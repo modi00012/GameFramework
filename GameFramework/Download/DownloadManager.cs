@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -12,7 +12,7 @@ namespace GX.Download
     /// <summary>
     /// 下载管理器。
     /// </summary>
-    internal sealed partial class DownloadManager : GameFrameworkModule, IDownloadManager
+    internal sealed partial class DownloadManager : GXModule, IDownloadManager
     {
         private const int OneMegaBytes = 1024 * 1024;
 
@@ -294,17 +294,17 @@ namespace GX.Download
         {
             if (string.IsNullOrEmpty(downloadPath))
             {
-                throw new GameFrameworkException("Download path is invalid.");
+                throw new GXException("Download path is invalid.");
             }
 
             if (string.IsNullOrEmpty(downloadUri))
             {
-                throw new GameFrameworkException("Download uri is invalid.");
+                throw new GXException("Download uri is invalid.");
             }
 
             if (TotalAgentCount <= 0)
             {
-                throw new GameFrameworkException("You must add download agent first.");
+                throw new GXException("You must add download agent first.");
             }
 
             DownloadTask downloadTask = DownloadTask.Create(downloadPath, downloadUri, priority, m_FlushSize, m_Timeout, userData);

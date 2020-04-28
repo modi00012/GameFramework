@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using System;
@@ -77,21 +77,21 @@ namespace GX.DataTable
         /// </summary>
         /// <param name="dataRowSegment">要解析的数据表行片段。</param>
         /// <returns>是否增加数据表行成功。</returns>
-        internal abstract bool AddDataRow(GameFrameworkSegment<string> dataRowSegment);
+        internal abstract bool AddDataRow(GXSegment<string> dataRowSegment);
 
         /// <summary>
         /// 增加数据表行。
         /// </summary>
         /// <param name="dataRowSegment">要解析的数据表行片段。</param>
         /// <returns>是否增加数据表行成功。</returns>
-        internal abstract bool AddDataRow(GameFrameworkSegment<byte[]> dataRowSegment);
+        internal abstract bool AddDataRow(GXSegment<byte[]> dataRowSegment);
 
         /// <summary>
         /// 增加数据表行。
         /// </summary>
         /// <param name="dataRowSegment">要解析的数据表行片段。</param>
         /// <returns>是否增加数据表行成功。</returns>
-        internal abstract bool AddDataRow(GameFrameworkSegment<Stream> dataRowSegment);
+        internal abstract bool AddDataRow(GXSegment<Stream> dataRowSegment);
 
         /// <summary>
         /// 关闭并清理数据表。

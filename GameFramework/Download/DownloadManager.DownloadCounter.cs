@@ -1,17 +1,17 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 namespace GX.Download
 {
-    internal sealed partial class DownloadManager : GameFrameworkModule, IDownloadManager
+    internal sealed partial class DownloadManager : GXModule, IDownloadManager
     {
         private sealed partial class DownloadCounter
         {
-            private readonly GameFrameworkLinkedList<DownloadCounterNode> m_DownloadCounterNodes;
+            private readonly GXLinkedList<DownloadCounterNode> m_DownloadCounterNodes;
             private float m_UpdateInterval;
             private float m_RecordInterval;
             private float m_CurrentSpeed;
@@ -22,15 +22,15 @@ namespace GX.Download
             {
                 if (updateInterval <= 0f)
                 {
-                    throw new GameFrameworkException("Update interval is invalid.");
+                    throw new GXException("Update interval is invalid.");
                 }
 
                 if (recordInterval <= 0f)
                 {
-                    throw new GameFrameworkException("Record interval is invalid.");
+                    throw new GXException("Record interval is invalid.");
                 }
 
-                m_DownloadCounterNodes = new GameFrameworkLinkedList<DownloadCounterNode>();
+                m_DownloadCounterNodes = new GXLinkedList<DownloadCounterNode>();
                 m_UpdateInterval = updateInterval;
                 m_RecordInterval = recordInterval;
                 Reset();
@@ -46,7 +46,7 @@ namespace GX.Download
                 {
                     if (value <= 0f)
                     {
-                        throw new GameFrameworkException("Update interval is invalid.");
+                        throw new GXException("Update interval is invalid.");
                     }
 
                     m_UpdateInterval = value;
@@ -64,7 +64,7 @@ namespace GX.Download
                 {
                     if (value <= 0f)
                     {
-                        throw new GameFrameworkException("Record interval is invalid.");
+                        throw new GXException("Record interval is invalid.");
                     }
 
                     m_RecordInterval = value;

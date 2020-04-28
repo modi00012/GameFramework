@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------
 // Game Framework
 // Copyright © 2013-2020 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
+// Homepage: https://GameFramework.cn/
+// Feedback: mailto:ellan@GameFramework.cn
 //------------------------------------------------------------
 
 using GX.Download;
@@ -16,10 +16,10 @@ namespace GX.Resource
     /// <summary>
     /// 资源管理器。
     /// </summary>
-    internal sealed partial class ResourceManager : GameFrameworkModule, IResourceManager
+    internal sealed partial class ResourceManager : GXModule, IResourceManager
     {
-        private const string RemoteVersionListFileName = "GameFrameworkVersion.dat";
-        private const string LocalVersionListFileName = "GameFrameworkList.dat";
+        private const string RemoteVersionListFileName = "GXVersion.dat";
+        private const string LocalVersionListFileName = "GXList.dat";
         private const string DefaultExtension = "dat";
         private const string BackupExtension = "bak";
 
@@ -285,7 +285,7 @@ namespace GX.Resource
             {
                 if (m_ResourceUpdater == null)
                 {
-                    throw new GameFrameworkException("You can not use GenerateReadWriteVersionListLength at this time.");
+                    throw new GXException("You can not use GenerateReadWriteVersionListLength at this time.");
                 }
 
                 m_ResourceUpdater.GenerateReadWriteVersionListLength = value;
@@ -305,7 +305,7 @@ namespace GX.Resource
             {
                 if (m_ResourceUpdater == null)
                 {
-                    throw new GameFrameworkException("You can not use UpdateRetryCount at this time.");
+                    throw new GXException("You can not use UpdateRetryCount at this time.");
                 }
 
                 m_ResourceUpdater.UpdateRetryCount = value;
@@ -668,12 +668,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(readOnlyPath))
             {
-                throw new GameFrameworkException("Readonly path is invalid.");
+                throw new GXException("Readonly path is invalid.");
             }
 
             if (m_ResourceLoader.TotalAgentCount > 0)
             {
-                throw new GameFrameworkException("You must set readonly path before add load resource agent helper.");
+                throw new GXException("You must set readonly path before add load resource agent helper.");
             }
 
             m_ReadOnlyPath = readOnlyPath;
@@ -687,12 +687,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(readWritePath))
             {
-                throw new GameFrameworkException("Read-write path is invalid.");
+                throw new GXException("Read-write path is invalid.");
             }
 
             if (m_ResourceLoader.TotalAgentCount > 0)
             {
-                throw new GameFrameworkException("You must set read-write path before add load resource agent helper.");
+                throw new GXException("You must set read-write path before add load resource agent helper.");
             }
 
             m_ReadWritePath = readWritePath;
@@ -706,7 +706,7 @@ namespace GX.Resource
         {
             if (resourceMode == ResourceMode.Unspecified)
             {
-                throw new GameFrameworkException("Resource mode is invalid.");
+                throw new GXException("Resource mode is invalid.");
             }
 
             if (m_ResourceMode == ResourceMode.Unspecified)
@@ -744,7 +744,7 @@ namespace GX.Resource
             }
             else if (m_ResourceMode != resourceMode)
             {
-                throw new GameFrameworkException("You can not change resource mode at this time.");
+                throw new GXException("You can not change resource mode at this time.");
             }
         }
 
@@ -756,7 +756,7 @@ namespace GX.Resource
         {
             if (m_RefuseSetCurrentVariant)
             {
-                throw new GameFrameworkException("You can net set current variant at this time.");
+                throw new GXException("You can net set current variant at this time.");
             }
 
             m_CurrentVariant = currentVariant;
@@ -770,7 +770,7 @@ namespace GX.Resource
         {
             if (objectPoolManager == null)
             {
-                throw new GameFrameworkException("Object pool manager is invalid.");
+                throw new GXException("Object pool manager is invalid.");
             }
 
             m_ResourceLoader.SetObjectPoolManager(objectPoolManager);
@@ -784,7 +784,7 @@ namespace GX.Resource
         {
             if (downloadManager == null)
             {
-                throw new GameFrameworkException("Download manager is invalid.");
+                throw new GXException("Download manager is invalid.");
             }
 
             if (m_VersionListProcessor != null)
@@ -807,7 +807,7 @@ namespace GX.Resource
         {
             if (m_ResourceLoader.TotalAgentCount > 0)
             {
-                throw new GameFrameworkException("You must set decrypt resource callback before add load resource agent helper.");
+                throw new GXException("You must set decrypt resource callback before add load resource agent helper.");
             }
 
             m_DecryptResourceCallback = decryptResourceCallback;
@@ -821,12 +821,12 @@ namespace GX.Resource
         {
             if (resourceHelper == null)
             {
-                throw new GameFrameworkException("Resource helper is invalid.");
+                throw new GXException("Resource helper is invalid.");
             }
 
             if (m_ResourceLoader.TotalAgentCount > 0)
             {
-                throw new GameFrameworkException("You must set resource helper before add load resource agent helper.");
+                throw new GXException("You must set resource helper before add load resource agent helper.");
             }
 
             m_ResourceHelper = resourceHelper;
@@ -840,17 +840,17 @@ namespace GX.Resource
         {
             if (m_ResourceHelper == null)
             {
-                throw new GameFrameworkException("Resource helper is invalid.");
+                throw new GXException("Resource helper is invalid.");
             }
 
             if (string.IsNullOrEmpty(m_ReadOnlyPath))
             {
-                throw new GameFrameworkException("Readonly path is invalid.");
+                throw new GXException("Readonly path is invalid.");
             }
 
             if (string.IsNullOrEmpty(m_ReadWritePath))
             {
-                throw new GameFrameworkException("Read-write path is invalid.");
+                throw new GXException("Read-write path is invalid.");
             }
 
             m_ResourceLoader.AddLoadResourceAgentHelper(loadResourceAgentHelper, m_ResourceHelper, m_ReadOnlyPath, m_ReadWritePath, m_DecryptResourceCallback);
@@ -864,22 +864,22 @@ namespace GX.Resource
         {
             if (initResourcesCompleteCallback == null)
             {
-                throw new GameFrameworkException("Init resources complete callback is invalid.");
+                throw new GXException("Init resources complete callback is invalid.");
             }
 
             if (m_ResourceMode == ResourceMode.Unspecified)
             {
-                throw new GameFrameworkException("You must set resource mode first.");
+                throw new GXException("You must set resource mode first.");
             }
 
             if (m_ResourceMode != ResourceMode.Package)
             {
-                throw new GameFrameworkException("You can not use InitResources without package resource mode.");
+                throw new GXException("You can not use InitResources without package resource mode.");
             }
 
             if (m_ResourceIniter == null)
             {
-                throw new GameFrameworkException("You can not use InitResources at this time.");
+                throw new GXException("You can not use InitResources at this time.");
             }
 
             m_RefuseSetCurrentVariant = true;
@@ -896,17 +896,17 @@ namespace GX.Resource
         {
             if (m_ResourceMode == ResourceMode.Unspecified)
             {
-                throw new GameFrameworkException("You must set resource mode first.");
+                throw new GXException("You must set resource mode first.");
             }
 
             if (m_ResourceMode != ResourceMode.Updatable)
             {
-                throw new GameFrameworkException("You can not use CheckVersionList without updatable resource mode.");
+                throw new GXException("You can not use CheckVersionList without updatable resource mode.");
             }
 
             if (m_VersionListProcessor == null)
             {
-                throw new GameFrameworkException("You can not use CheckVersionList at this time.");
+                throw new GXException("You can not use CheckVersionList at this time.");
             }
 
             return m_VersionListProcessor.CheckVersionList(latestInternalResourceVersion);
@@ -924,22 +924,22 @@ namespace GX.Resource
         {
             if (updateVersionListCallbacks == null)
             {
-                throw new GameFrameworkException("Update version list callbacks is invalid.");
+                throw new GXException("Update version list callbacks is invalid.");
             }
 
             if (m_ResourceMode == ResourceMode.Unspecified)
             {
-                throw new GameFrameworkException("You must set resource mode first.");
+                throw new GXException("You must set resource mode first.");
             }
 
             if (m_ResourceMode != ResourceMode.Updatable)
             {
-                throw new GameFrameworkException("You can not use UpdateVersionList without updatable resource mode.");
+                throw new GXException("You can not use UpdateVersionList without updatable resource mode.");
             }
 
             if (m_VersionListProcessor == null)
             {
-                throw new GameFrameworkException("You can not use UpdateVersionList at this time.");
+                throw new GXException("You can not use UpdateVersionList at this time.");
             }
 
             m_UpdateVersionListCallbacks = updateVersionListCallbacks;
@@ -954,22 +954,22 @@ namespace GX.Resource
         {
             if (checkResourcesCompleteCallback == null)
             {
-                throw new GameFrameworkException("Check resources complete callback is invalid.");
+                throw new GXException("Check resources complete callback is invalid.");
             }
 
             if (m_ResourceMode == ResourceMode.Unspecified)
             {
-                throw new GameFrameworkException("You must set resource mode first.");
+                throw new GXException("You must set resource mode first.");
             }
 
             if (m_ResourceMode != ResourceMode.Updatable)
             {
-                throw new GameFrameworkException("You can not use CheckResources without updatable resource mode.");
+                throw new GXException("You can not use CheckResources without updatable resource mode.");
             }
 
             if (m_ResourceChecker == null)
             {
-                throw new GameFrameworkException("You can not use CheckResources at this time.");
+                throw new GXException("You can not use CheckResources at this time.");
             }
 
             m_RefuseSetCurrentVariant = true;
@@ -995,28 +995,28 @@ namespace GX.Resource
         {
             if (updateResourcesCompleteCallback == null)
             {
-                throw new GameFrameworkException("Update resources complete callback is invalid.");
+                throw new GXException("Update resources complete callback is invalid.");
             }
 
             if (m_ResourceMode == ResourceMode.Unspecified)
             {
-                throw new GameFrameworkException("You must set resource mode first.");
+                throw new GXException("You must set resource mode first.");
             }
 
             if (m_ResourceMode != ResourceMode.Updatable)
             {
-                throw new GameFrameworkException("You can not use UpdateResources without updatable resource mode.");
+                throw new GXException("You can not use UpdateResources without updatable resource mode.");
             }
 
             if (m_ResourceUpdater == null)
             {
-                throw new GameFrameworkException("You can not use UpdateResources at this time.");
+                throw new GXException("You can not use UpdateResources at this time.");
             }
 
             ResourceGroup resourceGroup = (ResourceGroup)GetResourceGroup(resourceGroupName);
             if (resourceGroup == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find resource group '{0}'.", resourceGroupName));
+                throw new GXException(Utility.Text.Format("Can not find resource group '{0}'.", resourceGroupName));
             }
 
             m_UpdateResourcesCompleteCallback = updateResourcesCompleteCallback;
@@ -1032,7 +1032,7 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(assetName))
             {
-                throw new GameFrameworkException("Asset name is invalid.");
+                throw new GXException("Asset name is invalid.");
             }
 
             return m_ResourceLoader.HasAsset(assetName);
@@ -1047,12 +1047,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(assetName))
             {
-                throw new GameFrameworkException("Asset name is invalid.");
+                throw new GXException("Asset name is invalid.");
             }
 
             if (loadAssetCallbacks == null)
             {
-                throw new GameFrameworkException("Load asset callbacks is invalid.");
+                throw new GXException("Load asset callbacks is invalid.");
             }
 
             m_ResourceLoader.LoadAsset(assetName, null, Constant.DefaultPriority, loadAssetCallbacks, null);
@@ -1068,12 +1068,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(assetName))
             {
-                throw new GameFrameworkException("Asset name is invalid.");
+                throw new GXException("Asset name is invalid.");
             }
 
             if (loadAssetCallbacks == null)
             {
-                throw new GameFrameworkException("Load asset callbacks is invalid.");
+                throw new GXException("Load asset callbacks is invalid.");
             }
 
             m_ResourceLoader.LoadAsset(assetName, assetType, Constant.DefaultPriority, loadAssetCallbacks, null);
@@ -1089,12 +1089,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(assetName))
             {
-                throw new GameFrameworkException("Asset name is invalid.");
+                throw new GXException("Asset name is invalid.");
             }
 
             if (loadAssetCallbacks == null)
             {
-                throw new GameFrameworkException("Load asset callbacks is invalid.");
+                throw new GXException("Load asset callbacks is invalid.");
             }
 
             m_ResourceLoader.LoadAsset(assetName, null, priority, loadAssetCallbacks, null);
@@ -1110,12 +1110,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(assetName))
             {
-                throw new GameFrameworkException("Asset name is invalid.");
+                throw new GXException("Asset name is invalid.");
             }
 
             if (loadAssetCallbacks == null)
             {
-                throw new GameFrameworkException("Load asset callbacks is invalid.");
+                throw new GXException("Load asset callbacks is invalid.");
             }
 
             m_ResourceLoader.LoadAsset(assetName, null, Constant.DefaultPriority, loadAssetCallbacks, userData);
@@ -1132,12 +1132,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(assetName))
             {
-                throw new GameFrameworkException("Asset name is invalid.");
+                throw new GXException("Asset name is invalid.");
             }
 
             if (loadAssetCallbacks == null)
             {
-                throw new GameFrameworkException("Load asset callbacks is invalid.");
+                throw new GXException("Load asset callbacks is invalid.");
             }
 
             m_ResourceLoader.LoadAsset(assetName, assetType, priority, loadAssetCallbacks, null);
@@ -1154,12 +1154,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(assetName))
             {
-                throw new GameFrameworkException("Asset name is invalid.");
+                throw new GXException("Asset name is invalid.");
             }
 
             if (loadAssetCallbacks == null)
             {
-                throw new GameFrameworkException("Load asset callbacks is invalid.");
+                throw new GXException("Load asset callbacks is invalid.");
             }
 
             m_ResourceLoader.LoadAsset(assetName, assetType, Constant.DefaultPriority, loadAssetCallbacks, userData);
@@ -1176,12 +1176,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(assetName))
             {
-                throw new GameFrameworkException("Asset name is invalid.");
+                throw new GXException("Asset name is invalid.");
             }
 
             if (loadAssetCallbacks == null)
             {
-                throw new GameFrameworkException("Load asset callbacks is invalid.");
+                throw new GXException("Load asset callbacks is invalid.");
             }
 
             m_ResourceLoader.LoadAsset(assetName, null, priority, loadAssetCallbacks, userData);
@@ -1199,12 +1199,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(assetName))
             {
-                throw new GameFrameworkException("Asset name is invalid.");
+                throw new GXException("Asset name is invalid.");
             }
 
             if (loadAssetCallbacks == null)
             {
-                throw new GameFrameworkException("Load asset callbacks is invalid.");
+                throw new GXException("Load asset callbacks is invalid.");
             }
 
             m_ResourceLoader.LoadAsset(assetName, assetType, priority, loadAssetCallbacks, userData);
@@ -1218,7 +1218,7 @@ namespace GX.Resource
         {
             if (asset == null)
             {
-                throw new GameFrameworkException("Asset is invalid.");
+                throw new GXException("Asset is invalid.");
             }
 
             if (m_ResourceLoader == null)
@@ -1238,7 +1238,7 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(sceneAssetName))
             {
-                throw new GameFrameworkException("Scene asset name is invalid.");
+                throw new GXException("Scene asset name is invalid.");
             }
 
             return m_ResourceLoader.HasAsset(sceneAssetName);
@@ -1253,12 +1253,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(sceneAssetName))
             {
-                throw new GameFrameworkException("Scene asset name is invalid.");
+                throw new GXException("Scene asset name is invalid.");
             }
 
             if (loadSceneCallbacks == null)
             {
-                throw new GameFrameworkException("Load scene callbacks is invalid.");
+                throw new GXException("Load scene callbacks is invalid.");
             }
 
             m_ResourceLoader.LoadScene(sceneAssetName, Constant.DefaultPriority, loadSceneCallbacks, null);
@@ -1274,12 +1274,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(sceneAssetName))
             {
-                throw new GameFrameworkException("Scene asset name is invalid.");
+                throw new GXException("Scene asset name is invalid.");
             }
 
             if (loadSceneCallbacks == null)
             {
-                throw new GameFrameworkException("Load scene callbacks is invalid.");
+                throw new GXException("Load scene callbacks is invalid.");
             }
 
             m_ResourceLoader.LoadScene(sceneAssetName, priority, loadSceneCallbacks, null);
@@ -1295,12 +1295,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(sceneAssetName))
             {
-                throw new GameFrameworkException("Scene asset name is invalid.");
+                throw new GXException("Scene asset name is invalid.");
             }
 
             if (loadSceneCallbacks == null)
             {
-                throw new GameFrameworkException("Load scene callbacks is invalid.");
+                throw new GXException("Load scene callbacks is invalid.");
             }
 
             m_ResourceLoader.LoadScene(sceneAssetName, Constant.DefaultPriority, loadSceneCallbacks, userData);
@@ -1317,12 +1317,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(sceneAssetName))
             {
-                throw new GameFrameworkException("Scene asset name is invalid.");
+                throw new GXException("Scene asset name is invalid.");
             }
 
             if (loadSceneCallbacks == null)
             {
-                throw new GameFrameworkException("Load scene callbacks is invalid.");
+                throw new GXException("Load scene callbacks is invalid.");
             }
 
             m_ResourceLoader.LoadScene(sceneAssetName, priority, loadSceneCallbacks, userData);
@@ -1337,12 +1337,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(sceneAssetName))
             {
-                throw new GameFrameworkException("Scene asset name is invalid.");
+                throw new GXException("Scene asset name is invalid.");
             }
 
             if (unloadSceneCallbacks == null)
             {
-                throw new GameFrameworkException("Unload scene callbacks is invalid.");
+                throw new GXException("Unload scene callbacks is invalid.");
             }
 
             m_ResourceLoader.UnloadScene(sceneAssetName, unloadSceneCallbacks, null);
@@ -1358,12 +1358,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(sceneAssetName))
             {
-                throw new GameFrameworkException("Scene asset name is invalid.");
+                throw new GXException("Scene asset name is invalid.");
             }
 
             if (unloadSceneCallbacks == null)
             {
-                throw new GameFrameworkException("Unload scene callbacks is invalid.");
+                throw new GXException("Unload scene callbacks is invalid.");
             }
 
             m_ResourceLoader.UnloadScene(sceneAssetName, unloadSceneCallbacks, userData);
@@ -1378,7 +1378,7 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(binaryAssetName))
             {
-                throw new GameFrameworkException("Binary asset name is invalid.");
+                throw new GXException("Binary asset name is invalid.");
             }
 
             return m_ResourceLoader.HasAsset(binaryAssetName);
@@ -1393,7 +1393,7 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(binaryAssetName))
             {
-                throw new GameFrameworkException("Binary asset name is invalid.");
+                throw new GXException("Binary asset name is invalid.");
             }
 
             return m_ResourceLoader.GetBinaryPath(binaryAssetName);
@@ -1420,12 +1420,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(binaryAssetName))
             {
-                throw new GameFrameworkException("Binary asset name is invalid.");
+                throw new GXException("Binary asset name is invalid.");
             }
 
             if (loadBinaryCallbacks == null)
             {
-                throw new GameFrameworkException("Load binary callbacks is invalid.");
+                throw new GXException("Load binary callbacks is invalid.");
             }
 
             m_ResourceLoader.LoadBinary(binaryAssetName, loadBinaryCallbacks, null);
@@ -1441,12 +1441,12 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(binaryAssetName))
             {
-                throw new GameFrameworkException("Binary asset name is invalid.");
+                throw new GXException("Binary asset name is invalid.");
             }
 
             if (loadBinaryCallbacks == null)
             {
-                throw new GameFrameworkException("Load binary callbacks is invalid.");
+                throw new GXException("Load binary callbacks is invalid.");
             }
 
             m_ResourceLoader.LoadBinary(binaryAssetName, loadBinaryCallbacks, userData);
@@ -1517,7 +1517,7 @@ namespace GX.Resource
         {
             if (string.IsNullOrEmpty(assetName))
             {
-                throw new GameFrameworkException("Asset name is invalid.");
+                throw new GXException("Asset name is invalid.");
             }
 
             if (m_AssetInfos == null)
